@@ -1,3 +1,15 @@
+*Notes [https://docs.google.com/document/d/1ZjYkkJIl-A8EUdQizLspg2RbBTTQC8kK6RyJbrzqvro/edit]*
+## Thanh vien
+#### Ho Anh Tin
+#### Nguyen Tran Tien
+#### Nguyen Thi Xuan Xuan
+#### Phan Tien Quan
+#### Bui Duc Hieu
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +80,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
