@@ -345,7 +345,7 @@ const NavBar = () => {
 
                             <ul>
                                 <li>
-                                    <a href="about.html" className="sf-with-ul">About</a>
+                                    <Link to="/about" className="sf-with-ul">About</Link>
 
                                     <ul>
                                         <li><a href="about.html">About 01</a></li>
@@ -353,17 +353,17 @@ const NavBar = () => {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="contact.html" className="sf-with-ul">Contact</a>
+                                    <Link to="/contact" className="sf-with-ul">Contact</Link>
 
                                     <ul>
-                                        <li><a href="contact.html">Contact 01</a></li>
-                                        <li><a href="contact-2.html">Contact 02</a></li>
+                                        <li><Link to="/contact">Contact 01</Link></li>
+                                        <li><Link to="/contact-2">Contact 02</Link></li>
                                     </ul>
                                 </li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="faq.html">FAQs</a></li>
-                                <li><a href="404.html">Error 404</a></li>
-                                <li><a href="coming-soon.html">Coming Soon</a></li>
+                                <li><Link to="/login">Login</Link></li>
+                                <li><Link to="/faq">FAQs</Link></li>
+                                <li><Link to="/404">Error 404</Link></li>
+                                <li><Link to="/coming-soon">Coming Soon</Link></li>
                             </ul>
                         </li>
                         <li>
