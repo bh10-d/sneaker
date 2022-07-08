@@ -1,6 +1,14 @@
-import './App.css';
-
+import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Header from './components/header/Header.component';
+import Home from './pages/home/Home.component';
+import Product from './pages/product/Product.component';
+import Detail from './pages/detail/Detail.component';
+import Info from './pages/info/Info.component';
+import Cart from './pages/cart/Cart.component';
+
+
+import './App.css';
 
 function App() {
 
@@ -14,8 +22,17 @@ function App() {
 
   // console.log(test)
   return (
-    <div className="App">
-      <table>
+      <div className="page-wrapper">
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/product" element={<Product />} />
+          <Route exact path="/detail" element={<Detail />} />
+          <Route exact path="/user" element={<Info />} />
+          <Route exact path="/cart" element={<Cart />} />
+        </Routes>
+      
+      {/* <table>
         <thead>
           <th>Id</th>
           <th>FirstName</th>
@@ -35,7 +52,7 @@ function App() {
               <td></td>
             </tr>)}
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 }
