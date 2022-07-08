@@ -2,11 +2,11 @@ const FAQ = ()=>{
     return (
         <>
             <main class="main">
-        	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        	<div class="page-header text-center" style={{backgroundImage: "url('assets/images/page-header-bg.jpg')"}}>
         		<div class="container">
         			<h1 class="page-title">F.A.Q<span>Pages</span></h1>
-        		</div><!-- End .container -->
-        	</div><!-- End .page-header -->
+        		</div>
+        	</div>
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
@@ -14,12 +14,12 @@ const FAQ = ()=>{
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
                         <li class="breadcrumb-item active" aria-current="page">FAQ</li>
                     </ol>
-                </div><!-- End .container -->
-            </nav><!-- End .breadcrumb-nav -->
+                </div>
+            </nav>
 
             <div class="page-content">
                 <div class="container">
-                	<h2 class="title text-center mb-3">Shipping Information</h2><!-- End .title -->
+                	<h2 class="title text-center mb-3">Shipping Information</h2>
         			<div class="accordion accordion-rounded" id="accordion-1">
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading-1">
@@ -28,13 +28,13 @@ const FAQ = ()=>{
 					                    How will my parcel be delivered?
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-1">
 					            <div class="card-body">
 					                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					            </div>
+					        </div>
+					    </div>
 
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading-2">
@@ -43,13 +43,13 @@ const FAQ = ()=>{
 					                    Do I pay for delivery?
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-1">
 					            <div class="card-body">
 					                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					            </div>
+					        </div>
+					    </div>
 
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading-3">
@@ -58,13 +58,13 @@ const FAQ = ()=>{
 					                    Will I be charged customs fees?
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-1">
 					            <div class="card-body">
 					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					            </div>
+					        </div>
+					    </div>
 
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading-4">
@@ -73,16 +73,16 @@ const FAQ = ()=>{
 					                    My item has become faulty
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordion-1">
 					            <div class="card-body">
 					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-					</div><!-- End .accordion -->
+					            </div>
+					        </div>
+					    </div>
+					</div>
 
-                	<h2 class="title text-center mb-3">Orders and Returns</h2><!-- End .title -->
+                	<h2 class="title text-center mb-3">Orders and Returns</h2>
         			<div class="accordion accordion-rounded" id="accordion-2">
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading2-1">
@@ -91,13 +91,13 @@ const FAQ = ()=>{
 					                    Tracking my order
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse2-1" class="collapse" aria-labelledby="heading2-1" data-parent="#accordion-2">
 					            <div class="card-body">
 					                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					            </div>
+					        </div>
+					    </div>
 
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading2-2">
@@ -106,13 +106,13 @@ const FAQ = ()=>{
 					                    I haven’t received my order
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse2-2" class="collapse" aria-labelledby="heading2-2" data-parent="#accordion-2">
 					            <div class="card-body">
 					                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					            </div>
+					        </div>
+					    </div>
 
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading2-3">
@@ -121,16 +121,16 @@ const FAQ = ()=>{
 					                    How can I return an item?
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse2-3" class="collapse" aria-labelledby="heading2-3" data-parent="#accordion-2">
 					            <div class="card-body">
 					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-					</div><!-- End .accordion -->
+					            </div>
+					        </div>
+					    </div>
+					</div>
 
-                	<h2 class="title text-center mb-3">Payments</h2><!-- End .title -->
+                	<h2 class="title text-center mb-3">Payments</h2>
                 	<div class="accordion accordion-rounded" id="accordion-3">
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading3-1">
@@ -139,13 +139,13 @@ const FAQ = ()=>{
 					                    What payment types can I use?
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse3-1" class="collapse" aria-labelledby="heading3-1" data-parent="#accordion-3">
 					            <div class="card-body">
 					                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					            </div>
+					        </div>
+					    </div>
 
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading3-2">
@@ -154,13 +154,13 @@ const FAQ = ()=>{
 					                    Can I pay by Gift Card?
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse3-2" class="collapse" aria-labelledby="heading3-2" data-parent="#accordion-3">
 					            <div class="card-body">
 					                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					            </div>
+					        </div>
+					    </div>
 
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading3-3">
@@ -169,13 +169,13 @@ const FAQ = ()=>{
 					                    I can't make a payment
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse3-3" class="collapse" aria-labelledby="heading3-3" data-parent="#accordion-3">
 					            <div class="card-body">
 					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					            </div>
+					        </div>
+					    </div>
 
 					    <div class="card card-box card-sm bg-light">
 					        <div class="card-header" id="heading3-4">
@@ -184,36 +184,36 @@ const FAQ = ()=>{
 					                    Has my payment gone through?
 					                </a>
 					            </h2>
-					        </div><!-- End .card-header -->
+					        </div>
 					        <div id="collapse3-4" class="collapse" aria-labelledby="heading3-4" data-parent="#accordion-3">
 					            <div class="card-body">
 					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-					</div><!-- End .accordion -->
-                </div><!-- End .container -->
-            </div><!-- End .page-content -->
+					            </div>
+					        </div>
+					    </div>
+					</div>
+                </div>
+            </div>
 
-            <div class="cta cta-display bg-image pt-4 pb-4" style="background-image: url(assets/images/backgrounds/cta/bg-7.jpg);">
+            <div class="cta cta-display bg-image pt-4 pb-4" style={{backgroundImage: "url(assets/images/backgrounds/cta/bg-7.jpg)"}}>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-10 col-lg-9 col-xl-7">
                             <div class="row no-gutters flex-column flex-sm-row align-items-sm-center">
                                 <div class="col">
-                                    <h3 class="cta-title text-white">If You Have More Questions</h3><!-- End .cta-title -->
-                                    <p class="cta-desc text-white">Quisque volutpat mattis eros</p><!-- End .cta-desc -->
-                                </div><!-- End .col -->
+                                    <h3 class="cta-title text-white">If You Have More Questions</h3>
+                                    <p class="cta-desc text-white">Quisque volutpat mattis eros</p>
+                                </div>
 
                                 <div class="col-auto">
                                     <a href="contact.html" class="btn btn-outline-white"><span>CONTACT US</span><i class="icon-long-arrow-right"></i></a>
-                                </div><!-- End .col-auto -->
-                            </div><!-- End .row no-gutters -->
-                        </div><!-- End .col-md-10 col-lg-9 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
-            </div><!-- End .cta -->
-        </main><!-- End .main -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
         </>
     )
 }
