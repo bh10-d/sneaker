@@ -215,7 +215,7 @@
   transition: all 0.3s;
 }
 .product.product-3 .product-body {
-  padding: 1.6rem 1rem 0;
+  padding: 5px;
 }
 .product.product-3 .product-cat {
   font-weight: 400;
@@ -250,7 +250,7 @@
   margin-bottom: 0;
 }
 .product.product-3 .product-body {
-  padding-bottom: 1.8rem;
+  /* padding-bottom: 1.8rem; */
   transition: transform 0.35s ease;
 }
 .product.product-3 .product-footer {

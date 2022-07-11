@@ -11,7 +11,9 @@ import FAQ from './pages/faq/faq.component';
 
 
 import './App.css';
-
+// import '../public/css/plugins/demos/demo-10.css'
+// import '../public/css/plugins/magnific-popup/magnific-popup.css'
+// import '../public/css/plugins/nouislider/nouislider.css'
 function App() {
 
   const [test, setTest] = useState('');

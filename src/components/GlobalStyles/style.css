@@ -7911,7 +7911,7 @@ p {
 	display: flex;
 	align-items: center;
 	font-size: 1.3rem;
-	margin-bottom: 0.7rem;
+	margin-bottom: 1.7rem;
 	line-height: 1;
 	white-space: nowrap
 }
@@ -8116,7 +8116,7 @@ p {
 
 .btn-cart:before {
 	content: '\e812'
-} 
+}
 
 .btn-wishlist {
 	font-size: 1.6rem
@@ -8253,35 +8253,23 @@ p {
 .product-nav-dots a,
 .product-nav-dots span {
 	display: block;
-	width: 4rem;
-	height: 4rem;
+	width: 1.7rem;
+	height: 1.7rem;
 	border-radius: 50%;
 	border: .2rem solid #fff;
 	margin-right: .5rem;
-	
+	transition: box-shadow .35s ease;
 	background-repeat: no-repeat;
-	background-position: center center;
-	box-shadow: 0 0 0 0.1rem #cccccc;
-	
+	background-position: center center
 }
-.product-nav-dots img {
-	width: 100%;
-	height: 100%;
-	transition: transform 0.5s;
-}
+
 .product-nav-dots a.active,
 .product-nav-dots a:hover,
 .product-nav-dots a:focus,
 .product-nav-dots span.active,
 .product-nav-dots span:hover,
 .product-nav-dots span:focus {
-	box-shadow: 0 0 0 0.1rem #dddddd;
-	
-	
-}
-.product-nav-dots a:hover img {
-	transform: scale(3)
-	rotate(35deg)
+	box-shadow: 0 0 0 0.1rem #cccccc
 }
 
 .product-nav-dots a:last-child,
@@ -8384,7 +8372,7 @@ p {
 }
 
 .product.product-3 .product-action {
-	/* position: absolute; */
+	position: absolute;
 	bottom: 100%;
 	border-bottom: .1rem solid #ebebeb;
 	background-color: #fff;
@@ -8392,10 +8380,10 @@ p {
 	transition-duration: .25s
 }
 
-/* .product.product-3 .btn-product {
+.product.product-3 .btn-product {
 	padding-top: 1.05rem;
 	padding-bottom: 1.05rem
-} */
+}
 
 .product.product-3 .btn-product:not(:hover):not(:focus) span {
 	color: #333
@@ -8426,17 +8414,7 @@ p {
 .product.product-3:hover {
 	box-shadow: none
 }
-.product.product-3:hover .product-body {
-	transform: translateY(-113px);
-}
-.product.product-3:hover .product-footer {
-	visibility: visible; 
-	transform: translateY(0);
-}
-.product.product-3 .product-footer {
-	visibility: hidden; 
-	transform: translateY(100%);
-}
+
 .product.product-4 .product-body {
 	padding-bottom: 2rem;
 	z-index: 2
@@ -11189,7 +11167,7 @@ small.form-text {
 .element-hover-img {
 	width: 100px;
 	height: 100px;
-	background-image: url(/public/images/elements.png);
+	background-image: url(../images/elements.png);
 	background-repeat: no-repeat;
 	transition: all .3s
 }
@@ -17809,8 +17787,8 @@ button:focus {
 
 @font-face {
 	font-family: 'molla';
-	src: url("/public/fonts/molla0ab2.eot?74273691");
-	src: url("/public/fonts/molla0ab2.eot?74273691#iefix") format("embedded-opentype"), url("/public/fonts/molla0ab2.woff2?74273691") format("woff2"), url("/public/fonts/molla0ab2.woff?74273691") format("woff"), url("/public/fonts/molla0ab2.ttf?74273691") format("truetype"), url("/public/fonts/molla0ab2.svg?74273691#molla") format("svg");
+	src: url("../fonts/molla0ab2.eot?74273691");
+	src: url("../fonts/molla0ab2.eot?74273691#iefix") format("embedded-opentype"), url("../fonts/molla0ab2.woff2?74273691") format("woff2"), url("../fonts/molla0ab2.woff?74273691") format("woff"), url("../fonts/molla0ab2.ttf?74273691") format("truetype"), url("../fonts/molla0ab2.svg?74273691#molla") format("svg");
 	font-weight: normal;
 	font-style: normal
 }

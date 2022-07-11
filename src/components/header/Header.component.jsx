@@ -1,5 +1,5 @@
-import './Styledemo.styles.css';
-import './Styleskin.styles.css';
+// import './Styledemo.styles.css';
+// import './Styleskin.styles.css';
 
 import NavBar from '../navigation/NavBar.component';
 import { Link } from 'react-router-dom';

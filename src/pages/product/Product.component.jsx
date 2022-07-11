@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Card from '../../components/products/Card.component';
-import '../../components/header/Styledemo.styles.css';
-import '../../components/header/Styleskin.styles.css';
+// import '../../components/header/Styledemo.styles.css';
+// import '../../components/header/Styleskin.styles.css';
 
 
 const Product = () => {
