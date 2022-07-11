@@ -1,5 +1,4 @@
-import '../../components/header/Styledemo.styles.css';
-import '../../components/header/Styleskin.styles.css';
+
 
 const Product = () => {
 
