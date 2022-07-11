@@ -24,6 +24,7 @@ const Card = (props) => {
         setImage(e.target.src)
     }
 
+    console.log(props.path)
     return (
         <>
             <div className="col-6 col-md-4 col-lg-4" key={props.id}>
@@ -73,15 +74,20 @@ const Card = (props) => {
                             <a href="#">
                                 <img src="images/products/product-4-3-thumb.jpg" alt="product desc" />
                             </a> */}
-                            {props.path.map((m, i) => {
+                            {(props.path!==undefined)?
+                            props.path.map((m, i) => {
                                 if (m.id == props.id) {
                                     return (
                                         <a key={i} href="#" onClick={handleClick}>
                                             <img src={m.path} alt="product desc" />
                                         </a>
                                     )
+                                }else{
+                                    return (
+                                        ''
+                                    )
                                 }
-                            })}
+                            }):<></>}
                         </div>
                     </div>
                 </div>

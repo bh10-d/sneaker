@@ -1179,6 +1179,13 @@ const Home = () => {
                   </div> */}
 
                   <CardHome />
+                  <CardHome />
+                  <CardHome />
+                  <CardHome />
+                  <CardHome />
+                  <CardHome />
+                  <CardHome />
+                  <CardHome />
                 </div>
               </div>
             </div>
