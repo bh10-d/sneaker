@@ -1,17 +1,39 @@
 import { useState } from 'react';
 
-const Card = ({status, name, image, price, type, onClick}) => {
+
+const Status = ({ status }) => {
+
+    if (status == 'new') {
+        return (<span className="product-label label-new">New</span>)
+    }
+
+    if (status == 'top') {
+        return (<span className="product-label label-top">Top</span>)
+    }
+
+    if (status == 'out') {
+        return (<span className="product-label label-out">Out of stock</span>)
+    }
+
+}
+
+const Card = (props) => {
+    const [image, setImage] = useState((props.path.find(m => m.id == props.id)).path)
+    // console.log(props.path.find(m => m.id == props.id))
+    const handleClick = (e)=>{
+        setImage(e.target.src)
+    }
 
     return (
         <>
-            <div className="col-6 col-md-4 col-lg-4">
+            <div className="col-6 col-md-4 col-lg-4" key={props.id}>
                 <div className="product product-7 text-center">
                     <figure className="product-media">
-                        <span className="product-label label-new">{status}</span>
-                        <span className="product-label label-out">Out of Stock</span>
-                        <span className="product-label label-top">{status}</span>
+                        <Status status={props.status} />
+
                         <a href="product.html">
-                            <img src={image} alt={name} className="product-image" />
+                            
+                            <img src={image} alt={props.name} className="product-image" />
                         </a>
 
                         <div className="product-action-vertical">
@@ -27,21 +49,21 @@ const Card = ({status, name, image, price, type, onClick}) => {
 
                     <div className="product-body">
                         <div className="product-cat">
-                            <a href="#">{type}</a>
+                            <a href="#">{props.type}</a>
                         </div>
-                        <h3 className="product-title"><a href="product.html">{name}</a></h3>
+                        <h3 className="product-title"><a href="product.html">{props.name}</a></h3>
                         <div className="product-price">
-                            {price}
+                            {props.price}
                         </div>
                         <div className="ratings-container">
                             <div className="ratings">
                                 <div className="ratings-val" style={{ width: "20%" }}></div>
                             </div>
-                            <span className="ratings-text">( 2 Reviews )</span>
+                            <span className="ratings-text">( {props.review} Reviews )</span>
                         </div>
 
-                        <div className="product-nav product-nav-thumbs" onClick={onClick}>
-                            <a href="#" className="active">
+                        <div className="product-nav product-nav-thumbs">
+                            {/* <a href="#" className="active">
                                 <img src="images/products/product-4-thumb.jpg" alt="product desc" />
                             </a>
                             <a href="#">
@@ -50,7 +72,16 @@ const Card = ({status, name, image, price, type, onClick}) => {
 
                             <a href="#">
                                 <img src="images/products/product-4-3-thumb.jpg" alt="product desc" />
-                            </a>
+                            </a> */}
+                            {props.path.map((m, i) => {
+                                if (m.id == props.id) {
+                                    return (
+                                        <a key={i} href="#" onClick={handleClick}>
+                                            <img src={m.path} alt="product desc" />
+                                        </a>
+                                    )
+                                }
+                            })}
                         </div>
                     </div>
                 </div>

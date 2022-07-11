@@ -4,16 +4,54 @@ import Card from '../../components/products/Card.component';
 // import '../../components/header/Styleskin.styles.css';
 
 
-const Product = () => {
 
-    const [image, setImage] = useState("images/products/product-4.jpg");
-
-    const handleClick = (e) => {
-        setImage(e.target.src)
-        console.log(e.target.src);
-        // setImage()
+const test = [
+    {
+        id: "1",
+        // path: "images/products/product-4.jpg",
+        type: "Women",
+        name: "abc",
+        price: "$60.00",
+        reviews: "2",
+        status: "new"
+    },
+    {
+        id: "2",
+        // path: "images/products/product-5.jpg",
+        type: "Dress",
+        name: "abc",
+        price: "$75.00",
+        reviews: "10",
+        status: "out"
     }
+]
 
+
+const imagetest= [
+    {
+        id: "1",
+        path: "images/products/product-4.jpg",
+    },
+    {
+        id: "2",
+        path: "images/products/product-5.jpg",
+    },
+    {
+        id: "1",
+        path: "images/products/product-5.jpg",
+    },
+    {
+        id: "2",
+        path: "images/products/product-4.jpg",
+    },
+    {
+        id: "1",
+        path: "images/products/product-1.jpg",
+    }
+]
+
+const Product = () => {
+    // console.log(test)
     return (
         <>
             <main className="main">
@@ -487,8 +525,15 @@ const Product = () => {
                                         </div>
                                     </div> */}
                                     <div className="row justify-content-center">
-                                        <Card key="1" status="New" name="asda" image={image} price="$60.00" type="Women" onClick={handleClick}/>
-                                        <Card key="2" status="New" name="asda" image={image} price="$60.00" type="Women" onClick={handleClick}/>
+
+
+                                        {test.map((m)=>(
+                                            <Card key={m.id} id={m.id} name={m.name} type={m.type} price={m.price} path={imagetest} review={m.reviews} status={m.status}/>
+                                        ))}
+
+
+                                        {/* <Card key="1" status="New" name="asda" image={image} price="$60.00" type="Women" onClick={handleClick}/>
+                                        <Card key="2" status="New" name="asda" image={image} price="$60.00" type="Women" onClick={handleClick}/> */}
                                     </div>
                                 </div>
 
