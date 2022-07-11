@@ -66,7 +66,7 @@ const NavBar = () => {
                         <li className="megamenu-container active">
                             <Link to="/" className="sf-with-ul">Home</Link>
 
-                            <div className="megamenu demo">
+                            {/* <div className="megamenu demo">
                                 <div className="menu-col">
                                     <div className="menu-title">Choose your demo</div>
 
@@ -245,9 +245,9 @@ const NavBar = () => {
                                         <a href="#" className="btn btn-outline-primary-2 view-all-demos"><span>View All Demos</span><i className="icon-long-arrow-right"></i></a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/category" className="sf-with-ul">Shop</Link>
 
                             <div className="megamenu megamenu-md">
@@ -304,11 +304,11 @@ const NavBar = () => {
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li> */}
                         <li>
                             <Link to="/product" className="sf-with-ul">Product</Link>
 
-                            <div className="megamenu megamenu-sm">
+                            {/* <div className="megamenu megamenu-sm">
                                 <div className="row no-gutters">
                                     <div className="col-md-6">
                                         <div className="menu-col">
@@ -338,7 +338,7 @@ const NavBar = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </li>
                         <li>
                             <Link to="/page" className="sf-with-ul">Pages</Link>
@@ -407,7 +407,7 @@ const NavBar = () => {
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/elements-list" className="sf-with-ul">Elements</Link>
 
                             <ul>
@@ -426,7 +426,7 @@ const NavBar = () => {
                                 <li><a href="elements-cta.html">Call to Action</a></li>
                                 <li><a href="elements-icon-boxes.html">Icon Boxes</a></li>
                             </ul>
-                        </li>
+                        </li> */}
                     </ul>
                 </nav>
 

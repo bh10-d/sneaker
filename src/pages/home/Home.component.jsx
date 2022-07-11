@@ -877,7 +877,7 @@ const Home = () => {
                         <div className="col-sm-6 col-md-4">
                             <div className="banner banner-cat">
                                 <a href="#">
-                                    <img src="demos/demo-10/banners/banner-5.jpg" alt="Banner" />
+                                    <img src="images/demos/demo-10/banners/banner-5.jpg" alt="Banner" />
                                 </a>
 
                                 <div className="banner-content banner-content-overlay text-center">

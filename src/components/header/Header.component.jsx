@@ -1,8 +1,8 @@
 import './Styledemo.styles.css';
 import './Styleskin.styles.css';
 
-
 import NavBar from '../navigation/NavBar.component';
+import { Link } from 'react-router-dom';
 
 const Header = ()=>{
     return (
@@ -56,9 +56,9 @@ const Header = ()=>{
                                 <span className="sr-only">Toggle mobile menu</span>
                                 <i className="icon-bars"></i>
                             </button>
-                            <a href="index.html" className="logo">
+                            <Link to="/" className="logo">
                                 <img src="images/demos/demo-10/logo.png" alt="Molla Logo" width="105" height="25"/>
-                            </a>
+                            </Link>
                         </div>
                         <NavBar/>
                 </div>

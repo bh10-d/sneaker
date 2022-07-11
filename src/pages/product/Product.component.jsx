@@ -1,8 +1,18 @@
+import { useState } from 'react';
+import Card from '../../components/products/Card.component';
 import '../../components/header/Styledemo.styles.css';
 import '../../components/header/Styleskin.styles.css';
 
+
 const Product = () => {
 
+    const [image, setImage] = useState("images/products/product-4.jpg");
+
+    const handleClick = (e) => {
+        setImage(e.target.src)
+        console.log(e.target.src);
+        // setImage()
+    }
 
     return (
         <>
@@ -91,7 +101,7 @@ const Product = () => {
                                 </div>
 
                                 <div className="products mb-3">
-                                    <div className="row justify-content-center">
+                                    {/* <div className="row justify-content-center">
                                         <div className="col-6 col-md-4 col-lg-4">
                                             <div className="product product-7 text-center">
                                                 <figure className="product-media">
@@ -475,6 +485,10 @@ const Product = () => {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div> */}
+                                    <div className="row justify-content-center">
+                                        <Card key="1" status="New" name="asda" image={image} price="$60.00" type="Women" onClick={handleClick}/>
+                                        <Card key="2" status="New" name="asda" image={image} price="$60.00" type="Women" onClick={handleClick}/>
                                     </div>
                                 </div>
 

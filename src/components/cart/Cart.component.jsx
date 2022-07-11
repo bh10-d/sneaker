@@ -57,10 +57,10 @@ const Cart = () => {
 
                         <span className="cart-total-price">$160.00</span>
 
-                        <div className="dropdown-cart-action">
-                            <a href="cart.html" className="btn btn-primary">View Cart</a>
-                            <a href="checkout.html" className="btn btn-outline-primary-2"><span>Checkout</span><i className="icon-long-arrow-right"></i></a>
-                        </div>
+                    </div>
+                    <div className="dropdown-cart-action">
+                        <a href="cart.html" className="btn btn-primary">View Cart</a>
+                        <a href="checkout.html" className="btn btn-outline-primary-2"><span>Checkout</span><i className="icon-long-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
