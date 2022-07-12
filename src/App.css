@@ -8270,8 +8270,8 @@ p {
 	transition: transform 0.5s;
 }
 .product-nav-dots a.active,
-.product-nav-dots a:hover,
-.product-nav-dots a:focus,
+.product-nav-dots span:hover,
+.product-nav-dots span:focus,
 .product-nav-dots span.active,
 .product-nav-dots span:hover,
 .product-nav-dots span:focus {
@@ -8279,7 +8279,7 @@ p {
 	
 	
 }
-.product-nav-dots a:hover img {
+.product-nav-dots span:hover img {
 	transform: scale(3)
 	rotate(35deg)
 }

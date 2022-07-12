@@ -3,24 +3,70 @@ import Card from '../../components/products/Card.component';
 // import '../../components/header/Styledemo.styles.css';
 // import '../../components/header/Styleskin.styles.css';
 
-const Product = () => {
 
-    const [image, setImage] = useState("images/products/product-4.jpg");
-
-    const handleClick = (e) => {
-        setImage(e.target.src)
-        console.log(e.target.src);
-        // setImage()
+const test = [
+    {
+        id: "1",
+        // path: "images/products/product-4.jpg",
+        type: "Women",
+        name: "abc",
+        price: "$60.00",
+        reviews: "2",
+        status: "new"
+    },
+    {
+        id: "2",
+        // path: "images/products/product-5.jpg",
+        type: "Dress",
+        name: "abc",
+        price: "$75.00",
+        reviews: "10",
+        status: "out"
+    },
+    {
+        id: "3",
+        // path: "images/products/product-5.jpg",
+        type: "Shoese",
+        name: "dsa",
+        price: "$100.00",
+        reviews: "10",
+        status: "top"
     }
+]
 
+
+const imagetest= [
+    {
+        id: "1",
+        path: "images/products/product-4.jpg",
+    },
+    {
+        id: "2",
+        path: "images/products/product-5.jpg",
+    },
+    {
+        id: "1",
+        path: "images/products/product-5.jpg",
+    },
+    {
+        id: "2",
+        path: "images/products/product-4.jpg",
+    },
+    {
+        id: "1",
+        path: "images/products/product-1.jpg",
+    },
+    {
+        id: "3",
+        path: "images/products/product-6.jpg",
+    }
+]
+
+const Product = () => {
+    // console.log(test)
     return (
         <>
             <main className="main">
-                {/* <div className="page-header text-center" style={{backgroundImage: "url('images/page-header-bg.jpg')"}}>
-                        <div className="container">
-                            <h1 className="page-title">Grid 3 Columns<span>Shop</span></h1>
-                        </div>
-                    </div> */}
                 <nav aria-label="breadcrumb" className="breadcrumb-nav mb-2">
                     <div className="container">
                         <ol className="breadcrumb">
@@ -100,10 +146,10 @@ const Product = () => {
                                 </div>
 
                                 <div className="products mb-3">
-
                                     <div className="row justify-content-center">
-                                        <Card key={1} value={1} status="New" name="asda" image={image} price="$60.00" type="Women" onClick={handleClick}/>
-                                        <Card key={2} value={2} status="New" name="asda" image={image} price="$60.00" type="Women" onClick={handleClick}/>
+                                        {test.map((m)=>(
+                                            <Card key={m.id} id={m.id} name={m.name} type={m.type} price={m.price} path={imagetest} review={m.reviews} status={m.status}/>
+                                        ))}
                                     </div>
                                 </div>
 
@@ -237,14 +283,15 @@ const Product = () => {
 
                                                     <div className="filter-item">
                                                         <div className="custom-control custom-checkbox">
-                                                            <input type="checkbox" className="custom-control-input" defaultChecked id="size-3" />
+                                                        {/* defaultChecked */}
+                                                            <input type="checkbox" className="custom-control-input" id="size-3" />
                                                             <label className="custom-control-label" htmlFor="size-3">M</label>
                                                         </div>
                                                     </div>
 
                                                     <div className="filter-item">
                                                         <div className="custom-control custom-checkbox">
-                                                            <input type="checkbox" className="custom-control-input" defaultChecked id="size-4" />
+                                                            <input type="checkbox" className="custom-control-input" id="size-4" />
                                                             <label className="custom-control-label" htmlFor="size-4">L</label>
                                                         </div>
                                                     </div>

@@ -1,6 +1,70 @@
-import CardHome from '../../components/homes/CardHome.component';
+import CardHome from "../../components/homes/CardHome.component";
+import { useState, useEffect } from "react";
+const tabs = ["New", "Top selling", "Sale"];
 
 const Home = () => {
+  const test_product = [
+    {
+      id: 1,
+      brand: "Adidas",
+      name: "Forum Low CL",
+      type: 1,
+      percent: 20,
+      price: "25000000",
+      reviews: 2,
+      
+    },
+    {
+      id: 2,
+      brand: "Adidas",
+      name: "SuperStar",
+      type: 1,
+      percent: 25,
+      price: "2500000",
+      review: 3
+    }
+  ]
+  const test_image = [
+    {
+      id: 1,
+      path: "images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6874_01_standard-removebg-preview.png"
+    },
+    {
+      id: 1,
+      path: "images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6875_01_standard-removebg-preview.png"
+    },
+    {
+      id: 2,
+      path: "images/image_products/Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png"
+    },
+    {
+      id: 2,
+      path: "images/image_products/Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png"
+    },
+    {
+      id: 2,
+      path: "images/image_products/Giay_Superstar_trang_GZ3742_01_standard-removebg-preview.png"
+    }
+  ]
+  const [type, setType] = useState("New");
+  const [products, setProducts] = useState(test_product);
+  const [images, setImages] = useState(test_image);
+  useEffect(() => {
+    // fetch(`https://jsonplaceholder.typicode.com/${type}`)
+    //   .then((res) => res.json())
+    //   .then((product) => {
+    //     setProducts(product);
+    //   });
+  }, [type]);
+  useEffect(() => {
+    if(type === "New") {
+      // fetch(`https://jsonplaceholder.typicode.com/....`)
+      // .then((res) => res.json())
+      // .then((image) => {
+      //   setImages(image);
+      // });
+    }
+  }, [type]);
   return (
     <>
       <main className="main">
@@ -1036,48 +1100,31 @@ const Home = () => {
 
         <div className="container">
           <div className="heading heading-center mb-3">
-            <h2 className="title-lg mb-2">Top Selling Products</h2>
+            <h2 className="title-lg mb-2">My products</h2>
 
             <ul className="nav nav-pills justify-content-center" role="tablist">
-              <li className="nav-item">
-                <a
-                  className="nav-link active"
-                  id="top-all-link"
-                  data-toggle="tab"
-                  href="#top-all-tab"
-                  role="tab"
-                  aria-controls="top-all-tab"
-                  aria-selected="true"
+              {tabs.map((tab, index) => (
+                <li
+                  key={index}
+                  className="nav-item"
+                  onClick={() => setType(tab)}
                 >
-                  All
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  id="top-women-link"
-                  data-toggle="tab"
-                  href="#top-women-tab"
-                  role="tab"
-                  aria-controls="top-women-tab"
-                  aria-selected="false"
-                >
-                  Women's
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  id="top-men-link"
-                  data-toggle="tab"
-                  href="#top-men-tab"
-                  role="tab"
-                  aria-controls="top-men-tab"
-                  aria-selected="false"
-                >
-                  Men's
-                </a>
-              </li>
+                  <span
+                    style={{cursor: "pointer"}}
+                    className={
+                      tab === type ? `${"nav-link"} ${"active"}` : "nav-link"
+                    }
+                    id="top-all-link"
+                    data-toggle="tab"
+                    href="#top-all-tab"
+                    role="tab"
+                    aria-controls="top-all-tab"
+                    aria-selected="true"
+                  >
+                    {tab}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -1089,96 +1136,21 @@ const Home = () => {
               aria-labelledby="top-all-link"
             >
               <div className="products just-action-icons-sm">
-                <div className="row">
-                  {/* <div className="col-6 col-md-4 col-lg-3 col-xl-5col">
-                    <div className="product product-3 text-center">
-                      <figure className="product-media">
-                        <span className="product-label label-primary">
-                          Sale
-                        </span>
-                        <span className="product-label label-sale">
-                          55% off
-                        </span>
-                        <a href="product.html">
-                          <img
-                            src="images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6874_01_standard-removebg-preview.png"
-                            alt="Product image"
-                            className="product-image"
-                          />
-                        </a>
-
-                        <div className="product-action-vertical">
-                          <a
-                            href="#"
-                            className="btn-product-icon btn-wishlist btn-expandable"
-                          >
-                            <span>add to wishlist</span>
-                          </a>
-                        </div>
-                      </figure>
-
-                      <div className="product-body">
-                        <div className="product-cat">
-                          <a href="#">Women’s</a>,<a href="#">Heels</a>
-                        </div>
-                        <h3 className="product-title">
-                          <a href="product.html">
-                            Marc Jacobs Somewhere Sport Sandal
-                          </a>
-                        </h3>
-                        <div className="product-price">
-                          <span className="new-price">Now $125.99</span>
-                          <span className="old-price">$275.00</span>
-                        </div>
-                      </div>
-
-                      <div className="product-footer">
-                        <div className="ratings-container">
-                          <div className="ratings">
-                            <div
-                              className="ratings-val"
-                              style={{ width: "0%" }}
-                            ></div>
-                          </div>
-                          <span className="ratings-text">( 0 Reviews )</span>
-                        </div>
-                        <div className="product-nav product-nav-dots">
-                          <a href="#">
-                            <img
-                              style={{ width: "100%", height: "100%" }}
-                              src="images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6874_01_standard-removebg-preview.png"
-                              alt=""
-                            />
-                          </a>
-                          <a href="#">
-                            <img
-                              style={{ width: "100%", height: "100%" }}
-                              src="images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6875_01_standard-removebg-preview.png"
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <div className="product-action">
-                          <a
-                            href="#"
-                            className="btn-product btn-cart"
-                            title="Add to cart"
-                          >
-                            <span>add to cart</span>
-                          </a>
-                          <a
-                            href="popup/quickView.html"
-                            className="btn-product btn-quickview"
-                            title="Quick view"
-                          >
-                            <span>quick view</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
-
-                  <CardHome />
+                <div className="row">   
+                {/* {
+      id: 1,
+      brand: "Adidas",
+      name: "Forum Low CL",
+      type: 1,
+      percent: 20,
+      price: "25000000",
+      reviews: 2,
+      
+    }, */}
+     {/* id={p.id} brand={p.brand} name={p.name} type={p.type} percent={p.percent} */}
+                  {products.map((product, index) => (
+                    <CardHome key={index} product={product} path={images}/>
+                  ))}
                 </div>
               </div>
             </div>
