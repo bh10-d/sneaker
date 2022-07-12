@@ -18,7 +18,7 @@ const Status = ({ status }) => {
 }
 
 const Card = (props) => {
-    const [image, setImage] = useState((props.path.find(m => m.id == props.id)).path)
+    const [image, setImage] = useState((props.path.find(m => m.id === props.id)).path)
     // console.log(props.path.find(m => m.id == props.id))
     const handleClick = (e)=>{
         setImage(e.target.src)
@@ -68,7 +68,7 @@ const Card = (props) => {
                                 <img src="images/products/product-4-thumb.jpg" alt="product desc" />
                             </a>
                             <a href="#">
-                                <img src="images/products/product-4-2-thumb.jpg" alt="product desc" />
+                                <img value={2} src="images/products/product-4-2-thumb.jpg" alt="product desc" />
                             </a>
 
                             <a href="#">
@@ -78,9 +78,9 @@ const Card = (props) => {
                             props.path.map((m, i) => {
                                 if (m.id == props.id) {
                                     return (
-                                        <a key={i} href="#" onClick={handleClick}>
+                                        <span key={i} href="#" onClick={handleClick}>
                                             <img src={m.path} alt="product desc" />
-                                        </a>
+                                        </span>
                                     )
                                 }else{
                                     return (
