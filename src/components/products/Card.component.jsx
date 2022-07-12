@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-const Card = ({status, name, image, price, type, onClick}) => {
-
+const Card = ({ value, status, name, image, price, type, onClick}) => {
     return (
         <>
+        
             <div className="col-6 col-md-4 col-lg-4">
                 <div className="product product-7 text-center">
                     <figure className="product-media">
-                        <span className="product-label label-new">{status}</span>
+                        <span className="product-label label-new">{value}</span>
                         <span className="product-label label-out">Out of Stock</span>
                         <span className="product-label label-top">{status}</span>
                         <a href="product.html">
@@ -42,14 +42,14 @@ const Card = ({status, name, image, price, type, onClick}) => {
 
                         <div className="product-nav product-nav-thumbs" onClick={onClick}>
                             <a href="#" className="active">
-                                <img src="images/products/product-4-thumb.jpg" alt="product desc" />
+                                <img value={1} src="images/products/product-4-thumb.jpg" alt="product desc" />
                             </a>
                             <a href="#">
-                                <img src="images/products/product-4-2-thumb.jpg" alt="product desc" />
+                                <img value={2} src="images/products/product-4-2-thumb.jpg" alt="product desc" />
                             </a>
 
                             <a href="#">
-                                <img src="images/products/product-4-3-thumb.jpg" alt="product desc" />
+                                <img value={3} src="images/products/product-4-3-thumb.jpg" alt="product desc" />
                             </a>
                         </div>
                     </div>
