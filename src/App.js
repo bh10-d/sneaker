@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import AppProvider from './context/AppProvider';
 import Header from './components/header/Header.component';
 import Footer from './components/footer/Footer.component';
 import Home from './pages/home/Home.component';
@@ -8,25 +9,12 @@ import Detail from './pages/detail/Detail.component';
 import Info from './pages/info/Info.component';
 import Cart from './pages/cart/Cart.component';
 import FAQ from './pages/faq/faq.component';
-
-
 import './App.css';
-// import '../public/css/plugins/demos/demo-10.css'
-// import '../public/css/plugins/magnific-popup/magnific-popup.css'
-// import '../public/css/plugins/nouislider/nouislider.css'
+
 function App() {
-
-  const [test, setTest] = useState('');
-
-  useEffect(()=>{
-    fetch(`https://sneakerteam.herokuapp.com/api/users`).then(res=>res.json()).then(d=>{console.log(d)
-      setTest(d);
-    })
-  },[])
-
-  // console.log(test)
   return (
-      <div className="page-wrapper">
+    <div className="page-wrapper">
+      <AppProvider>
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -36,29 +24,8 @@ function App() {
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/faq" element={<FAQ />} />
         </Routes>
-        <Footer/>
-      
-      {/* <table>
-        <thead>
-          <th>Id</th>
-          <th>FirstName</th>
-          <th>LastName</th>
-          <th>Email</th>
-        </thead>
-        <tbody>
-          {(test!='')?test.map((m)=>(<tr key={m.id}>
-              <td>{m.id}</td>
-              <td>{m.firstName}</td>
-              <td>{m.lastName}</td>
-              <td>{m.email}</td>
-            </tr>)):(<tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>)}
-        </tbody>
-      </table> */}
+        <Footer />
+      </AppProvider>
     </div>
   );
 }

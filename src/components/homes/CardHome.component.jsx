@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 const CardHome = ({ product, path }) => {
-  console.log(path);
   const [image, setImage] = useState(
     path.find((m) => m.id === product.id).path
   );
@@ -27,10 +27,10 @@ const CardHome = ({ product, path }) => {
 
           <div className="product-body">
             <div className="product-cat">
-              <a href="#">{product.brand}</a>
+              <Link to="/product">{product.brand}</Link>
             </div>
             <h3 className="product-title">
-              <a href="product.html">{product.name}</a>
+              <Link to="/product">{product.name}</Link>
             </h3>
             <div className="product-price">
               <span className="new-price">Now $125.99</span>

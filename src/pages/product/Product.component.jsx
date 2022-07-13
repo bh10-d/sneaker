@@ -10,7 +10,7 @@ const test = [
         // path: "images/products/product-4.jpg",
         type: "Women",
         name: "abc",
-        price: "$60.00",
+        price: "60.00",
         reviews: "2",
         status: "new"
     },
@@ -19,7 +19,7 @@ const test = [
         // path: "images/products/product-5.jpg",
         type: "Dress",
         name: "abc",
-        price: "$75.00",
+        price: "75.00",
         reviews: "10",
         status: "out"
     },
@@ -28,7 +28,7 @@ const test = [
         // path: "images/products/product-5.jpg",
         type: "Shoese",
         name: "dsa",
-        price: "$100.00",
+        price: "100.00",
         reviews: "10",
         status: "top"
     }

@@ -1,5 +1,6 @@
-import { useState } from 'react';
-
+import React,{ useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AppContext } from '../../context/AppProvider';
 
 const Status = ({ status }) => {
 
@@ -18,13 +19,14 @@ const Status = ({ status }) => {
 }
 
 const Card = (props) => {
+    const {addProductCart} = React.useContext(AppContext);
     const [image, setImage] = useState((props.path.find(m => m.id === props.id)).path)
     // console.log(props.path.find(m => m.id == props.id))
     const handleClick = (e)=>{
         setImage(e.target.src)
     }
 
-    console.log(props.path)
+    // console.log(props.path)
     return (
         <>
             <div className="col-6 col-md-4 col-lg-4" key={props.id}>
@@ -32,10 +34,10 @@ const Card = (props) => {
                     <figure className="product-media">
                         <Status status={props.status} />
 
-                        <a href="product.html">
+                        <Link to="/detail">
                             
                             <img src={image} alt={props.name} className="product-image" />
-                        </a>
+                        </Link>
 
                         <div className="product-action-vertical">
                             <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
@@ -44,7 +46,7 @@ const Card = (props) => {
                         </div>
 
                         <div className="product-action">
-                            <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                            <span className="btn-product btn-cart" onClick={()=>{addProductCart(props)}}><span>add to cart</span></span>
                         </div>
                     </figure>
 
@@ -54,7 +56,7 @@ const Card = (props) => {
                         </div>
                         <h3 className="product-title"><a href="product.html">{props.name}</a></h3>
                         <div className="product-price">
-                            {props.price}
+                            ${props.price}
                         </div>
                         <div className="ratings-container">
                             <div className="ratings">
