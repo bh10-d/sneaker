@@ -1,7 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
-
-
+import React from "react";
+import { useState } from "react";
 
 // const datatest = [
 //     {
@@ -22,48 +20,56 @@ import { useState } from 'react';
 
 export const AppContext = React.createContext();
 export default function AppProvider({ children }) {
-    const [test, setTest] = useState(() => {
-        const check = localStorage.getItem('sneakershop')
-        if (check !== '') {
-            const JobsLocalStorage = JSON.parse(localStorage.getItem('sneakershop'))
-            // console.log(JobsLocalStorage)
-            return JobsLocalStorage ?? []
-        } else {
-            localStorage.removeItem('sneakershop')
-            return []
-        }
-    })
+  const [test, setTest] = useState(() => {
+    const check = localStorage.getItem("sneakershop");
 
-
-
-    const addProductCart = (e) => {
-        let getImage = (e.path.find(m => m.id === e.id)).path;
-        // const productCart = test.filter(f => f.id === e.id);
-        // console.log(productCart.length)
-        setTest(prev => {
-            const newProducts = [...prev, {
-                id: e.id,
-                name: e.name,
-                price: e.price,
-                image: getImage,
-                quantity: 1
-            }]
-            const jsonProducts = JSON.stringify(newProducts)
-            localStorage.setItem('sneakershop', jsonProducts)
-            return newProducts
-        })
-
-        console.log(e);
+    if (check !== "") {
+      const JobsLocalStorage = JSON.parse(localStorage.getItem("sneakershop"));
+      // console.log(JobsLocalStorage)
+      return JobsLocalStorage ?? [];
+    } else {
+      localStorage.removeItem("sneakershop");
+      return [];
     }
+  });
 
+  const addProductCart = ({ props, image }) => {
+    const { id, name, price } = props;
+    const index = test.findIndex((m) => m.image === image);
+    if (index !== -1) {
+      localStorage.removeItem("sneakershop");
+      test[index].quantity += 1;
+      setTest(() => [...test])
+      const jsonProducts = JSON.stringify(test);
+      localStorage.setItem("sneakershop", jsonProducts);
+    } else {
+      setTest((prev) => {
+        const newProducts = [
+          ...prev,
+          {
+            id: props.id,
+            name: props.name,
+            price: props.price,
+            image: image,
+            quantity: 1,
+          },
+        ];
+        const jsonProducts = JSON.stringify(newProducts);
+        localStorage.setItem("sneakershop", jsonProducts);
+        return newProducts;
+      });
+    }
+  };
 
-    return (
-        <AppContext.Provider value={{
-            test,
-            setTest,
-            addProductCart
-        }} >
-            {children}
-        </AppContext.Provider>
-    );
+  return (
+    <AppContext.Provider
+      value={{
+        test,
+        setTest,
+        addProductCart,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 }
