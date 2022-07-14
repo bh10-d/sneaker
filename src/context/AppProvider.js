@@ -37,7 +37,6 @@ export default function AppProvider({ children }) {
     const { id, name, price } = props;
     const index = test.findIndex((m) => m.image === image);
     if (index !== -1) {
-      localStorage.removeItem("sneakershop");
       test[index].quantity += 1;
       setTest(() => [...test])
       const jsonProducts = JSON.stringify(test);

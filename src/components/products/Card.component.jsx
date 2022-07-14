@@ -104,7 +104,7 @@ const Card = (props) => {
                 props.path.map((m, i) => {
                   if (m.id == props.id) {
                     return (
-                      <span key={i} href="#" onClick={handleClick}>
+                      <span key={i}  onClick={handleClick}>
                         <img src={m.path} alt="product desc" />
                       </span>
                     );
