@@ -29,23 +29,23 @@ const Home = () => {
   const test_image = [
     {
       id: 1,
-      path: "images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6874_01_standard-removebg-preview.png"
+      path: "/images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6874_01_standard-removebg-preview.png"
     },
     {
       id: 1,
-      path: "images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6875_01_standard-removebg-preview.png"
+      path: "/images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6875_01_standard-removebg-preview.png"
     },
     {
       id: 2,
-      path: "images/image_products/Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png"
+      path: "/images/image_products/Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png"
     },
     {
       id: 2,
-      path: "images/image_products/Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png"
+      path: "/images/image_products/Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png"
     },
     {
       id: 2,
-      path: "images/image_products/Giay_Superstar_trang_GZ3742_01_standard-removebg-preview.png"
+      path: "/images/image_products/Giay_Superstar_trang_GZ3742_01_standard-removebg-preview.png"
     }
   ]
   const [type, setType] = useState("New");
@@ -82,10 +82,10 @@ const Home = () => {
                   <picture>
                     <source
                       media="(max-width: 480px)"
-                      srcSet="assets/images/demos/demo-10/slider/slide-1-480w.jpg"
+                      srcSet="/images/demos/demo-10/slider/slide-1-480w.jpg"
                     />
                     <img
-                      src="images/demos/demo-10/slider/slide-1.jpg"
+                      src="/images/demos/demo-10/slider/slide-1.jpg"
                       alt="Image Desc"
                     />
                   </picture>
@@ -114,10 +114,10 @@ const Home = () => {
                   <picture>
                     <source
                       media="(max-width: 480px)"
-                      srcSet="assets/images/demos/demo-10/slider/slide-2-480w.jpg"
+                      srcSet="/images/demos/demo-10/slider/slide-2-480w.jpg"
                     />
                     <img
-                      src="images/demos/demo-10/slider/slide-2.jpg"
+                      src="/images/demos/demo-10/slider/slide-2.jpg"
                       alt="Image Desc"
                     />
                   </picture>
@@ -146,10 +146,10 @@ const Home = () => {
                   <picture>
                     <source
                       media="(max-width: 480px)"
-                      srcSet="assets/images/demos/demo-10/slider/slide-3-480w.jpg"
+                      srcSet="/images/demos/demo-10/slider/slide-3-480w.jpg"
                     />
                     <img
-                      src="images/demos/demo-10/slider/slide-3.jpg"
+                      src="/images/demos/demo-10/slider/slide-3.jpg"
                       alt="Image Desc"
                     />
                   </picture>
@@ -190,7 +190,7 @@ const Home = () => {
                     <div className="banner banner-overlay">
                       <a href="#">
                         <img
-                          src="images/demos/demo-10/banners/banner-1.jpg"
+                          src="/images/demos/demo-10/banners/banner-1.jpg"
                           alt="Banner"
                         />
                       </a>
@@ -219,7 +219,7 @@ const Home = () => {
                     <div className="banner banner-overlay banner-overlay-light">
                       <a href="#">
                         <img
-                          src="images/demos/demo-10/banners/banner-2.jpg"
+                          src="/images/demos/demo-10/banners/banner-2.jpg"
                           alt="Banner"
                         />
                       </a>
@@ -248,7 +248,7 @@ const Home = () => {
                 <div className="banner banner-large banner-overlay d-none d-sm-block">
                   <a href="#">
                     <img
-                      src="images/demos/demo-10/banners/banner-3.jpg"
+                      src="/images/demos/demo-10/banners/banner-3.jpg"
                       alt="Banner"
                     />
                   </a>
@@ -277,7 +277,7 @@ const Home = () => {
                 <div className="banner banner-middle banner-overlay">
                   <a href="#">
                     <img
-                      src="images/demos/demo-10/banners/banner-4.jpg"
+                      src="/images/demos/demo-10/banners/banner-4.jpg"
                       alt="Banner"
                     />
                   </a>
@@ -371,7 +371,7 @@ const Home = () => {
               <div className="banner banner-cat">
                 <a href="#">
                   <img
-                    src="images/demos/demo-10/banners/banner-5.jpg"
+                    src="/images/demos/demo-10/banners/banner-5.jpg"
                     alt="Banner"
                   />
                 </a>
@@ -390,7 +390,7 @@ const Home = () => {
               <div className="banner banner-cat">
                 <a href="#">
                   <img
-                    src="images/demos/demo-10/banners/banner-6.jpg"
+                    src="/images/demos/demo-10/banners/banner-6.jpg"
                     alt="Banner"
                   />
                 </a>
@@ -409,7 +409,7 @@ const Home = () => {
               <div className="banner banner-cat">
                 <a href="#">
                   <img
-                    src="images/demos/demo-10/banners/banner-7.jpg"
+                    src="/images/demos/demo-10/banners/banner-7.jpg"
                     alt="Banner"
                   />
                 </a>

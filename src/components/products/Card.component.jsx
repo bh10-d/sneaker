@@ -34,7 +34,7 @@ const Card = (props) => {
           <figure className="product-media">
             <Status status={props.status} />
 
-            <Link to="/detail">
+            <Link to={`/detail/${props.id}`}>
               <img src={image} alt={props.name} className="product-image" />
             </Link>
 
@@ -66,7 +66,7 @@ const Card = (props) => {
                 className="btn-product btn-cart"
                 onClick={() => {
                   
-                  addProductCart({ props, image });
+                  addProductCart( props, { image });
                 }}
               >
                 <span>add to cart</span>

@@ -1,69 +1,9 @@
-import { useState } from 'react';
+import React,{ useState } from 'react';
+import { AppContext } from '../../context/AppProvider';
 import Card from '../../components/products/Card.component';
-// import '../../components/header/Styledemo.styles.css';
-// import '../../components/header/Styleskin.styles.css';
-
-
-const test = [
-    {
-        id: "1",
-        // path: "images/products/product-4.jpg",
-        type: "Women",
-        name: "abc",
-        price: "60.00",
-        reviews: "2",
-        status: "new"
-    },
-    {
-        id: "2",
-        // path: "images/products/product-5.jpg",
-        type: "Dress",
-        name: "abc",
-        price: "75.00",
-        reviews: "10",
-        status: "out"
-    },
-    {
-        id: "3",
-        // path: "images/products/product-5.jpg",
-        type: "Shoese",
-        name: "dsa",
-        price: "100.00",
-        reviews: "10",
-        status: "top"
-    }
-]
-
-
-const imagetest= [
-    {
-        id: "1",
-        path: "images/products/product-4.jpg",
-    },
-    {
-        id: "2",
-        path: "images/products/product-5.jpg",
-    },
-    {
-        id: "1",
-        path: "images/products/product-5.jpg",
-    },
-    {
-        id: "2",
-        path: "images/products/product-4.jpg",
-    },
-    {
-        id: "1",
-        path: "images/products/product-1.jpg",
-    },
-    {
-        id: "3",
-        path: "images/products/product-6.jpg",
-    }
-]
 
 const Product = () => {
-    // console.log(test)
+    const {fakeDataApi, fakeImageApi} = React.useContext(AppContext);
     return (
         <>
             <main className="main">
@@ -84,7 +24,7 @@ const Product = () => {
                                 <div className="toolbox">
                                     <div className="toolbox-left">
                                         <div className="toolbox-info">
-                                            Showing <span>9 of 56</span> Products
+                                            Showing <span>{fakeDataApi.length} of 56</span> Products
                                         </div>
                                     </div>
 
@@ -147,8 +87,8 @@ const Product = () => {
 
                                 <div className="products mb-3">
                                     <div className="row justify-content-center">
-                                        {test.map((m)=>(
-                                            <Card key={m.id} id={m.id} name={m.name} type={m.type} price={m.price} path={imagetest} review={m.reviews} status={m.status}/>
+                                        {fakeDataApi.map((m)=>(
+                                            <Card key={m.id} id={m.id} name={m.name} type={m.type} price={m.price} path={fakeImageApi} review={m.reviews} status={m.status}/>
                                         ))}
                                     </div>
                                 </div>
