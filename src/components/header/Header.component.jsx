@@ -57,7 +57,7 @@ const Header = ()=>{
                                 <i className="icon-bars"></i>
                             </button>
                             <Link to="/" className="logo">
-                                <img src="images/demos/demo-10/logo.png" alt="Molla Logo" width="105" height="25"/>
+                                <img src="/images/demos/demo-10/logo.png" alt="Molla Logo" width="105" height="25"/>
                             </Link>
                         </div>
                         <NavBar/>

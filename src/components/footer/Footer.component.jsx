@@ -9,7 +9,7 @@ const Footer = () => {
                         <div className="row">
                             <div className="col-sm-6 col-lg-3">
                                 <div className="widget widget-about">
-                                    <img src="images/logo.png" className="footer-logo" alt="Footer Logo" width="105" height="25"/>
+                                    <img src="/images/logo.png" className="footer-logo" alt="Footer Logo" width="105" height="25"/>
                                         <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
 
                                         <div className="social-icons">
@@ -70,10 +70,10 @@ const Footer = () => {
 
                 <div className="footer-bottom">
                     <div className="container">
-                        <p className="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p>
-                        <figure className="footer-payments">
-                            <img src="images/payments.png" alt="Payment methods" width="272" height="20" />
-                        </figure>
+                        <p className="footer-copyright">Copyright © 2022 SneakerTeamFPT. All Rights Reserved.</p>
+                        {/* <figure className="footer-payments">
+                            <img src="/images/payments.png" alt="Payment methods" width="272" height="20" />
+                        </figure> */}
                     </div>
                 </div>
             </footer>

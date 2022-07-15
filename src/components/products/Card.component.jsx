@@ -19,11 +19,13 @@ const Status = ({ status }) => {
 const Card = (props) => {
   const { addProductCart } = React.useContext(AppContext);
   const [image, setImage] = useState(
-    props.path.find((m) => m.id === props.id).path
+    props.path.find((m) => m.id === props.id).image_color
   );
   // console.log(props.path.find(m => m.id == props.id))
   const handleClick = (e) => {
-    setImage(e.target.src);
+    const path = e.target.src.split(/\//)
+    console.log(path);
+    setImage(path[path.length-1]);
   };
 
   // console.log(props.path)
@@ -34,8 +36,8 @@ const Card = (props) => {
           <figure className="product-media">
             <Status status={props.status} />
 
-            <Link to="/detail">
-              <img src={image} alt={props.name} className="product-image" />
+            <Link to={`/detail/${image}/${props.id}`}>
+              <img src={`/images/image_products/${image}`} alt={props.name} className="product-image" />
             </Link>
 
             <div className="product-action-vertical">
@@ -66,7 +68,7 @@ const Card = (props) => {
                 className="btn-product btn-cart"
                 onClick={() => {
                   
-                  addProductCart({ props, image });
+                  addProductCart( props, { image });
                 }}
               >
                 <span>add to cart</span>
@@ -104,8 +106,8 @@ const Card = (props) => {
                 props.path.map((m, i) => {
                   if (m.id == props.id) {
                     return (
-                      <span key={i}  onClick={handleClick}>
-                        <img src={m.path} alt="product desc" />
+                      <span key={i} onClick={handleClick}>
+                        <img src={`/images/image_products/${m.image_color}`} alt="product desc" />
                       </span>
                     );
                   } else {

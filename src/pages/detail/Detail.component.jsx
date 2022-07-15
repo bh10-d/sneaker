@@ -1,7 +1,24 @@
+import React, { useState } from 'react';
+import { AppContext } from '../../context/AppProvider';
+import { useParams } from 'react-router-dom';
 import CardDetail from '../../components/details/CardDetail.component';
 
 const Detail = () => {
+    const { addProductCart, fakeDataApi, fakeImageApi } = React.useContext(AppContext);
+    let { id, image } = useParams();
+    const [imageColor, setImageColor] = useState(image);
+    const [active, setActive] = useState(imageColor)
+    console.log(active);
+    let getProduct = () => {
+        let newArr = fakeDataApi.filter(f => f.id === id)
+        return newArr;
+    }
 
+    const handleClick = (e) => {
+        const path = e.target.src.split(/\//)
+        setImageColor(path[path.length-1]);
+        setActive(path[path.length-1])
+    }
 
     return (
         <>
@@ -62,22 +79,21 @@ const Detail = () => {
                                         </div>
                                     </div>
                                 </div> */}
-
-                                <CardDetail/>
-
+                                {/* truyen id anh vao day de thay doi anh mo ta hien thi */}
+                                <CardDetail idProduct={id} imageFirst={imageColor} />
                                 <div className="col-md-6">
                                     <div className="product-details">
-                                        <h1 className="product-title">Yellow tie strap block heel sandals</h1>
+                                        <h1 className="product-title">{getProduct(id)[0].name}</h1>
 
                                         <div className="ratings-container">
                                             <div className="ratings">
                                                 <div className="ratings-val" style={{ width: "80%" }}></div>
                                             </div>
-                                            <a className="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
+                                            <a className="ratings-text" href="#product-review-link" id="review-link">( {getProduct(id)[0].reviews} Reviews )</a>
                                         </div>
 
                                         <div className="product-price">
-                                            $70.00
+                                            ${getProduct(id)[0].price}
                                         </div>
 
                                         <div className="product-content">
@@ -87,11 +103,16 @@ const Detail = () => {
                                         <div className="details-filter-row details-row-size">
                                             <label>Color:</label>
 
-                                            <div className="product-nav product-nav-dots">
-                                                <a href="#" className="active" style={{ background: "#eab656" }}><span className="sr-only">Color name</span></a>
+                                            <div className="product-nav product-nav-thumbs" >
+                                                {/* <a href="#" className="active" style={{ background: "#eab656" }}><span className="sr-only">Color name</span></a>
                                                 <a href="#" style={{ background: "#333333" }}><span className="sr-only">Color name</span></a>
                                                 <a href="#" style={{ background: "#3a588b" }}><span className="sr-only">Color name</span></a>
-                                                <a href="#" style={{ background: "#caab97" }}><span className="sr-only">Color name</span></a>
+                                                <a href="#" style={{ background: "#caab97" }}><span className="sr-only">Color name</span></a> */}
+                                                {fakeImageApi.map(m => {
+                                                    if (m.id === id) {
+                                                        return (<span className={m.image_color === active ? 'active' : ""} key={m.path} onClick={handleClick}><img src={`/images/image_products/${m.image_color}`}  /></span>)
+                                                    }
+                                                })}
                                             </div>
                                         </div>
 
@@ -118,7 +139,11 @@ const Detail = () => {
                                         </div>
 
                                         <div className="product-details-action">
-                                            <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                                            <span href="#" className="btn-product btn-cart"
+                                                onClick={() => {
+                                                    addProductCart(getProduct()[0], { imageColor });
+                                                }}
+                                            ><span>add to cart</span></span>
 
                                             <div className="details-action-wrapper">
                                                 <a href="#" className="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
@@ -129,10 +154,7 @@ const Detail = () => {
                                         <div className="product-details-footer">
                                             <div className="product-cat">
                                                 <span>Category:</span>
-                                                <a href="#">Women</a>,
-                                                <a href="#">Shoes</a>,
-                                                <a href="#">Sandals</a>,
-                                                <a href="#">Yellow</a>
+                                                <a href="#">{getProduct(id)[0].type}</a>
                                             </div>
 
                                             <div className="social-icons social-icons-sm">
@@ -170,7 +192,7 @@ const Detail = () => {
                         <div className="tab-content">
                             <div className="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
                                 <div className="product-desc-content">
-                                    <div className="product-desc-row bg-image" style={{ backgroundImage: "url('images/products/single/extended/bg-1.jpg')" }}>
+                                    <div className="product-desc-row bg-image" style={{ backgroundImage: "url('/images/products/single/extended/bg-1.jpg')" }}>
                                         <div className="container">
                                             <div className="row justify-content-end">
                                                 <div className="col-sm-6 col-lg-4">
@@ -187,7 +209,7 @@ const Detail = () => {
                                         </div>
                                     </div>
 
-                                    <div className="product-desc-row bg-image text-white" style={{ backgroundImage: "url('images/products/single/extended/bg-2.jpg')" }}>
+                                    <div className="product-desc-row bg-image text-white" style={{ backgroundImage: "url('/images/products/single/extended/bg-2.jpg')" }}>
                                         <div className="container">
                                             <div className="row">
                                                 <div className="col-md-6">
@@ -203,11 +225,11 @@ const Detail = () => {
 
                                             <div className="mb-5"></div>
 
-                                            <img src="images/products/single/extended/sign.png" alt="" className="ml-auto mr-auto" />
+                                            <img src="/images/products/single/extended/sign.png" alt="" className="ml-auto mr-auto" />
                                         </div>
                                     </div>
 
-                                    <div className="product-desc-row bg-image" style={{ backgroundImage: "url('images/products/single/extended/bg-3.jpg')" }}>
+                                    <div className="product-desc-row bg-image" style={{ backgroundImage: "url('/images/products/single/extended/bg-3.jpg')" }}>
                                         <div className="container">
                                             <div className="row">
                                                 <div className="col-lg-5">
@@ -346,7 +368,7 @@ const Detail = () => {
                                 <figure className="product-media">
                                     <span className="product-label label-new">New</span>
                                     <a href="product.html">
-                                        <img src="images/products/product-4.jpg" alt="Product image" className="product-image" />
+                                        <img src="/images/products/product-4.jpg" alt="Product image" className="product-image" />
                                     </a>
 
                                     <div className="product-action-vertical">
@@ -387,7 +409,7 @@ const Detail = () => {
                                 <figure className="product-media">
                                     <span className="product-label label-out">Out of Stock</span>
                                     <a href="product.html">
-                                        <img src="images/products/product-6.jpg" alt="Product image" className="product-image" />
+                                        <img src="/images/products/product-6.jpg" alt="Product image" className="product-image" />
                                     </a>
 
                                     <div className="product-action-vertical">
@@ -422,7 +444,7 @@ const Detail = () => {
                                 <figure className="product-media">
                                     <span className="product-label label-top">Top</span>
                                     <a href="product.html">
-                                        <img src="images/products/product-11.jpg" alt="Product image" className="product-image" />
+                                        <img src="/images/products/product-11.jpg" alt="Product image" className="product-image" />
                                     </a>
 
                                     <div className="product-action-vertical">
@@ -496,7 +518,7 @@ const Detail = () => {
                             <div className="product product-7">
                                 <figure className="product-media">
                                     <a href="product.html">
-                                        <img src="images/products/product-7.jpg" alt="Product image" className="product-image" />
+                                        <img src="/images/products/product-7.jpg" alt="Product image" className="product-image" />
                                     </a>
 
                                     <div className="product-action-vertical">
