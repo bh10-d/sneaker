@@ -89,6 +89,52 @@ const fakeImageDetail = [
     image_detail: "Giay_Superstar_trang_EG4960_04_standard-removebg-preview.png"
   },
 ]
+const fakeSize = [
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 40
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 39
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 40
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 41
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 42
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 43
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 40
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 41
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 42
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 43
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 44
+  },
+]
 export const AppContext = React.createContext();
 
 export default function AppProvider({ children }) {
@@ -140,6 +186,7 @@ export default function AppProvider({ children }) {
       value={{
         fakeDataApi,
         fakeImageApi,
+        fakeSize,
         test,
         setTest,
         addProductCart,

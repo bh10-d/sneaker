@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import CardDetail from '../../components/details/CardDetail.component';
 
 const Detail = () => {
-    const { addProductCart, fakeDataApi, fakeImageApi } = React.useContext(AppContext);
+    const { addProductCart, fakeDataApi, fakeImageApi, fakeSize } = React.useContext(AppContext);
     let { id, image } = useParams();
     const [imageColor, setImageColor] = useState(image);
     const [active, setActive] = useState(imageColor)
@@ -104,10 +104,6 @@ const Detail = () => {
                                             <label>Color:</label>
 
                                             <div className="product-nav product-nav-thumbs" >
-                                                {/* <a href="#" className="active" style={{ background: "#eab656" }}><span className="sr-only">Color name</span></a>
-                                                <a href="#" style={{ background: "#333333" }}><span className="sr-only">Color name</span></a>
-                                                <a href="#" style={{ background: "#3a588b" }}><span className="sr-only">Color name</span></a>
-                                                <a href="#" style={{ background: "#caab97" }}><span className="sr-only">Color name</span></a> */}
                                                 {fakeImageApi.map(m => {
                                                     if (m.id === id) {
                                                         return (<span className={m.image_color === active ? 'active' : ""} key={m.path} onClick={handleClick}><img src={`/images/image_products/${m.image_color}`}  /></span>)
@@ -121,10 +117,11 @@ const Detail = () => {
                                             <div className="select-custom">
                                                 <select name="size" id="size" className="form-control">
                                                     <option value="#" select="selected">Select a size</option>
-                                                    <option value="s">Small</option>
-                                                    <option value="m">Medium</option>
-                                                    <option value="l">Large</option>
-                                                    <option value="xl">Extra Large</option>
+                                                    {fakeSize.map((m,index) => {
+                                                        if(m.image_color === imageColor) {
+                                                            return (<option value={m.size}>{m.size}</option>)
+                                                        }
+                                                    })}
                                                 </select>
                                             </div>
 
