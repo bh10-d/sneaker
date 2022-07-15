@@ -83,7 +83,7 @@ export default function AppProvider({ children }) {
 
     //function
     const addProductCart = (props, { image }) => {
-        const { id, name, price } = props;
+        // const { id, name, price } = props;
         const index = test.findIndex((m) => m.image === image);
         if (index !== -1) {
             localStorage.removeItem("sneakershop");

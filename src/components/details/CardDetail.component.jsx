@@ -25,9 +25,9 @@ const CardDetail = ({ idProduct, imageFirst }) => {
                     <figure className="product-main-image">
                         <img id="product-zoom" src={image} alt="product image" />
 
-                        <a href="#" id="btn-product-gallery" className="btn-product-gallery">
+                        {/* <a href="#" id="btn-product-gallery" className="btn-product-gallery">
                             <i className="icon-arrows"></i>
-                        </a>
+                        </a> */}
                     </figure>
 
                     <div id="product-zoom-gallery" className="product-image-gallery">

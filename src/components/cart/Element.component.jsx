@@ -34,7 +34,7 @@ const Element = (props) => {
                             <img src={product.image} alt="product" />
                         </Link>
                     </figure>
-                    <span onClick={props.delete} className="btn-remove" title="Remove Product"><i id={product.id} className="icon-close"></i></span>
+                    <span onClick={props.delete} className="btn-remove" title="Remove Product"><i id={product.image} className="icon-close"></i></span>
                 </div>
             ))}
         </>

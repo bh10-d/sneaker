@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import Cart from '../cart/Cart.component';
 
 
@@ -57,13 +57,15 @@ const ChildNav = ({ props }) => {
 }
 
 const NavBar = () => {
+    let location = useLocation();
+    // console.log(useLocation())
     return (
         <>
             <div className="header-right">
                 <nav className="main-nav">
                     <ul className="menu sf-arrows">
                         {/* {list.map(m=><ChildNav props={m}/>)} */}
-                        <li className="megamenu-container active">
+                        <li className={`megamenu-container ${(location.pathname === '/')?'active':''}`}>
                             <Link to="/" className="sf-with-ul">Home</Link>
 
                             {/* <div className="megamenu demo">
@@ -305,7 +307,7 @@ const NavBar = () => {
                                 </div>
                             </div>
                         </li> */}
-                        <li>
+                        <li className={`${(location.pathname === '/product')?'active':''}`}>
                             <Link to="/product" className="sf-with-ul">Product</Link>
 
                             {/* <div className="megamenu megamenu-sm">
@@ -340,7 +342,7 @@ const NavBar = () => {
                                 </div>
                             </div> */}
                         </li>
-                        <li>
+                        <li className={`${(location.pathname === '/page')?'active':''}`}>
                             <Link to="/page" className="sf-with-ul">Pages</Link>
 
                             <ul>
@@ -366,7 +368,7 @@ const NavBar = () => {
                                 <li><Link to="/coming-soon">Coming Soon</Link></li>
                             </ul>
                         </li>
-                        <li>
+                        <li className={`${(location.pathname === '/blog')?'active':''}`}>
                             <Link to="/blog" className="sf-with-ul">Blog</Link>
 
                             <ul>

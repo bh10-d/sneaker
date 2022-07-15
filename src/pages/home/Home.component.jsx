@@ -12,7 +12,7 @@ const Home = () => {
       name: "Forum Low CL",
       type: 1,
       percent: 20,
-      price: "25000000",
+      price: "250",
       reviews: 2,
 
     },
@@ -22,7 +22,7 @@ const Home = () => {
       name: "SuperStar",
       type: 1,
       percent: 25,
-      price: "2500000",
+      price: "300",
       review: 3
     }
   ]

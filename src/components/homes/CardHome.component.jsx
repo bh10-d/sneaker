@@ -1,6 +1,10 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {AppContext} from '../../context/AppProvider';
+
 const CardHome = ({ product, path }) => {
+  const { addProductCart, fakeDataApi,fakeImageApi } = React.useContext(AppContext);
+  // console.log(fakeImageApi)
   const [image, setImage] = useState(
     path.find((m) => m.id === product.id).path
   );
@@ -34,7 +38,7 @@ const CardHome = ({ product, path }) => {
             </h3>
             <div className="product-price">
               <span className="new-price">Now $125.99</span>
-              <span className="old-price">$275.00</span>
+              <span className="old-price">${product.price}</span>
             </div>
           </div>
 
@@ -63,9 +67,9 @@ const CardHome = ({ product, path }) => {
             })}
             </div>
             <div className="product-action">
-              <a href="#" className="btn-product btn-cart" title="Add to cart">
+              <span onClick={()=>{addProductCart(product,{image})}} style={{cursor: 'pointer'}} className="btn-product btn-cart" title="Add to cart">
                 <span>add to cart</span>
-              </a>
+              </span>
               <a
                 href="popup/quickView.html"
                 className="btn-product btn-quickview"

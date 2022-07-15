@@ -8,11 +8,10 @@ const Cart = () => {
 
     const handleDelete = (e) => {
         let id = e.target.id;
-        setTest(()=>test.filter(f=>f.id!==id))
-        const productCart = test.filter(f=>f.id === e.target.id)
-            // console.log(productCart)
+        setTest(()=>test.filter(f=>f.image !== id))
+        const productCart = test.filter(f=>f.image === id)
             if(productCart){
-                const afterDelete = test.filter( product => product.id !== e.target.id)
+                const afterDelete = test.filter( product => product.image !== id)
                 localStorage.setItem('sneakershop',
                 JSON.stringify(afterDelete))
                 return afterDelete
