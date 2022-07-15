@@ -4,10 +4,16 @@ import {AppContext} from '../../context/AppProvider';
 
 const CardHome = ({ product, path }) => {
   const { addProductCart, fakeDataApi,fakeImageApi } = React.useContext(AppContext);
-  // console.log(fakeImageApi)
   const [image, setImage] = useState(
     path.find((m) => m.id === product.id).path
   );
+
+  const handleClick = (e) => {
+    const path = e.target.src.split(/\//)
+    setImage(path[path.length-1]);
+  };
+
+    console.log(image)
   return (
     <>
       <div className="col-6 col-md-4 col-lg-3 col-xl-5col">
@@ -16,7 +22,7 @@ const CardHome = ({ product, path }) => {
             <span className="product-label label-primary">Sale</span>
             <span className="product-label label-sale">55% off</span>
             <a href="product.html">
-              <img src={image} alt="Product image" className="product-image" />
+              <img src={`/images/image_products/${image}`} alt="Product image" className="product-image" />
             </a>
 
             <div className="product-action-vertical">
@@ -53,10 +59,10 @@ const CardHome = ({ product, path }) => {
               {path.map((image, index) => {
                 if(image.id === product.id) {
                     return (
-                        <span key={index} onClick={(e) => setImage(e.target.src)}>
+                        <span key={index} onClick={handleClick}>
                         <img
                           style={{ width: "100%", height: "100%" }}
-                          src={image.path}
+                          src={`/images/image_products/${image.path}`}
                           alt=""
                         />
                       </span>
@@ -67,7 +73,7 @@ const CardHome = ({ product, path }) => {
             })}
             </div>
             <div className="product-action">
-              <span onClick={()=>{addProductCart(product,{image})}} style={{cursor: 'pointer'}} className="btn-product btn-cart" title="Add to cart">
+              <span onClick={()=>{addProductCart(product,image)}} style={{cursor: 'pointer'}} className="btn-product btn-cart" title="Add to cart">
                 <span>add to cart</span>
               </span>
               <a

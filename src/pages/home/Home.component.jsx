@@ -29,23 +29,23 @@ const Home = () => {
   const test_image = [
     {
       id: 1,
-      path: "/images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6874_01_standard-removebg-preview.png"
+      path: "Giay_Forum_Low_CL_trang_HQ6874_01_standard-removebg-preview.png"
     },
     {
       id: 1,
-      path: "/images/demos/demo-10/products/Giay_Forum_Low_CL_trang_HQ6875_01_standard-removebg-preview.png"
+      path: "Giay_Forum_Low_CL_trang_HQ6875_01_standard-removebg-preview.png"
     },
     {
       id: 2,
-      path: "/images/image_products/Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png"
+      path: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png"
     },
     {
       id: 2,
-      path: "/images/image_products/Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png"
+      path: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png"
     },
     {
       id: 2,
-      path: "/images/image_products/Giay_Superstar_trang_GZ3742_01_standard-removebg-preview.png"
+      path: "Giay_Superstar_trang_GZ3742_01_standard-removebg-preview.png"
     }
   ]
   const [type, setType] = useState("New");

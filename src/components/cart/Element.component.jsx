@@ -13,6 +13,7 @@ const Element = (props) => {
     //         return []
     //     }
     // })();
+    console.log(props)
 
     return (
         <>
@@ -20,7 +21,7 @@ const Element = (props) => {
                 <div className="product" key={i}>
                     <div className="product-cart-details">
                         <h4 className="product-title">
-                            <Link to="/product">{product.name}</Link>
+                            <Link to={`/detail/${product.image}/${product.id}`}>{product.name}</Link>
                         </h4>
 
                         <span className="cart-product-info">
@@ -31,7 +32,7 @@ const Element = (props) => {
 
                     <figure className="product-image-container">
                         <Link to="/product" className="product-image">
-                            <img src={product.image} alt="product" />
+                            <img src={`/images/image_products/${product.image}`} alt="product" />
                         </Link>
                     </figure>
                     <span onClick={props.delete} className="btn-remove" title="Remove Product"><i id={product.image} className="icon-close"></i></span>

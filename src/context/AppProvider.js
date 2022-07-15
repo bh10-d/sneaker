@@ -1,88 +1,113 @@
 import React from "react";
 import { useState } from "react";
 
-
 const fakeDataApi = [
-    {
-        id: "1",
-        // path: "images/products/product-4.jpg",
-        type: "Women",
-        name: "abc",
-        price: "60.00",
-        reviews: "2",
-        status: "new"
-    },
-    {
-        id: "2",
-        // path: "images/products/product-5.jpg",
-        type: "Dress",
-        name: "abc",
-        price: "75.00",
-        reviews: "10",
-        status: "out"
-    },
-    {
-        id: "3",
-        // path: "images/products/product-5.jpg",
-        type: "Shoese",
-        name: "dsa",
-        price: "100.00",
-        reviews: "10",
-        status: "top"
-    }
-]
-
+  {
+    id: "1",
+    type: "Adidas",
+    name: "SuperStar",
+    price: "60.00",
+    reviews: "2",
+    status: "new",
+  },
+  {
+    id: "2",
+    type: "Adidas",
+    name: "Forum",
+    price: "75.00",
+    reviews: "10",
+    status: "out",
+  },
+  {
+    id: "3",
+    type: "Adidas",
+    name: "BOA Codechaos",
+    price: "100.00",
+    reviews: "10",
+    status: "top",
+  },
+];
 
 const fakeImageApi = [
-    {
-        id: "1",
-        path: "/images/products/product-4.jpg",
-    },
-    {
-        id: "2",
-        path: "/images/products/product-5.jpg",
-    },
-    {
-        id: "1",
-        path: "/images/products/product-5.jpg",
-    },
-    {
-        id: "2",
-        path: "/images/products/product-4.jpg",
-    },
-    {
-        id: "1",
-        path: "/images/products/product-1.jpg",
-    },
-    {
-        id: "3",
-        path: "/images/products/product-6.jpg",
-    }
+  {
+    id: "1",
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+  },
+  {
+    id: "2",
+    image_color: "Giay_Co_Thap_Forum_trang_FY7756_01_standard-removebg-preview.png",
+  },
+  {
+    id: "1",
+    image_color: "Giay_Superstar_trang_GZ3742_01_standard-removebg-preview.png",
+  },
+  {
+    id: "2",
+    image_color: "Giay_Co_Thap_Forum_trang_FY7757_01_standard-removebg-preview.png",
+  },
+  {
+    id: "1",
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+  },
+  {
+    id: "3",
+    image_color: "Giay_DJinh_Lien_BOA_Codechaos_22_DJen_GX3937_01_standard-removebg-preview.png",
+  },
+  {
+    id: "3",
+    image_color: "Giay_DJinh_Lien_BOA_Codechaos_22_trang_GX0199_01_standard-removebg-preview.png",
+  },
+  {
+    id: "3",
+    image_color: "Giay_DJinh_Lien_BOA_Codechaos_22_trang_GX3938_01_standard-removebg-preview.png",
+  },
+];
+
+const fakeImageDetail = [
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    image_detail: "Giay_Superstar_trang_EG4958_02_standard_hover-removebg-preview.png"
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    image_detail: "Giay_Superstar_trang_EG4958_03_standard-removebg-preview.png"
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    image_detail: "Giay_Superstar_trang_EG4958_04_standard-removebg-preview.png"
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    image_detail: "Giay_Superstar_trang_EG4960_02_standard_hover-removebg-preview.png"
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    image_detail: "Giay_Superstar_trang_EG4960_03_standard-removebg-preview.png"
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    image_detail: "Giay_Superstar_trang_EG4960_04_standard-removebg-preview.png"
+  },
 ]
-
-
-
 export const AppContext = React.createContext();
 
 export default function AppProvider({ children }) {
-    // state
-    const [test, setTest] = useState(() => {
-        const check = localStorage.getItem("sneakershop");
+  // state
+  const [test, setTest] = useState(() => {
+    const check = localStorage.getItem("sneakershop");
 
-        if (check !== "") {
-            const JobsLocalStorage = JSON.parse(localStorage.getItem("sneakershop"));
-            // console.log(JobsLocalStorage)
-            return JobsLocalStorage ?? [];
-        } else {
-            localStorage.removeItem("sneakershop");
-            return [];
-        }
-    });
-    
-
+    if (check !== "") {
+      const JobsLocalStorage = JSON.parse(localStorage.getItem("sneakershop"));
+      // console.log(JobsLocalStorage)
+      return JobsLocalStorage ?? [];
+    } else {
+      localStorage.removeItem("sneakershop");
+      return [];
+    }
+  });
 
     //function
-    const addProductCart = (props, { image }) => {
+    const addProductCart = (props, image ) => {
         // const { id, name, price } = props;
         const index = test.findIndex((m) => m.image === image);
         if (index !== -1) {
@@ -108,8 +133,8 @@ export default function AppProvider({ children }) {
                 return newProducts;
             });
         }
-        // console.log(props)
-        // console.log(image)
+        console.log(props)
+        console.log(image)
     };
 
     return (
@@ -117,6 +142,7 @@ export default function AppProvider({ children }) {
             value={{
                 fakeDataApi,
                 fakeImageApi,
+                fakeImageDetail,
                 test,
                 setTest,
                 addProductCart

@@ -1,42 +1,55 @@
-import React, { useState } from 'react';
-import { AppContext } from '../../context/AppProvider';
+import React, { useState, useEffect } from "react";
+import { AppContext } from "../../context/AppProvider";
 
 const CardDetail = ({ idProduct, imageFirst }) => {
-    const { fakeImageApi } = React.useContext(AppContext);
-    const [image, setImage] = useState(imageFirst) //'/images/products/single/extended/3.jpg'
+  const { fakeImageDetail } = React.useContext(AppContext);
+  const [image, setImage] = useState(imageFirst); //'/images/products/single/extended/3.jpg'
+    console.log(imageFirst);
+  let getProduct = (imageFirst) => {
+    let newArr = fakeImageDetail.filter((f) => f.image_color === imageFirst);
+    console.log(newArr);
+    return newArr;
+  };
+  useEffect(() => {
+    setImage(imageFirst)
+    // return () => {
+       
+    // };
+  }, [imageFirst]);
+  const handleClick = (e) => {
+    const path = e.target.src.split(/\//)
+    setImage(path[path.length-1]);
+  };
 
-    // console.log(idProduct)
-    // console.log(fakeImageApi)
-    let getProduct = (idProduct) => {
-        let newArr = fakeImageApi.filter(f => f.id === idProduct)
-        // console.log(newArr);
-        return newArr;
-    }
+  return (
+      <>
+      <div className="col-md-6">
+        <div className="product-gallery">
+          <figure className="product-main-image">
+            <img
+              id="product-zoom"
+              src={`/images/image_products/${image}`}
+              alt="product image"
+            />
+            <a
+              href="#"
+              id="btn-product-gallery"
+              className="btn-product-gallery"
+            >
+              <i className="icon-arrows"></i>
+            </a>
+          </figure>
 
-    const handleClick = (e) => {
-        console.log(e.target.src);
-        setImage(e.target.src)
-    }
-
-    return (
-        <>
-            <div className="col-md-6">
-                <div className="product-gallery">
-                    <figure className="product-main-image">
-                        <img id="product-zoom" src={image} alt="product image" />
-
-                        {/* <a href="#" id="btn-product-gallery" className="btn-product-gallery">
-                            <i className="icon-arrows"></i>
-                        </a> */}
-                    </figure>
-
-                    <div id="product-zoom-gallery" className="product-image-gallery">
-                        {getProduct(idProduct).map(m => (
-                            <span key={m.path} className="product-gallery-item" onClick={handleClick}>
-                                <img src={m.path} alt="product side" />
-                            </span>
-                        ))}
-                        {/* <span className="product-gallery-item" onClick={handleClick}>
+          <div id="product-zoom-gallery" className="product-image-gallery">
+            {getProduct(imageFirst).map((m, index) => (
+              <span key={index} onClick={handleClick}>
+                <img
+                  src={`/images/image_products/${m.image_detail}`}
+                  alt="product desc"
+                />
+              </span>
+            ))}
+            {/* <span className="product-gallery-item" onClick={handleClick}>
                             <img src="images/products/single/extended/1-big.jpg" alt="product side" />
                         </span>
 
@@ -51,13 +64,11 @@ const CardDetail = ({ idProduct, imageFirst }) => {
                         <span className="product-gallery-item" onClick={handleClick}>
                             <img src="images/products/single/extended/4-big.jpg" alt="product back" />
                         </span> */}
-
-                    </div>
-                </div>
-            </div>
-
-        </>
-    )
-}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default CardDetail;

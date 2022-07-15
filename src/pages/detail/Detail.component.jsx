@@ -5,18 +5,20 @@ import CardDetail from '../../components/details/CardDetail.component';
 
 const Detail = () => {
     const { addProductCart, fakeDataApi, fakeImageApi } = React.useContext(AppContext);
-    let { id } = useParams();
-    const [image, setColor] = useState(fakeImageApi.find((m) => m.id === id).path);
-
+    let { id, image } = useParams();
+    const [imageColor, setImageColor] = useState(image);
+    const [active, setActive] = useState(imageColor)
+    console.log(active);
+    console.log(imageColor);
     let getProduct = () => {
         let newArr = fakeDataApi.filter(f => f.id === id)
         return newArr;
     }
 
     const handleClick = (e) => {
-        setColor(e.target.innerText)
-        console.log(e)
-        console.log(e.target.innerText)
+        const path = e.target.src.split(/\//)
+        setImageColor(path[path.length-1]);
+        setActive(path[path.length-1])
     }
 
     return (
@@ -79,7 +81,7 @@ const Detail = () => {
                                     </div>
                                 </div> */}
                                 {/* truyen id anh vao day de thay doi anh mo ta hien thi */}
-                                <CardDetail idProduct={id} imageFirst={fakeImageApi.find((m) => m.id === id).path} />
+                                <CardDetail idProduct={id} imageFirst={imageColor} />
                                 <div className="col-md-6">
                                     <div className="product-details">
                                         <h1 className="product-title">{getProduct(id)[0].name}</h1>
@@ -102,14 +104,14 @@ const Detail = () => {
                                         <div className="details-filter-row details-row-size">
                                             <label>Color:</label>
 
-                                            <div className="product-nav product-nav-dots" >
+                                            <div className="product-nav product-nav-thumbs" >
                                                 {/* <a href="#" className="active" style={{ background: "#eab656" }}><span className="sr-only">Color name</span></a>
                                                 <a href="#" style={{ background: "#333333" }}><span className="sr-only">Color name</span></a>
                                                 <a href="#" style={{ background: "#3a588b" }}><span className="sr-only">Color name</span></a>
                                                 <a href="#" style={{ background: "#caab97" }}><span className="sr-only">Color name</span></a> */}
                                                 {fakeImageApi.map(m => {
                                                     if (m.id === id) {
-                                                        return (<span key={m.path} onClick={handleClick} style={{ background: "#333333" }}><span className="sr-only">{m.path}</span></span>)
+                                                        return (<span className={m.image_color === active ? 'active' : ""} key={m.path} onClick={handleClick}><img src={`/images/image_products/${m.image_color}`}  /></span>)
                                                     }
                                                 })}
                                             </div>
@@ -140,7 +142,7 @@ const Detail = () => {
                                         <div className="product-details-action">
                                             <span href="#" className="btn-product btn-cart"
                                                 onClick={() => {
-                                                    addProductCart(getProduct()[0], { image });
+                                                    addProductCart(getProduct()[0],imageColor);
                                                 }}
                                             ><span>add to cart</span></span>
 
