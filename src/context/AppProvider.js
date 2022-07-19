@@ -89,16 +89,56 @@ const fakeImageDetail = [
     image_detail: "Giay_Superstar_trang_EG4960_04_standard-removebg-preview.png"
   },
 ]
+const fakeSize = [
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 39
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 40
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 41
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 42
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
+    size: 43
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 40
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 41
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 42
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 43
+  },
+  {
+    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
+    size: 44
+  },
+]
 export const AppContext = React.createContext();
 
 export default function AppProvider({ children }) {
   // state
-  const [test, setTest] = useState(() => {
+  const [data, setData] = useState(() => {
     const check = localStorage.getItem("sneakershop");
-
     if (check !== "") {
       const JobsLocalStorage = JSON.parse(localStorage.getItem("sneakershop"));
-      // console.log(JobsLocalStorage)
       return JobsLocalStorage ?? [];
     } else {
       localStorage.removeItem("sneakershop");
@@ -108,16 +148,17 @@ export default function AppProvider({ children }) {
 
     //function
     const addProductCart = (props, image ) => {
-        // const { id, name, price } = props;
-        const index = test.findIndex((m) => m.image === image);
-        if (index !== -1) {
+        const index = data.findIndex((m) => m.image === image);
+        const indexSize = data.findIndex(m=>m.size === props.size);
+        const getProduct = data.findIndex(m=>m.image === image && m.size === props.size);
+        if (index !== -1 && indexSize !== -1) {
             localStorage.removeItem("sneakershop");
-            test[index].quantity += 1;
-            setTest(() => [...test])
-            const jsonProducts = JSON.stringify(test);
+            data[getProduct].quantity += 1;
+            setData(() => [...data])
+            const jsonProducts = JSON.stringify(data);
             localStorage.setItem("sneakershop", jsonProducts);
         } else {
-            setTest((prev) => {
+            setData((prev) => {
                 const newProducts = [
                     ...prev,
                     {
@@ -126,6 +167,7 @@ export default function AppProvider({ children }) {
                         price: props.price,
                         image: image,
                         quantity: 1,
+                        size: props.size
                     },
                 ];
                 const jsonProducts = JSON.stringify(newProducts);
@@ -133,22 +175,25 @@ export default function AppProvider({ children }) {
                 return newProducts;
             });
         }
-        console.log(props)
-        console.log(image)
+        // console.log(getProduct)
+        // console.log(props)
+        // console.log(image)
+        // console.log(indexSize)
     };
 
-    return (
-        <AppContext.Provider
-            value={{
-                fakeDataApi,
-                fakeImageApi,
-                fakeImageDetail,
-                test,
-                setTest,
-                addProductCart
-            }}
-        >
-            {children}
-        </AppContext.Provider>
-    );
+  return (
+    <AppContext.Provider
+      value={{
+        fakeDataApi,
+        fakeImageApi,
+        fakeSize,
+        data,
+        setData,
+        addProductCart,
+        fakeImageDetail
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 }

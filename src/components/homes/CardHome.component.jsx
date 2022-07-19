@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {AppContext} from '../../context/AppProvider';
 
 const CardHome = ({ product, path }) => {
-  const { addProductCart, fakeDataApi,fakeImageApi } = React.useContext(AppContext);
+  const { addProductCart, fakeDataApi, fakeImageApi } = React.useContext(AppContext);
   const [image, setImage] = useState(
     path.find((m) => m.id === product.id).path
   );
@@ -13,7 +13,7 @@ const CardHome = ({ product, path }) => {
     setImage(path[path.length-1]);
   };
 
-    console.log(image)
+    // console.log(image)
   return (
     <>
       <div className="col-6 col-md-4 col-lg-3 col-xl-5col">

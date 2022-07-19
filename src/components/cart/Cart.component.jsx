@@ -4,18 +4,22 @@ import { AppContext } from '../../context/AppProvider';
 import Element from './Element.component';
 
 const Cart = () => {
-    const { test, setTest } = React.useContext(AppContext)
+    const { data, setData } = React.useContext(AppContext)
 
     const handleDelete = (e) => {
-        let id = e.target.id;
-        setTest(()=>test.filter(f=>f.image !== id))
-        const productCart = test.filter(f=>f.image === id)
-            if(productCart){
-                const afterDelete = test.filter( product => product.image !== id)
-                localStorage.setItem('sneakershop',
-                JSON.stringify(afterDelete))
-                return afterDelete
-            }
+        // setData(()=>data.filter(f=>(f.image !== id && f.size !== e.target.dataset.size)))
+        data.splice(e.target.dataset.index, 1);
+        setData([...data]);
+        // const productCart = data.filter(f => f.image === id)
+        const productCart = [...data]
+        // productCart.filter(f => f.size === e.target.dataset.size)
+        if (productCart) {
+            // const afterDelete = data.filter(product => product.image !== id && product.size !== e.target.dataset.size)
+            const afterDelete = [...data]
+            localStorage.setItem('sneakershop',
+            JSON.stringify(afterDelete))
+            return afterDelete
+        }
     }
 
     const sum = (arr) => {
@@ -31,18 +35,18 @@ const Cart = () => {
             <div className="dropdown cart-dropdown">
                 <Link to="/cart" className="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                     <i className="icon-shopping-cart"></i>
-                    <span className="cart-count">{test.length}</span>
+                    <span className="cart-count">{data.length}</span>
                 </Link>
 
                 <div className="dropdown-menu dropdown-menu-right">
                     <div className="dropdown-cart-products">
-                        <Element data={test} delete={handleDelete}/>
+                        <Element data={data} delete={handleDelete} />
                     </div>
 
                     <div className="dropdown-cart-total">
                         <span>Total</span>
 
-                        <span className="cart-total-price">${sum(test)}</span>
+                        <span className="cart-total-price">${sum(data)}</span>
 
                     </div>
                     <div className="dropdown-cart-action">

@@ -4,18 +4,16 @@ import { AppContext } from "../../context/AppProvider";
 const CardDetail = ({ idProduct, imageFirst }) => {
   const { fakeImageDetail } = React.useContext(AppContext);
   const [image, setImage] = useState(imageFirst); //'/images/products/single/extended/3.jpg'
-    console.log(imageFirst);
+    
   let getProduct = (imageFirst) => {
     let newArr = fakeImageDetail.filter((f) => f.image_color === imageFirst);
-    console.log(newArr);
     return newArr;
   };
+
   useEffect(() => {
     setImage(imageFirst)
-    // return () => {
-       
-    // };
   }, [imageFirst]);
+
   const handleClick = (e) => {
     const path = e.target.src.split(/\//)
     setImage(path[path.length-1]);

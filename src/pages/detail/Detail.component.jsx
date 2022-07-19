@@ -4,21 +4,27 @@ import { useParams } from 'react-router-dom';
 import CardDetail from '../../components/details/CardDetail.component';
 
 const Detail = () => {
-    const { addProductCart, fakeDataApi, fakeImageApi } = React.useContext(AppContext);
+    const { addProductCart, fakeDataApi, fakeImageApi, fakeSize } = React.useContext(AppContext);
     let { id, image } = useParams();
     const [imageColor, setImageColor] = useState(image);
+    const [size, setSize] = useState('');
     const [active, setActive] = useState(imageColor)
-    console.log(active);
-    console.log(imageColor);
+
     let getProduct = () => {
         let newArr = fakeDataApi.filter(f => f.id === id)
+        newArr = {...newArr[0],size}
         return newArr;
     }
 
     const handleClick = (e) => {
         const path = e.target.src.split(/\//)
         setImageColor(path[path.length-1]);
-        setActive(path[path.length-1])
+        setActive(path[path.length-1]);
+        setSize('');
+    }
+
+    const getSize = (e) => {
+        setSize(e.target.value)
     }
 
     return (
@@ -84,17 +90,17 @@ const Detail = () => {
                                 <CardDetail idProduct={id} imageFirst={imageColor} />
                                 <div className="col-md-6">
                                     <div className="product-details">
-                                        <h1 className="product-title">{getProduct(id)[0].name}</h1>
+                                        <h1 className="product-title">{getProduct(id).name}</h1>
 
                                         <div className="ratings-container">
                                             <div className="ratings">
                                                 <div className="ratings-val" style={{ width: "80%" }}></div>
                                             </div>
-                                            <a className="ratings-text" href="#product-review-link" id="review-link">( {getProduct(id)[0].reviews} Reviews )</a>
+                                            <a className="ratings-text" href="#product-review-link" id="review-link">( {getProduct(id).reviews} Reviews )</a>
                                         </div>
 
                                         <div className="product-price">
-                                            ${getProduct(id)[0].price}
+                                            ${getProduct(id).price}
                                         </div>
 
                                         <div className="product-content">
@@ -105,13 +111,9 @@ const Detail = () => {
                                             <label>Color:</label>
 
                                             <div className="product-nav product-nav-thumbs" >
-                                                {/* <a href="#" className="active" style={{ background: "#eab656" }}><span className="sr-only">Color name</span></a>
-                                                <a href="#" style={{ background: "#333333" }}><span className="sr-only">Color name</span></a>
-                                                <a href="#" style={{ background: "#3a588b" }}><span className="sr-only">Color name</span></a>
-                                                <a href="#" style={{ background: "#caab97" }}><span className="sr-only">Color name</span></a> */}
                                                 {fakeImageApi.map(m => {
                                                     if (m.id === id) {
-                                                        return (<span className={m.image_color === active ? 'active' : ""} key={m.path} onClick={handleClick}><img src={`/images/image_products/${m.image_color}`}  /></span>)
+                                                        return (<span key={m.path+m.image_color } className={m.image_color === active ? 'active' : ""}  onClick={handleClick}><img src={`/images/image_products/${m.image_color}`}  /></span>)
                                                     }
                                                 })}
                                             </div>
@@ -120,19 +122,20 @@ const Detail = () => {
                                         <div className="details-filter-row details-row-size">
                                             <label htmlFor="size">Size:</label>
                                             <div className="select-custom">
-                                                <select name="size" id="size" className="form-control">
+                                                <select name="size" id="size" className="form-control" onChange={getSize}>
                                                     <option value="#" select="selected">Select a size</option>
-                                                    <option value="s">Small</option>
-                                                    <option value="m">Medium</option>
-                                                    <option value="l">Large</option>
-                                                    <option value="xl">Extra Large</option>
+                                                    {fakeSize.map((m,index) => {
+                                                        if(m.image_color === imageColor) {
+                                                            return (<option  key={index+m.image_color} value={m.size}>{m.size}</option>)
+                                                        }
+                                                    })}
                                                 </select>
                                             </div>
 
                                             <a href="#" className="size-guide"><i className="icon-th-list"></i>size guide</a>
                                         </div>
 
-                                        <div className="details-filter-row details-row-size">
+                                        <div className="details-filter-row details-row-size" style={{visibility: 'hidden'}}>
                                             <label htmlFor="qty">Qty:</label>
                                             <div className="product-details-quantity">
                                                 <input type="number" id="qty" className="form-control" defaultValue="1" min="1" max="10" step="1" data-decimals="0" required />
@@ -142,7 +145,8 @@ const Detail = () => {
                                         <div className="product-details-action">
                                             <span href="#" className="btn-product btn-cart"
                                                 onClick={() => {
-                                                    addProductCart(getProduct()[0],imageColor);
+                                                    addProductCart(getProduct(),imageColor);
+                                                    // setSize('')
                                                 }}
                                             ><span>add to cart</span></span>
 
@@ -155,7 +159,7 @@ const Detail = () => {
                                         <div className="product-details-footer">
                                             <div className="product-cat">
                                                 <span>Category:</span>
-                                                <a href="#">{getProduct(id)[0].type}</a>
+                                                <a href="#">{getProduct(id).type}</a>
                                             </div>
 
                                             <div className="social-icons social-icons-sm">
