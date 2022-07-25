@@ -1,28 +1,30 @@
+import { Link } from 'react-router-dom';
+
 const About = () => {
   return (
     <>
       <main className="main">
-        <div
+        {/* <div
           className="page-header text-center"
-          style={{ backgroundImage: "url('assets/images/page-header-bg.jpg')" }}
+          style={{ backgroundImage: "url('/images/page-header-bg.jpg')" }}
         >
           <div className="container">
             <h1 className="page-title">
               About us 2<span>Pages</span>
             </h1>
           </div>
-        </div>
+        </div> */}
         <nav aria-label="breadcrumb" className="breadcrumb-nav">
           <div className="container">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">
                 <a href="#">Pages</a>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
-                About us 2
+                About us
               </li>
             </ol>
           </div>
@@ -44,13 +46,13 @@ const About = () => {
                     lorem at felis.{" "}
                   </p>
                   <img
-                    src={"assets/images/about/about-2/signature.png"}
+                    src={"/images/about/about-2/signature.png"}
                     alt="signature"
                     className="mx-auto mb-5"
                   />
 
                   <img
-                    src={"assets/images/about/about-2/img-1.jpg"}
+                    src={"/images/about/about-2/img-1.jpg"}
                     alt="image"
                     className="mx-auto mb-6"
                   />
@@ -113,7 +115,7 @@ const About = () => {
           <div
             className="bg-image pt-7 pb-5 pt-md-12 pb-md-9"
             style={{
-              backgroundImage: "url(assets/images/backgrounds/bg-4.jpg)",
+              backgroundImage: "url(/images/backgrounds/bg-4.jpg)",
             }}
           >
             <div className="container">
@@ -197,20 +199,19 @@ const About = () => {
           <div className="bg-light-2 pt-6 pb-7 mb-6">
             <div className="container">
               <h2 className="title text-center mb-4">Meet Our Team</h2>
-
-              <div className="row">
-                <div className="col-sm-6 col-lg-3">
+              <div className="row justify-content-center">
+                <div className="col-sm-6 col-lg-2">
                   <div className="member member-2 text-center">
                     <figure className="member-media">
                       <img
-                        src={"assets/images/team/about-2/member-1.jpg"}
+                        src={"/images/team/about-2/tinml.jpg"}
                         alt="member photo"
                       />
 
                       <figcaption className="member-overlay">
                         <div className="social-icons social-icons-simple">
                           <a
-                            href="#"
+                            href="https://www.facebook.com/anhlake.tin"
                             className="social-icon"
                             title="Facebook"
                             target="_blank"
@@ -244,18 +245,18 @@ const About = () => {
                   </div>
                 </div>
 
-                <div className="col-sm-6 col-lg-3">
+                <div className="col-sm-6 col-lg-2">
                   <div className="member member-2 text-center">
                     <figure className="member-media">
                       <img
-                        src={"assets/images/team/about-2/member-2.jpg"}
+                        src={"/images/team/about-2/xuanxuan.jpg"}
                         alt="member photo"
                       />
 
                       <figcaption className="member-overlay">
                         <div className="social-icons social-icons-simple">
                           <a
-                            href="#"
+                            href="https://www.facebook.com/tran.xuanxuan.02"
                             className="social-icon"
                             title="Facebook"
                             target="_blank"
@@ -293,14 +294,14 @@ const About = () => {
                   <div className="member member-2 text-center">
                     <figure className="member-media">
                       <img
-                        src={"assets/images/team/about-2/member-3.jpg"}
+                        src={"/images/team/about-2/tienml.jpg"}
                         alt="member photo"
                       />
 
                       <figcaption className="member-overlay">
                         <div className="social-icons social-icons-simple">
                           <a
-                            href="#"
+                            href="https://www.facebook.com/tienbun.201"
                             className="social-icon"
                             title="Facebook"
                             target="_blank"
@@ -332,19 +333,19 @@ const About = () => {
                       </h3>
                     </div>
                   </div>
-
-                  <div className="col-sm-6 col-lg-3">
+                  </div>
+                  <div className="col-sm-6 col-lg-2">
                     <div className="member member-2 text-center">
                       <figure className="member-media">
                         <img
-                          src="assets/images/team/about-2/member-4.jpg"
+                          src="/images/team/about-2/member-4.jpg"
                           alt="member photo"
                         />
 
                         <figcaption className="member-overlay">
                           <div className="social-icons social-icons-simple">
                             <a
-                              href="#"
+                              href="https://www.facebook.com/quanphan.15902"
                               className="social-icon"
                               title="Facebook"
                               target="_blank"
@@ -378,18 +379,18 @@ const About = () => {
                     </div>
                   </div>
 
-                  <div className="col-sm-6 col-lg-3">
+                  <div className="col-sm-6 col-lg-2">
                     <div className="member member-2 text-center">
                       <figure className="member-media">
                         <img
-                          src="assets/images/team/about-2/member-5.jpg"
+                          src="/images/team/about-2/member-5.jpg"
                           alt="member photo"
                         />
 
                         <figcaption className="member-overlay">
                           <div className="social-icons social-icons-simple">
                             <a
-                              href="#"
+                              href="https://www.facebook.com/dhieu2501/"
                               className="social-icon"
                               title="Facebook"
                               target="_blank"
@@ -422,153 +423,39 @@ const About = () => {
                       </div>
                     </div>
                   </div>
-
-                  <div className="col-sm-6 col-lg-3">
-                    <div className="member member-2 text-center">
-                      <figure className="member-media">
-                        <img
-                          src="assets/images/team/about-2/member-6.jpg"
-                          alt="member photo"
-                        />
-
-                        <figcaption className="member-overlay">
-                          <div className="social-icons social-icons-simple">
-                            <a
-                              href="#"
-                              className="social-icon"
-                              title="Facebook"
-                              target="_blank"
-                            >
-                              <i className="icon-facebook-f"></i>
-                            </a>
-                            <a
-                              href="#"
-                              className="social-icon"
-                              title="Twitter"
-                              target="_blank"
-                            >
-                              <i className="icon-twitter"></i>
-                            </a>
-                            <a
-                              href="#"
-                              className="social-icon"
-                              title="Instagram"
-                              target="_blank"
-                            >
-                              <i className="icon-instagram"></i>
-                            </a>
-                          </div>
-                        </figcaption>
-                      </figure>
-                      <div className="member-content">
-                        <h3 className="member-title">
-                          Lenard Smith<span>Product Manager</span>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-6 col-lg-3">
-                    <div className="member member-2 text-center">
-                      <figure className="member-media">
-                        <img
-                          src="assets/images/team/about-2/member-7.jpg"
-                          alt="member photo"
-                        />
-
-                        <figcaption className="member-overlay">
-                          <div className="social-icons social-icons-simple">
-                            <a
-                              href="#"
-                              className="social-icon"
-                              title="Facebook"
-                              target="_blank"
-                            >
-                              <i className="icon-facebook-f"></i>
-                            </a>
-                            <a
-                              href="#"
-                              className="social-icon"
-                              title="Twitter"
-                              target="_blank"
-                            >
-                              <i className="icon-twitter"></i>
-                            </a>
-                            <a
-                              href="#"
-                              className="social-icon"
-                              title="Instagram"
-                              target="_blank"
-                            >
-                              <i className="icon-instagram"></i>
-                            </a>
-                          </div>
-                        </figcaption>
-                      </figure>
-                      <div className="member-content">
-                        <h3 className="member-title">
-                          Rachel Green<span>Product Manager</span>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-6 col-lg-3">
-                    <div className="member member-2 text-center">
-                      <figure className="member-media">
-                        <img
-                          src="assets/images/team/about-2/member-8.jpg"
-                          alt="member photo"
-                        />
-
-                        <figcaption className="member-overlay">
-                          <div className="social-icons social-icons-simple">
-                            <a
-                              href="#"
-                              className="social-icon"
-                              title="Facebook"
-                              target="_blank"
-                            >
-                              <i className="icon-facebook-f"></i>
-                            </a>
-                            <a
-                              href="#"
-                              className="social-icon"
-                              title="Twitter"
-                              target="_blank"
-                            >
-                              <i className="icon-twitter"></i>
-                            </a>
-                            <a
-                              href="#"
-                              className="social-icon"
-                              title="Instagram"
-                              target="_blank"
-                            >
-                              <i className="icon-instagram"></i>
-                            </a>
-                          </div>
-                        </figcaption>
-                      </figure>
-                      <div className="member-content">
-                        <h3 className="member-title">
-                          David Doe<span>Product Manager</span>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 <div className="text-center mt-3">
                   <a
                     href="blog.html"
                     className="btn btn-sm btn-minwidth-lg btn-outline-primary-2"
                   >
-                    <span>LETS START WORK</span>
+                    <span>GÉC GÔ</span>
                     <i className="icon-long-arrow-right"></i>
                   </a>
                 </div>
               </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
 
             <div className="container">
@@ -588,7 +475,7 @@ const About = () => {
                       <div className="col-6 col-sm-4 col-md-3">
                         <a href="#" className="brand">
                           <img
-                            src="assets/images/brands/1.png"
+                            src="/images/brands/1.png"
                             alt="Brand Name"
                           />
                         </a>
@@ -597,7 +484,7 @@ const About = () => {
                       <div className="col-6 col-sm-4 col-md-3">
                         <a href="#" className="brand">
                           <img
-                            src="assets/images/brands/2.png"
+                            src="/images/brands/2.png"
                             alt="Brand Name"
                           />
                         </a>
@@ -606,7 +493,7 @@ const About = () => {
                       <div className="col-6 col-sm-4 col-md-3">
                         <a href="#" className="brand">
                           <img
-                            src="assets/images/brands/3.png"
+                            src="/images/brands/3.png"
                             alt="Brand Name"
                           />
                         </a>
@@ -615,7 +502,7 @@ const About = () => {
                       <div className="col-6 col-sm-4 col-md-3">
                         <a href="#" className="brand">
                           <img
-                            src="assets/images/brands/7.png"
+                            src="/images/brands/7.png"
                             alt="Brand Name"
                           />
                         </a>
@@ -624,7 +511,7 @@ const About = () => {
                       <div className="col-6 col-sm-4 col-md-3">
                         <a href="#" className="brand">
                           <img
-                            src="assets/images/brands/4.png"
+                            src="/images/brands/4.png"
                             alt="Brand Name"
                           />
                         </a>
@@ -633,7 +520,7 @@ const About = () => {
                       <div className="col-6 col-sm-4 col-md-3">
                         <a href="#" className="brand">
                           <img
-                            src="assets/images/brands/5.png"
+                            src="/images/brands/5.png"
                             alt="Brand Name"
                           />
                         </a>
@@ -642,7 +529,7 @@ const About = () => {
                       <div className="col-6 col-sm-4 col-md-3">
                         <a href="#" className="brand">
                           <img
-                            src="assets/images/brands/6.png"
+                            src="/images/brands/6.png"
                             alt="Brand Name"
                           />
                         </a>
@@ -651,7 +538,7 @@ const About = () => {
                       <div className="col-6 col-sm-4 col-md-3">
                         <a href="#" className="brand">
                           <img
-                            src="assets/images/brands/9.png"
+                            src="/images/brands/9.png"
                             alt="Brand Name"
                           />
                         </a>

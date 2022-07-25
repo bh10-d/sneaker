@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import CardHome from "../../components/homes/CardHome.component";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper';
+import Advertise from '../../components/homes/Advertise.component';
+import TabDetail from '../../components/homes/TabDetail.component';
+import BannerObject from '../../components/homes/BannerObject.component';
+import 'swiper/css';
+import "swiper/css/pagination";
 
 
 const tabs = ["New", "Top selling", "Sale"];
@@ -52,13 +58,6 @@ const Home = () => {
   const [products, setProducts] = useState(test_product);
   const [images, setImages] = useState(test_image);
   useEffect(() => {
-    // fetch(`https://jsonplaceholder.typicode.com/${type}`)
-    //   .then((res) => res.json())
-    //   .then((product) => {
-    //     setProducts(product);
-    //   });
-  }, [type]);
-  useEffect(() => {
     if (type === "New") {
       // fetch(`https://jsonplaceholder.typicode.com/....`)
       // .then((res) => res.json())
@@ -70,115 +69,40 @@ const Home = () => {
   return (
     <>
       <main className="main">
-        <div className="container">
-          <div className="intro-slider-container slider-container-ratio mb-2">
-            <div
-              className="intro-slider owl-carousel owl-simple owl-light owl-nav-inside"
-              data-toggle="owl"
-              data-owl-options='{"nav": false}'
-            >
-              <div className="intro-slide">
-                <figure className="slide-image">
-                  <picture>
-                    <source
-                      media="(max-width: 480px)"
-                      srcSet="/images/demos/demo-10/slider/slide-1-480w.jpg"
-                    />
-                    <img
-                      src="/images/demos/demo-10/slider/slide-1.jpg"
-                      alt="Image Desc"
-                    />
-                  </picture>
-                </figure>
+        <div className="container mb-2">
+          <Swiper
+            spaceBetween={30}
+            pagination={{
+              clickable: true
+            }}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false
+            }}
+            modules={[Autoplay, Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <figure>
+                <img src={`/images/demos/demo-10/slider/slide-1.jpg`} alt="" />
+              </figure>
+              <div className="intro-content">
+                <h3 className="intro-subtitle">Deals and Promotions</h3>
+                <h1 className="intro-title text-white">
+                  Sneakers & Athletic Shoes
+                </h1>
 
-                <div className="intro-content">
-                  <h3 className="intro-subtitle">Deals and Promotions</h3>
-                  <h1 className="intro-title text-white">
-                    Sneakers & Athletic Shoes
-                  </h1>
-
-                  <div className="intro-price text-white">from $9.99</div>
-
-                  <a
-                    href="category.html"
-                    className="btn btn-white-primary btn-round"
-                  >
-                    <span>SHOP NOW</span>
-                    <i className="icon-long-arrow-right"></i>
-                  </a>
-                </div>
+                <div className="intro-price text-white">from $9.99</div>
+                <Link to="/product" className="btn btn-white-primary btn-round">
+                  <span>SHOP NOW</span>
+                  <i className="icon-long-arrow-right"></i>
+                </Link>
               </div>
-
-              <div className="intro-slide">
-                <figure className="slide-image">
-                  <picture>
-                    <source
-                      media="(max-width: 480px)"
-                      srcSet="/images/demos/demo-10/slider/slide-2-480w.jpg"
-                    />
-                    <img
-                      src="/images/demos/demo-10/slider/slide-2.jpg"
-                      alt="Image Desc"
-                    />
-                  </picture>
-                </figure>
-
-                <div className="intro-content">
-                  <h3 className="intro-subtitle">Trending Now</h3>
-                  <h1 className="intro-title text-white">
-                    This Week's Most Wanted
-                  </h1>
-
-                  <div className="intro-price text-white">from $49.99</div>
-
-                  <a
-                    href="category.html"
-                    className="btn btn-white-primary btn-round"
-                  >
-                    <span>SHOP NOW</span>
-                    <i className="icon-long-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-
-              <div className="intro-slide">
-                <figure className="slide-image">
-                  <picture>
-                    <source
-                      media="(max-width: 480px)"
-                      srcSet="/images/demos/demo-10/slider/slide-3-480w.jpg"
-                    />
-                    <img
-                      src="/images/demos/demo-10/slider/slide-3.jpg"
-                      alt="Image Desc"
-                    />
-                  </picture>
-                </figure>
-
-                <div className="intro-content">
-                  <h3 className="intro-subtitle text-white">
-                    Deals and Promotions
-                  </h3>
-                  <h1 className="intro-title text-white">
-                    Can’t-miss Clearance:
-                  </h1>
-
-                  <div className="intro-price text-white">
-                    starting at 60% off
-                  </div>
-
-                  <a
-                    href="category.html"
-                    className="btn btn-white-primary btn-round"
-                  >
-                    <span>SHOP NOW</span>
-                    <i className="icon-long-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <span className="slider-loader"></span>
-          </div>
+            </SwiperSlide>
+            <SwiperSlide><img src={`/images/demos/demo-10/slider/slide-2.jpg`} alt="" /></SwiperSlide>
+            <SwiperSlide><img src={`/images/demos/demo-10/slider/slide-3.jpg`} alt="" /></SwiperSlide>
+          </Swiper>
         </div>
 
         <div className="banner-group">
@@ -311,118 +235,13 @@ const Home = () => {
         <div className="icon-boxes-container icon-boxes-separator bg-transparent">
           <div className="container">
             <div className="row">
-              <div className="col-sm-6 col-lg-3">
-                <div className="icon-box icon-box-side">
-                  <span className="icon-box-icon text-primary">
-                    <i className="icon-rocket"></i>
-                  </span>
-
-                  <div className="icon-box-content">
-                    <h3 className="icon-box-title">Free Shipping</h3>
-                    <p>Orders $50 or more</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-sm-6 col-lg-3">
-                <div className="icon-box icon-box-side">
-                  <span className="icon-box-icon text-primary">
-                    <i className="icon-rotate-left"></i>
-                  </span>
-
-                  <div className="icon-box-content">
-                    <h3 className="icon-box-title">Free Returns</h3>
-                    <p>Within 30 days</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-sm-6 col-lg-3">
-                <div className="icon-box icon-box-side">
-                  <span className="icon-box-icon text-primary">
-                    <i className="icon-info-circle"></i>
-                  </span>
-
-                  <div className="icon-box-content">
-                    <h3 className="icon-box-title">Get 20% Off 1 Item</h3>
-                    <p>when you sign up</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-sm-6 col-lg-3">
-                <div className="icon-box icon-box-side">
-                  <span className="icon-box-icon text-primary">
-                    <i className="icon-life-ring"></i>
-                  </span>
-
-                  <div className="icon-box-content">
-                    <h3 className="icon-box-title">We Support</h3>
-                    <p>24/7 amazing services</p>
-                  </div>
-                </div>
-              </div>
+              <Advertise/>
             </div>
           </div>
         </div>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-sm-6 col-md-4">
-              <div className="banner banner-cat">
-                <a href="#">
-                  <img
-                    src="/images/demos/demo-10/banners/banner-5.jpg"
-                    alt="Banner"
-                  />
-                </a>
-
-                <div className="banner-content banner-content-overlay text-center">
-                  <h3 className="banner-title font-weight-normal">Women's</h3>
-                  <h4 className="banner-subtitle">125 Products</h4>
-                  <a href="category.html" className="banner-link">
-                    SHOP NOW
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-sm-6 col-md-4">
-              <div className="banner banner-cat">
-                <a href="#">
-                  <img
-                    src="/images/demos/demo-10/banners/banner-6.jpg"
-                    alt="Banner"
-                  />
-                </a>
-
-                <div className="banner-content banner-content-overlay text-center">
-                  <h3 className="banner-title font-weight-normal">Men's</h3>
-                  <h4 className="banner-subtitle">97 Products</h4>
-                  <a href="category.html" className="banner-link">
-                    SHOP NOW
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-sm-6 col-md-4">
-              <div className="banner banner-cat">
-                <a href="#">
-                  <img
-                    src="/images/demos/demo-10/banners/banner-7.jpg"
-                    alt="Banner"
-                  />
-                </a>
-
-                <div className="banner-content banner-content-overlay text-center">
-                  <h3 className="banner-title font-weight-normal">Kid's</h3>
-                  <h4 className="banner-subtitle">48 Products</h4>
-                  <a href="category.html" className="banner-link">
-                    SHOP NOW
-                  </a>
-                </div>
-              </div>
-            </div>
+            <BannerObject/>
           </div>
         </div>
 
@@ -431,6 +250,8 @@ const Home = () => {
         <div className="container">
           <div className="heading heading-center mb-3">
             <h2 className="title-lg mb-2">My products</h2>
+
+
 
             <ul className="nav nav-pills justify-content-center" role="tablist">
               {tabs.map((tab, index) => (
@@ -456,52 +277,15 @@ const Home = () => {
                 </li>
               ))}
             </ul>
+
+
+
+
+
           </div>
 
           <div className="tab-content">
-            <div
-              className="tab-pane p-0 fade show active"
-              id="top-all-tab"
-              role="tabpanel"
-              aria-labelledby="top-all-link"
-            >
-              <div className="products just-action-icons-sm">
-                <div className="row">
-                  {products.map((product, index) => (
-                    <CardHome key={index} product={product} path={images} />
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div
-              className="tab-pane p-0 fade"
-              id="top-women-tab"
-              role="tabpanel"
-              aria-labelledby="top-women-link"
-            >
-              <div className="products just-action-icons-sm">
-                <div className="row">
-                  {products.map((product, index) => (
-                    <CardHome key={index} product={product} path={images} />
-                  ))}
-                </div>
-              </div>
-            </div>
-            {/* end */}
-            <div
-              className="tab-pane p-0 fade"
-              id="top-men-tab"
-              role="tabpanel"
-              aria-labelledby="top-men-link"
-            >
-              <div className="products just-action-icons-sm">
-                <div className="row">
-                  {products.map((product, index) => (
-                    <CardHome key={index} product={product} path={images} />
-                  ))}
-                </div>
-              </div>
-            </div>
+            <TabDetail tab={type} data={products} images={images} />
           </div>
 
 

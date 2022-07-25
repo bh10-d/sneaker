@@ -2065,7 +2065,7 @@ blockquote.text-white cite span {
   position: relative;
 }
 
-.menu.sf-arrows .sf-with-ul::after {
+/* .menu.sf-arrows .sf-with-ul::after {
   font-family: "molla";
   content: "\f110";
   position: absolute;
@@ -2075,16 +2075,16 @@ blockquote.text-white cite span {
   font-size: 1rem;
   line-height: 1;
   margin-top: -0.5rem;
-}
+} */
 
 .menu.sf-arrows ul .sf-with-ul {
   padding-right: 4rem;
 }
 
-.menu.sf-arrows ul .sf-with-ul:after {
+/* .menu.sf-arrows ul .sf-with-ul:after {
   content: "\f112";
   right: 3rem;
-}
+} */
 
 .menu .megamenu,
 .menu ul {
@@ -19934,3 +19934,45 @@ button:focus {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
+} */
+
+.swiper-pagination-bullet{
+  background-color: transparent;
+  border: 1px solid white;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active{
+  background-color: white;
+  width: 20px;
+  border-radius: 10px;
+}

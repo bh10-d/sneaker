@@ -29,13 +29,13 @@ const CardDetail = ({ idProduct, imageFirst }) => {
               src={`/images/image_products/${image}`}
               alt="product image"
             />
-            <a
+            {/* <a
               href="#"
               id="btn-product-gallery"
               className="btn-product-gallery"
             >
               <i className="icon-arrows"></i>
-            </a>
+            </a> */}
           </figure>
 
           <div id="product-zoom-gallery" className="product-image-gallery">

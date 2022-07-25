@@ -1,4 +1,4 @@
-import {Link, useLocation} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Cart from '../cart/Cart.component';
 
 
@@ -12,33 +12,33 @@ const list = [
     },
     {
         id: 2,
-        content: 'Shop',
-        class: 'sf-with-ul',
-        link: '/shop'
-    },
-    {
-        id: 3,
         content: 'Product',
         class: 'sf-with-ul',
         link: '/product'
     },
     {
-        id: 4,
-        content: 'Pages',
+        id: 3,
+        content: 'About',
         class: 'sf-with-ul',
-        link: '/pages'
+        link: '/about'
+    },
+    {
+        id: 4,
+        content: 'FAQs',
+        class: 'sf-with-ul',
+        link: '/faq'
     },
     {
         id: 5,
-        content: 'Blog',
+        content: 'Contact',
         class: 'sf-with-ul',
-        link: '/blog'
+        link: '/contact'
     },
     {
         id: 6,
-        content: 'Elements',
+        content: 'Login',
         class: 'sf-with-ul',
-        link: '/elements'
+        link: '/login'
     },
 ]
 
@@ -48,8 +48,8 @@ const ChildNav = ({ props }) => {
             {/* <li className="megamenu-container active">
                 <a href="index.html" className="sf-with-ul">Home</a>
             </li> */}
-            <li key={props.id}>
-                <a href={props.link} className={props.class}>{props.content}</a>
+            <li>
+                <Link to={props.link} className={props.class}>{props.content}</Link>
             </li>
         </>
     )
@@ -64,11 +64,11 @@ const NavBar = () => {
             <div className="header-right">
                 <nav className="main-nav">
                     <ul className="menu sf-arrows">
-                        {/* {list.map(m=><ChildNav props={m}/>)} */}
-                        <li className={`megamenu-container ${(location.pathname === '/')?'active':''}`}>
+                        {list.map(m => <ChildNav props={m} key={m.id} />)}
+                        {/* <li className={`megamenu-container ${(location.pathname === '/')?'active':''}`}>
                             <Link to="/" className="sf-with-ul">Home</Link>
 
-                            {/* <div className="megamenu demo">
+                            <div className="megamenu demo">
                                 <div className="menu-col">
                                     <div className="menu-title">Choose your demo</div>
 
@@ -247,8 +247,8 @@ const NavBar = () => {
                                         <a href="#" className="btn btn-outline-primary-2 view-all-demos"><span>View All Demos</span><i className="icon-long-arrow-right"></i></a>
                                     </div>
                                 </div>
-                            </div> */}
-                        </li>
+                            </div>
+                        </li> */}
                         {/* <li>
                             <Link to="/category" className="sf-with-ul">Shop</Link>
 
@@ -307,10 +307,13 @@ const NavBar = () => {
                                 </div>
                             </div>
                         </li> */}
-                        <li className={`${(location.pathname === '/product')?'active':''}`}>
+                        {/* <li className={`${(location.pathname === '/product')?'active':''}`}>
                             <Link to="/product" className="sf-with-ul">Product</Link>
 
-                            {/* <div className="megamenu megamenu-sm">
+
+
+
+                            <div className="megamenu megamenu-sm">
                                 <div className="row no-gutters">
                                     <div className="col-md-6">
                                         <div className="menu-col">
@@ -340,9 +343,12 @@ const NavBar = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div> */}
-                        </li>
-                        <li className={`${(location.pathname === '/page')?'active':''}`}>
+                            </div>
+
+
+
+                        </li> */}
+                        {/* <li className={`${(location.pathname === '/page')?'active':''}`}>
                             <Link to="/page" className="sf-with-ul">Pages</Link>
 
                             <ul>
@@ -367,8 +373,8 @@ const NavBar = () => {
                                 <li><Link to="/404">Error 404</Link></li>
                                 <li><Link to="/coming-soon">Coming Soon</Link></li>
                             </ul>
-                        </li>
-                        <li className={`${(location.pathname === '/blog')?'active':''}`}>
+                        </li> */}
+                        {/* <li className={`${(location.pathname === '/blog')?'active':''}`}>
                             <Link to="/blog" className="sf-with-ul">Blog</Link>
 
                             <ul>
@@ -408,7 +414,7 @@ const NavBar = () => {
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
+                        </li> */}
                         {/* <li>
                             <Link to="/elements-list" className="sf-with-ul">Elements</Link>
 

@@ -28,10 +28,9 @@ const Card = (props) => {
     setImage(path[path.length-1]);
   };
 
-  // console.log(props.path)
   return (
     <>
-      <div className="col-6 col-md-4 col-lg-4" key={props.id}>
+      <div className={(props.className == undefined)?"col-6 col-md-4 col-lg-4":props.className} key={props.id}>
         <div className="product product-7 text-center">
           <figure className="product-media">
             <Status status={props.status} />

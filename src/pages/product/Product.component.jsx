@@ -1,5 +1,6 @@
 import React,{ useState } from 'react';
 import { AppContext } from '../../context/AppProvider';
+import SideBar from '../../components/products/SideBar.component';
 import Card from '../../components/products/Card.component';
 
 const Product = () => {
@@ -112,7 +113,8 @@ const Product = () => {
                                     </ul>
                                 </nav>
                             </div>
-                            <aside className="col-lg-3 order-lg-first">
+                            <SideBar/>
+                            {/* <aside className="col-lg-3 order-lg-first">
                                 <div className="sidebar sidebar-shop">
                                     <div className="widget widget-clean">
                                         <label>Filters:</label>
@@ -121,12 +123,12 @@ const Product = () => {
 
                                     <div className="widget widget-collapsible">
                                         <h3 className="widget-title">
-                                            <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">
+                                            <a onClick={()=>setShowcate(!showcate)} style={{cursor: 'pointer'}}>
                                                 Category
                                             </a>
                                         </h3>
 
-                                        <div className="collapse show" id="widget-1">
+                                        <div className={`collapse ${(showcate)?'show':''}`} id="widget-1">
                                             <div className="widget-body">
                                                 <div className="filter-items filter-items-count">
                                                     <div className="filter-item">
@@ -199,12 +201,12 @@ const Product = () => {
 
                                     <div className="widget widget-collapsible">
                                         <h3 className="widget-title">
-                                            <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
+                                            <a onClick={()=>setShowsize(!showsize)} style={{cursor: 'pointer'}}>
                                                 Size
                                             </a>
                                         </h3>
 
-                                        <div className="collapse show" id="widget-2">
+                                        <div className={`collapse ${(showsize)?"show":""}`} id="widget-2">
                                             <div className="widget-body">
                                                 <div className="filter-items">
                                                     <div className="filter-item">
@@ -223,7 +225,6 @@ const Product = () => {
 
                                                     <div className="filter-item">
                                                         <div className="custom-control custom-checkbox">
-                                                        {/* defaultChecked */}
                                                             <input type="checkbox" className="custom-control-input" id="size-3" />
                                                             <label className="custom-control-label" htmlFor="size-3">M</label>
                                                         </div>
@@ -279,12 +280,12 @@ const Product = () => {
 
                                     <div className="widget widget-collapsible">
                                         <h3 className="widget-title">
-                                            <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true" aria-controls="widget-4">
+                                            <a onClick={()=>setShowbrand(!showbrand)} style={{cursor: "pointer"}}>
                                                 Brand
                                             </a>
                                         </h3>
 
-                                        <div className="collapse show" id="widget-4">
+                                        <div className={`collapse ${(showbrand)?"show":""}`} id="widget-4">
                                             <div className="widget-body">
                                                 <div className="filter-items">
                                                     <div className="filter-item">
@@ -362,7 +363,7 @@ const Product = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </aside>
+                            </aside> */}
                         </div>
                     </div>
                 </div>

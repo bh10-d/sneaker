@@ -131,6 +131,36 @@ const fakeSize = [
     size: 44
   },
 ]
+
+const fakeComments = [
+  {
+    comment_id: 1,
+    comment: 'sản phẩm đẹp quá à',
+    star: 5,
+    product_id: "1",
+    user_id: "1",
+    date: "12/12/2022",
+    parent_id_comment: 0 // click vao comment thi se bat vao id cha va gan vao truong parent id cmt con // cmt duoc toa khong thong qua rep cmt se co parent id la 0
+  },
+  {
+    comment_id: 2,
+    comment: 'sản phẩm quá tệ',
+    star: 0,
+    product_id: "1",
+    user_id: "2",
+    date: "12/12/2022",
+    parent_id_comment: 0 //cmt k phai la reply cmt thi co parent id cmt la 0
+  },
+  {
+    comment_id: 3,
+    comment: 'sản phẩm tốt',
+    star: 4,
+    product_id: "1",
+    user_id: "3",
+    date: "12/12/2022",
+    parent_id_comment: 1
+  }
+]
 export const AppContext = React.createContext();
 
 export default function AppProvider({ children }) {
@@ -190,7 +220,8 @@ export default function AppProvider({ children }) {
         data,
         setData,
         addProductCart,
-        fakeImageDetail
+        fakeImageDetail,
+        fakeComments
       }}
     >
       {children}

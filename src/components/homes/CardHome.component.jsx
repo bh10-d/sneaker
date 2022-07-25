@@ -40,7 +40,7 @@ const CardHome = ({ product, path }) => {
               <Link to="/product">{product.brand}</Link>
             </div>
             <h3 className="product-title">
-              <Link to="/product">{product.name}</Link>
+              <Link to={`/detail/${image}/${product.id}`}>{product.name}</Link>
             </h3>
             <div className="product-price">
               <span className="new-price">Now $125.99</span>
