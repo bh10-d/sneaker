@@ -50,8 +50,8 @@ const Cart = () => {
 
                     </div>
                     <div className="dropdown-cart-action">
-                        <a href="cart.html" className="btn btn-primary">View Cart</a>
-                        <a href="checkout.html" className="btn btn-outline-primary-2"><span>Checkout</span><i className="icon-long-arrow-right"></i></a>
+                        <Link to="cart" className="btn btn-primary">View Cart</Link>
+                        <Link to="checkout" className="btn btn-outline-primary-2"><span>Checkout</span><i className="icon-long-arrow-right"></i></Link>
                     </div>
                 </div>
             </div>
