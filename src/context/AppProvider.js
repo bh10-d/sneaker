@@ -175,6 +175,7 @@ export default function AppProvider({ children }) {
       return [];
     }
   });
+  const [ auth, setAuth ] = useState(false);
 
     //function
     const addProductCart = (props, image ) => {
@@ -221,7 +222,9 @@ export default function AppProvider({ children }) {
         setData,
         addProductCart,
         fakeImageDetail,
-        fakeComments
+        fakeComments,
+        auth,
+        setAuth
       }}
     >
       {children}

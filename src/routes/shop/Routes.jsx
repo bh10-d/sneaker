@@ -10,7 +10,7 @@ import FAQ from '../../pages/faq/faq.component';
 import About from '../../pages/about/About.component';
 import ErrorPage from '../../pages/404/ErrorPage.component';
 import Contact from '../../pages/contact/Contact.component';
-import Auth from '../../pages/auth/Auth.component';
+// import Auth from '../../pages/auth/Auth.component';
 
 
 import '../../assets/css/bootstrap.min.css';
@@ -31,7 +31,7 @@ const CustomRoutes = () => {
                 <Route exact path="contact" element={<Contact />} />
                 <Route exact path="faq" element={<FAQ />} />
                 <Route exact path="about" element={<About />} />
-                <Route exact path="login" element={<Auth />} />
+                {/* <Route exact path="auth" element={<Auth />} /> */}
                 <Route exact path="*" element={<ErrorPage />} />
             </Routes>
 
