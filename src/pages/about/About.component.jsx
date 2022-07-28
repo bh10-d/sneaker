@@ -239,7 +239,7 @@ const About = () => {
                     </figure>
                     <div className="member-content">
                       <h3 className="member-title">
-                        Samanta Grey<span>Founder & CEO</span>
+                        Ho Anh Tin<span>Founder & CEO</span>
                       </h3>
                     </div>
                   </div>
@@ -284,7 +284,7 @@ const About = () => {
                     </figure>
                     <div className="member-content">
                       <h3 className="member-title">
-                        Bruce Sutton<span>Sales & Marketing Manager</span>
+                        Tran Thi Xuan Xuan<span>Sales & Marketing Manager</span>
                       </h3>
                     </div>
                   </div>
@@ -373,7 +373,7 @@ const About = () => {
                       </figure>
                       <div className="member-content">
                         <h3 className="member-title">
-                          Mark Pocket<span>Product Manager</span>
+                          Phan Tien Quan<span>Product Manager</span>
                         </h3>
                       </div>
                     </div>
@@ -383,7 +383,7 @@ const About = () => {
                     <div className="member member-2 text-center">
                       <figure className="member-media">
                         <img
-                          src="/images/team/about-2/member-5.jpg"
+                          src="/images/team/about-2/buiduchieu.jpg"
                           alt="member photo"
                         />
 
@@ -418,7 +418,7 @@ const About = () => {
                       </figure>
                       <div className="member-content">
                         <h3 className="member-title">
-                          Damion Blue<span>Sales & Marketing Manager</span>
+                          Bui Duc Hieu<span>Staff</span>
                         </h3>
                       </div>
                     </div>

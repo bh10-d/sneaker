@@ -1,15 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
-import GlobalStyles from "./components/GlobalStyles";
 import App from "./App";
+
+
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './redux/reducers'
+const store = createStore(
+  rootReducer
+)
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <GlobalStyles>
-      <App />
-    </GlobalStyles>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+  </Provider>
 );

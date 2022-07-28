@@ -1,20 +1,30 @@
 import { Routes, Route } from 'react-router-dom';
 import AppProvider from './context/AppProvider';
-import Header from './components/header/Header.component';
-import Footer from './components/footer/Footer.component';
-import Home from './pages/home/Home.component';
-import Product from './pages/product/Product.component';
-import Detail from './pages/detail/Detail.component';
-import Info from './pages/info/Info.component';
-import Cart from './pages/cart/Cart.component';
-import FAQ from './pages/faq/faq.component';
-import About from './pages/about/About.component';
-import ErrorPage from './pages/404/ErrorPage.component';
-import Contact from './pages/contact/Contact.component';
-import './App.css';
+import ShopLayout from './routes/shop/ShopLayout.component';
+// admin
+import AdminLayout from './routes/admin/AdminLayout.component';
+
+
+
+const NORMAL_PAGE = () => {
+  return (
+    <>
+      <ShopLayout/>
+    </>
+  )
+}
+
+const ADMIN_PAGE = () => {
+  return (
+    <>
+      <AdminLayout />
+    </>
+  )
+}
 
 function App() {
   return (
+<<<<<<< HEAD
     <div className="page-wrapper">
       <AppProvider>
           <Header />
@@ -35,6 +45,14 @@ function App() {
         </Routes> */}
       </AppProvider>
     </div>
+=======
+    <AppProvider>
+      <Routes>
+        <Route exact path="/*" element={<NORMAL_PAGE />} />
+        <Route exact path="admin/*" element={<ADMIN_PAGE />} />
+      </Routes>
+    </AppProvider>
+>>>>>>> 5ccb76a88e645c4e31a44eaf1a60aa989a4df8bd
   );
 }
 
