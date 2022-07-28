@@ -1,36 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../context/AppProvider";
-
+import { url } from "../../utils/request";
 const Status = ({ status }) => {
-  if (status == "new") {
+  if (status === "new") {
     return <span className="product-label label-new">New</span>;
   }
 
-  if (status == "top") {
+  if (status === "top") {
     return <span className="product-label label-top">Top</span>;
   }
 
-  if (status == "out") {
+  if (status === "out") {
     return <span className="product-label label-out">Out of stock</span>;
   }
 };
 
 const Card = (props) => {
-  const { addProductCart } = React.useContext(AppContext);
+  const { addProductCart, discount } = React.useContext(AppContext);
   const [image, setImage] = useState(
-    props.path.find((m) => m.id === props.id).image_color
+    props.path.find((m) => m.product_id == props.id).image_color
   );
-  // console.log(props.path.find(m => m.id == props.id))
+
   const handleClick = (e) => {
     const path = e.target.src.split(/\//)
     console.log(path);
     setImage(path[path.length-1]);
   };
-
+  const checkSale = useMemo(() => {
+    const test = discount.find(
+      (f) => f.product_id === props.id && f.status == 1
+    );
+    return test;
+  }, []);
+  const handelAddToCart = () => {
+    if (checkSale != null) {
+      addProductCart({
+        ...props.product,
+        size: "",
+        image: image,
+        price: props.product.price - (props.product.price * checkSale.percent) / 100
+      });
+    } else {
+      addProductCart({
+        ...props.product,
+        size: "",
+        image: image,
+      });
+    }
+  };
+  console.log(props);
   return (
     <>
-      <div className={(props.className == undefined)?"col-6 col-md-4 col-lg-4":props.className} key={props.id}>
+      <div className={(props.className === undefined)?"col-6 col-md-4 col-lg-4":props.className} key={props.id}>
         <div className="product product-7 text-center">
           <figure className="product-media">
             <Status status={props.status} />
@@ -64,11 +86,9 @@ const Card = (props) => {
 
             <div className="product-action">
               <span
+              style={{cursor:"pointer"}}
                 className="btn-product btn-cart"
-                onClick={() => {
-                  
-                  addProductCart( props, image);
-                }}
+                onClick={handelAddToCart}
               >
                 <span>add to cart</span>
               </span>
@@ -77,12 +97,27 @@ const Card = (props) => {
 
           <div className="product-body">
             <div className="product-cat">
-              <a href="#">{props.type}</a>
+              <a href={'#'}>{props.type}</a>
             </div>
             <h3 className="product-title">
               <a href="product.html">{props.name}</a>
             </h3>
-            <div className="product-price">${props.price}</div>
+            <div className="product-price">
+              {checkSale === undefined ? (
+                <>
+                  <span className="new-price">Now ${props.price}</span>
+                </>
+              ) : (
+                <>
+                  <span className="new-price">
+                    Now $
+                    {+props.price -
+                      (+props.price * checkSale.percent) / 100}
+                  </span>
+                  <span className="old-price">${props.price}</span>
+                </>
+              )}
+            </div>
             <div className="ratings-container">
               <div className="ratings">
                 <div className="ratings-val" style={{ width: "20%" }}></div>
@@ -91,22 +126,13 @@ const Card = (props) => {
             </div>
 
             <div className="product-nav product-nav-thumbs">
-              {/* <a href="#" className="active">
-                                <img src="images/products/product-4-thumb.jpg" alt="product desc" />
-                            </a>
-                            <a href="#">
-                                <img value={2} src="images/products/product-4-2-thumb.jpg" alt="product desc" />
-                            </a>
-
-                            <a href="#">
-                                <img src="images/products/product-4-3-thumb.jpg" alt="product desc" />
-                            </a> */}
               {props.path !== undefined ? (
+                
                 props.path.map((m, i) => {
-                  if (m.id == props.id) {
+                  if (m.product_id == props.id) {
                     return (
                       <span key={i} onClick={handleClick}>
-                        <img src={`/images/image_products/${m.image_color}`} alt="product desc" />
+                        <img src={url + m.image_color} alt="product desc" />
                       </span>
                     );
                   } else {

@@ -21,8 +21,8 @@ const Select = (props) => {
             <select name="" id="" onChange={handleChange}>
                 <option value={props.size} >{size}</option>
                 {props.childSize.map((m, index) => {
-                    if (m.image_color === props.image) {
-                        return (<option key={index + m.image_color} value={m.size}>{m.size}</option>)
+                    if (m.image_color === props.image && m.quantity > 0 && m.size_id != props.size) {
+                        return (<option key={index + m.image_color} value={m.size_id}>{m.size_id}</option>)
                     }
                 })}
             </select>

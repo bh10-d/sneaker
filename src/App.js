@@ -17,7 +17,6 @@ function App() {
   return (
     <div className="page-wrapper">
       <AppProvider>
-        <div style={{}}>
           <Header />
           <Routes>
             <Route exact path="/" element={<Home />} />
@@ -31,7 +30,6 @@ function App() {
             <Route exact path="/404" element={<ErrorPage />} />
           </Routes>
           <Footer />
-        </div>
         {/* <Routes>
           <Route exact path="/admin" element={<Home />} />
         </Routes> */}

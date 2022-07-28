@@ -1,169 +1,74 @@
 import React from "react";
-import { useState } from "react";
-
-const fakeDataApi = [
-  {
-    id: "1",
-    type: "Adidas",
-    name: "SuperStar",
-    price: "60.00",
-    reviews: "2",
-    status: "new",
-  },
-  {
-    id: "2",
-    type: "Adidas",
-    name: "Forum",
-    price: "75.00",
-    reviews: "10",
-    status: "out",
-  },
-  {
-    id: "3",
-    type: "Adidas",
-    name: "BOA Codechaos",
-    price: "100.00",
-    reviews: "10",
-    status: "top",
-  },
-];
-
-const fakeImageApi = [
-  {
-    id: "1",
-    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
-  },
-  {
-    id: "2",
-    image_color: "Giay_Co_Thap_Forum_trang_FY7756_01_standard-removebg-preview.png",
-  },
-  {
-    id: "1",
-    image_color: "Giay_Superstar_trang_GZ3742_01_standard-removebg-preview.png",
-  },
-  {
-    id: "2",
-    image_color: "Giay_Co_Thap_Forum_trang_FY7757_01_standard-removebg-preview.png",
-  },
-  {
-    id: "1",
-    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
-  },
-  {
-    id: "3",
-    image_color: "Giay_DJinh_Lien_BOA_Codechaos_22_DJen_GX3937_01_standard-removebg-preview.png",
-  },
-  {
-    id: "3",
-    image_color: "Giay_DJinh_Lien_BOA_Codechaos_22_trang_GX0199_01_standard-removebg-preview.png",
-  },
-  {
-    id: "3",
-    image_color: "Giay_DJinh_Lien_BOA_Codechaos_22_trang_GX3938_01_standard-removebg-preview.png",
-  },
-];
-
-const fakeImageDetail = [
-  {
-    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
-    image_detail: "Giay_Superstar_trang_EG4958_02_standard_hover-removebg-preview.png"
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
-    image_detail: "Giay_Superstar_trang_EG4958_03_standard-removebg-preview.png"
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
-    image_detail: "Giay_Superstar_trang_EG4958_04_standard-removebg-preview.png"
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
-    image_detail: "Giay_Superstar_trang_EG4960_02_standard_hover-removebg-preview.png"
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
-    image_detail: "Giay_Superstar_trang_EG4960_03_standard-removebg-preview.png"
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
-    image_detail: "Giay_Superstar_trang_EG4960_04_standard-removebg-preview.png"
-  },
-]
-const fakeSize = [
-  {
-    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
-    size: 39
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
-    size: 40
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
-    size: 41
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
-    size: 42
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png",
-    size: 43
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
-    size: 40
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
-    size: 41
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
-    size: 42
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
-    size: 43
-  },
-  {
-    image_color: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png",
-    size: 44
-  },
-]
-
+import { useState, useEffect } from "react";
+import { get } from "../service/apiServices";
+import { Hypnosis } from "react-cssfx-loading";
 const fakeComments = [
   {
     comment_id: 1,
-    comment: 'sản phẩm đẹp quá à',
+    comment: "sản phẩm đẹp quá à",
     star: 5,
     product_id: "1",
     user_id: "1",
     date: "12/12/2022",
-    parent_id_comment: 0 // click vao comment thi se bat vao id cha va gan vao truong parent id cmt con // cmt duoc toa khong thong qua rep cmt se co parent id la 0
+    parent_id_comment: 0, // click vao comment thi se bat vao id cha va gan vao truong parent id cmt con // cmt duoc toa khong thong qua rep cmt se co parent id la 0
   },
   {
     comment_id: 2,
-    comment: 'sản phẩm quá tệ',
+    comment: "sản phẩm quá tệ",
     star: 0,
     product_id: "1",
     user_id: "2",
     date: "12/12/2022",
-    parent_id_comment: 0 //cmt k phai la reply cmt thi co parent id cmt la 0
+    parent_id_comment: 0, //cmt k phai la reply cmt thi co parent id cmt la 0
   },
   {
     comment_id: 3,
-    comment: 'sản phẩm tốt',
+    comment: "sản phẩm tốt",
     star: 4,
     product_id: "1",
     user_id: "3",
     date: "12/12/2022",
-    parent_id_comment: 1
-  }
-]
+    parent_id_comment: 1,
+  },
+];
 export const AppContext = React.createContext();
 
 export default function AppProvider({ children }) {
+  const [products, setProducts] = useState([]);
+  const [images_color, setImageColors] = useState([]);
+  const [sizes, setSizes] = useState([]);
+  const [images_detail, setImageDetail] = useState([]);
+  const [discount, setDiscount] = useState([]);
+  const [load, loading] = useState(true);
+  // load image color
+  useEffect(() => {
+    const fetchImageColorApi = async () => {
+      const result = await get("product/color/data");
+      setImageColors(result);
+    };
+    fetchImageColorApi();
+    const fetchProductApi = async () => {
+      const result = await get("product/data");
+      setProducts(result);
+    };
+    fetchProductApi();
+    const fetchImageDetailApi = async () => {
+      const result = await get("product/colorDetail/data");
+      setImageDetail(result);
+    };
+    fetchImageDetailApi();
+    const fetchSizeApi = async () => {
+      const result = await get("product/size/data");
+      setSizes(result);
+    };
+    fetchSizeApi();
+    const fetchDiscountApi = async () => {
+      const result = await get("product/discount/data");
+      setDiscount(result);
+    };
+    fetchDiscountApi();
+    loading(false);
+  }, []);
   // state
   const [data, setData] = useState(() => {
     const check = localStorage.getItem("sneakershop");
@@ -175,56 +80,54 @@ export default function AppProvider({ children }) {
       return [];
     }
   });
-
-    //function
-    const addProductCart = (props, image ) => {
-        const index = data.findIndex((m) => m.image === image);
-        const indexSize = data.findIndex(m=>m.size === props.size);
-        const getProduct = data.findIndex(m=>m.image === image && m.size === props.size);
-        if (index !== -1 && indexSize !== -1) {
-            localStorage.removeItem("sneakershop");
-            data[getProduct].quantity += 1;
-            setData(() => [...data])
-            const jsonProducts = JSON.stringify(data);
-            localStorage.setItem("sneakershop", jsonProducts);
-        } else {
-            setData((prev) => {
-                const newProducts = [
-                    ...prev,
-                    {
-                        id: props.id,
-                        name: props.name,
-                        price: props.price,
-                        image: image,
-                        quantity: 1,
-                        size: props.size
-                    },
-                ];
-                const jsonProducts = JSON.stringify(newProducts);
-                localStorage.setItem("sneakershop", jsonProducts);
-                return newProducts;
-            });
-        }
-        // console.log(getProduct)
-        // console.log(props)
-        // console.log(image)
-        // console.log(indexSize)
-    };
-
+  //function
+  const addProductCart = (props) => {
+    // const index = data.findIndex((m) => m.image === props.image);
+    // const indexSize = data.findIndex((m) => m.size === props.size);
+    const getProduct = data.findIndex(
+      (m) => m.image === props.image && m.size === props.size
+    );
+    // index !== -1 && indexSize !== -1
+    if (getProduct !== -1) {
+      data[getProduct].quantity += 1;
+      setData([...data]);
+      const jsonProducts = JSON.stringify(data);
+      localStorage.setItem("sneakershop", jsonProducts);
+    } else {
+      setData((prev) => {
+        const newProducts = [
+          ...prev,
+          {
+            id: props.id,
+            name: props.name,
+            price: props.price,
+            image: props.image,
+            quantity: 1,
+            size: props.size,
+          },
+        ];
+        const jsonProducts = JSON.stringify(newProducts);
+        localStorage.setItem("sneakershop", jsonProducts);
+        return newProducts;
+      });
+    }
+  };
   return (
     <AppContext.Provider
       value={{
-        fakeDataApi,
-        fakeImageApi,
-        fakeSize,
+        products,
+        images_color,
+        sizes,
         data,
         setData,
         addProductCart,
-        fakeImageDetail,
-        fakeComments
+        images_detail,
+        discount,
+        fakeComments,
+        loading
       }}
     >
-      {children}
+      {load === true ? <Hypnosis /> : children}
     </AppContext.Provider>
   );
 }

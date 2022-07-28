@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/AppProvider';
 import Element from './Element.component';
@@ -22,13 +22,16 @@ const Cart = () => {
         }
     }
 
-    const sum = (arr) => {
+    const sum = useMemo(() => {
         let sum = 0;
-        arr.map(m => {
-            sum += m.price * m.quantity
-        })
+        data.map(m => sum += m.price * m.quantity)
         return sum;
-    }
+    }, [data])
+    const total = useMemo(() => {
+        data.reduce((acc, cur) => {
+          return acc + (cur.price*cur.quantity);
+        }, 0);
+      }, [data]);
 
     return (
         <>
@@ -46,7 +49,7 @@ const Cart = () => {
                     <div className="dropdown-cart-total">
                         <span>Total</span>
 
-                        <span className="cart-total-price">${sum(data)}</span>
+                        <span className="cart-total-price">${sum}</span>
 
                     </div>
                     <div className="dropdown-cart-action">
