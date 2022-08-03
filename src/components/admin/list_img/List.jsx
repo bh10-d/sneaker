@@ -7,7 +7,7 @@ const List = (props) => {
       {props.bodyData.map((item, index) => {
         if (item.product_id === props.id) {
           return (
-            <span style={{ width: "50px", height: "50px", border: "1px solid #ccc", marginLeft: "5px", borderRadius: "5px"}}>
+            <span key={index} style={{ width: "50px", height: "50px", border: "1px solid #ccc", marginLeft: "5px", borderRadius: "5px"}}>
               <img
                 src={url + item.image_color}
                 alt="product desc"

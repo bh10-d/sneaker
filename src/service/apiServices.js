@@ -28,7 +28,16 @@ export const put = async (path, value) => {
     console.log(error);
   }
 }
-
+export const del = async (path, value) => {
+  try {
+    const res = await request
+      .del(path, value)
+      return res;
+  }
+  catch(error) {
+    console.log(error);
+  }
+}
 export const postFile = async (formData) => {
   const res = await fetch("http://localhost:8080/File/upload", {
     method: "POST",
