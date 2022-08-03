@@ -28,6 +28,15 @@ const Info = () => {
             .then(data => {
                 localStorage.setItem('info', JSON.stringify(data.data));
                 setDisable(true);
+                console.log(data)
+            })
+            .catch(() => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Change of information failed because email is already in use',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
             })
         Swal.fire({
             title: 'Success!',
