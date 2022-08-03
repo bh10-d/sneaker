@@ -39,6 +39,7 @@ export default function AppProvider({ children }) {
   const [sizes, setSizes] = useState([]);
   const [images_detail, setImageDetail] = useState([]);
   const [discount, setDiscount] = useState([]);
+  const [voucher, setVoucher] = useState([])
   const [load, loading] = useState(true);
   // load image color
   useEffect(() => {
@@ -67,6 +68,11 @@ export default function AppProvider({ children }) {
       setDiscount(result);
     };
     fetchDiscountApi();
+    const fetchVoucherApi = async () => {
+      const result = await get("voucher/data");
+      setVoucher(result);
+    };
+    fetchVoucherApi();
     loading(false);
   }, []);
   // state
@@ -97,6 +103,7 @@ export default function AppProvider({ children }) {
       const check = localStorage.getItem("authentication");
       if (check !== "") {
         const JobsLocalStorage = JSON.parse(localStorage.getItem("authentication"));
+
         return JobsLocalStorage ?? false;
       } else {
         localStorage.removeItem("authentication");
@@ -215,6 +222,7 @@ export default function AppProvider({ children }) {
         admin,
         auth,
         login,
+        voucher,
         // loginAdmin,
         // loginStaff,
         info,

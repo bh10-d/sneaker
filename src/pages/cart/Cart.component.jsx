@@ -5,23 +5,27 @@ import { AppContext } from "../../context/AppProvider";
 import Select from "../../components/cart/Select.component";
 import Swal from "sweetalert2";
 const Cart = () => {
-  const { sizes, auth } = useContext(AppContext);
-  const navigate = useNavigate()
+  const { sizes, auth, voucher } = useContext(AppContext);
+  const navigate = useNavigate();
   const [data, setData] = useState(() => {
     const check = localStorage.getItem("sneakershop");
     if (check !== "") {
       const JobsLocalStorage = JSON.parse(localStorage.getItem("sneakershop"));
-      sizes.map(m => {
-        const index = JobsLocalStorage.findIndex(f => f.size == m.size_id && f.image == m.image_color && f.quantity > m.quantity)
-        if(index !== -1) {
+      sizes.map((m) => {
+        const index = JobsLocalStorage.findIndex(
+          (f) =>
+            f.size == m.size_id &&
+            f.image == m.image_color &&
+            f.quantity > m.quantity
+        );
+        if (index !== -1) {
           console.log(m.quantity + " " + index);
           JobsLocalStorage[index].quantity = m.quantity;
           const jsonProducts = JSON.stringify(JobsLocalStorage);
           localStorage.setItem("sneakershop", jsonProducts);
           // return JobsLocalStorage ?? [];
         }
-        
-      })
+      });
       return JobsLocalStorage ?? [];
     } else {
       localStorage.removeItem("sneakershop");
@@ -54,31 +58,59 @@ const Cart = () => {
     setLoad(data);
   }, [data]);
 
-
   const handelCheckout = () => {
-    const JobsLocalStorage = JSON.parse(localStorage.getItem("sneakershop"))
-    if(auth === false) {
+    const JobsLocalStorage = JSON.parse(localStorage.getItem("sneakershop"));
+    if (auth === false) {
       Swal.fire({
-        title: 'Error!',
-        text: 'You are not logged in',
-        icon: 'error',
-        confirmButtonText: 'OK'
-      })
-      return navigate('/auth')
+        title: "Error!",
+        text: "You are not logged in",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return navigate("/auth");
+    } else if (JobsLocalStorage == 0) {
+      Swal.fire({
+        title: "Error!",
+        text: "Cart is empty",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    } else {
+      navigate("/checkout");
     }
-    
-    else if(JobsLocalStorage == 0){
-      Swal.fire({
-        title: 'Error!',
-        text: 'Cart is empty',
-        icon: 'error',
-        confirmButtonText: 'OK'
+  };
+  const [voucherCode, setVoucherCode] = useState({
+    code: "",
+    price: 0,
+  });
+  const handelCheckVoucher = () => {
+    const check = voucher.find(f => f.code == voucherCode.code)
+    if(check !== undefined) {
+      setVoucherCode({
+        code: "",
+        price: check.price,
+        total: 0
+      })
+    }
+  }
+  const total = useMemo(() => {
+    const total = data.reduce((acc, cur) => {
+      return acc + (cur.price*cur.quantity);
+    }, 0);
+    if(voucherCode.price !== 0) {
+      setVoucherCode({
+        ... voucherCode,
+        total: total - voucherCode.price
       })
     }
     else {
-      navigate('/checkout')
+      setVoucherCode({
+        ... voucherCode,
+        total: total
+      })
     }
-  }
+    return total
+  }, [voucherCode.price])
   return (
     <>
       <main className="main">
@@ -202,9 +234,15 @@ const Cart = () => {
 
                   <div className="cart-bottom">
                     <div className="cart-discount">
-                      <form action="#">
                         <div className="input-group">
                           <input
+                            value={voucher.code}
+                            onChange={(e) =>
+                              setVoucherCode({
+                                ...voucherCode,
+                                code: e.target.value,
+                              })
+                            }
                             type="text"
                             className="form-control"
                             required
@@ -213,13 +251,12 @@ const Cart = () => {
                           <div className="input-group-append">
                             <button
                               className="btn btn-outline-primary-2"
-                              type="submit"
+                              onClick={handelCheckVoucher}
                             >
                               <i className="icon-long-arrow-right"></i>
                             </button>
                           </div>
                         </div>
-                      </form>
                     </div>
                   </div>
                 </div>
@@ -234,79 +271,15 @@ const Cart = () => {
                       <tbody>
                         <tr className="summary-subtotal">
                           <td>Subtotal:</td>
-                          <td>$160.00</td>
+                          <td>$ {total}</td>
                         </tr>
-                        <tr className="summary-shipping-row">
-                          <td>
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                id="free-shipping"
-                                name="shipping"
-                                className="custom-control-input"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="free-shipping"
-                              >
-                                Free Shipping
-                              </label>
-                            </div>
-                          </td>
-                          <td>$0.00</td>
+                        <tr className="summary-subtotal">
+                          <td>Voucher:</td>
+                          <td>${voucherCode.price}</td>
                         </tr>
-
-                        <tr className="summary-shipping-row">
-                          <td>
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                id="standart-shipping"
-                                name="shipping"
-                                className="custom-control-input"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="standart-shipping"
-                              >
-                                Standart:
-                              </label>
-                            </div>
-                          </td>
-                          <td>$10.00</td>
-                        </tr>
-
-                        <tr className="summary-shipping-row">
-                          <td>
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                id="express-shipping"
-                                name="shipping"
-                                className="custom-control-input"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="express-shipping"
-                              >
-                                Express:
-                              </label>
-                            </div>
-                          </td>
-                          <td>$20.00</td>
-                        </tr>
-
-                        <tr className="summary-shipping-estimate">
-                          <td>
-                            Estimate for Your Country
-                            <br /> <a href="dashboard.html">Change address</a>
-                          </td>
-                          <td>&nbsp;</td>
-                        </tr>
-
                         <tr className="summary-total">
                           <td>Total:</td>
-                          <td>$160.00</td>
+                          <td>$ {voucherCode.total}</td>
                         </tr>
                       </tbody>
                     </table>
