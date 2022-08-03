@@ -9,6 +9,7 @@ import AddProduct from '../../pages/admin/AddProduct.component';
 import AddImage from '../../pages/admin/AddImage.component';
 import AddSize from '../../pages/admin/AddSize.component';
 import Location from '../../pages/admin/Location.component';
+import ErrorPage from '../../pages/404/ErrorPage.component';
 // import './layout.css';
 // import '../../assets/boxicons-2.0.7/css/boxicons.min.css';
 // import '../../assets/css/grid.css';
