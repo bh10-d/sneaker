@@ -1,15 +1,15 @@
 import { useState, useContext } from 'react';
-import SideBar from '../../components/user/SideBar.component';
-import { useForm } from 'react-hook-form';
-import { AppContext } from '../../context/AppProvider';
-import { put } from '../../service/apiServices';
 import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+import SideBar from '../../components/user/SideBar.component';
+import { AppContext } from '../../context/AppProvider';
+import { put, postFile } from '../../service/apiServices';
+import { url } from "../../utils/request";
 
 const Info = () => {
     const { info } = useContext(AppContext);
     const [disable, setDisable] = useState(true);
     const { register, handleSubmit } = useForm();
-
 
     const handleDisabled = () => {
         setDisable(false);
@@ -28,12 +28,48 @@ const Info = () => {
             .then(data => {
                 localStorage.setItem('info', JSON.stringify(data.data));
                 setDisable(true);
+                console.log(data)
+            })
+            .catch(() => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Change of information failed because email is already in use',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
             })
         Swal.fire({
             title: 'Success!',
             text: 'Change Information Successfully',
             icon: 'success',
             confirmButtonText: 'OK'
+        })
+    }
+
+    const onImageSubmit = (file) => {
+        let formData = new FormData();
+        formData.append("files", file.target.files[0]);
+        postFile(formData).then(() => {
+            put('http://localhost:8080/user/update',
+                {
+                    id: info.id,
+                    email: info.email,
+                    name: info.name,
+                    phone: info.phone,
+                    password: info.password,
+                    profile_image: file.target.files[0].name
+                }
+            )
+                .then(data => {
+                    localStorage.setItem('info', JSON.stringify(data.data));
+                    setDisable(true);
+                })
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Change Avatar Successfully, please reload page to show your new Avatar',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
         })
     }
 
@@ -66,10 +102,10 @@ const Info = () => {
                                                     <label htmlFor="hidden">Avatar</label>
                                                     <div className="content_image">
                                                         <div className="content_image_sub">
-                                                            <img src="/images/team/about-2/buiduchieu.jpg" alt="" />
+                                                            <img src={(info.profile_image != '') ? `${url + info.profile_image}` : "/images/team/about-2/buiduchieu.jpg"} alt="" />
                                                             <div>
                                                                 <p><i className='bx bx-upload'></i></p>
-                                                                <input className="input_avatar" type="file" />
+                                                                <input onChange={onImageSubmit} className="input_avatar" type="file" />
                                                             </div>
                                                         </div>
                                                     </div>

@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 
 import Table from "../../components/admin/table/Table";
 import List from "../../components/admin/list_img/List";
+import Loading from '../../components/loading/Loading.component'
 // import customerList from "../../assets/JsonData/customers-list.json";
 import { get } from "../../service/apiServices";
 // import { url } from "../../utils/request";
@@ -42,6 +43,8 @@ const Products = () => {
     };
     fetchBrandApi();
   }, []);
+
+  console.log(brands)
   const customerTableHead = [
     "",
     "name",
@@ -73,14 +76,15 @@ const Products = () => {
         <td>{item.status}</td>
         <td>{item.total_orders}</td>
         <td style={{ cursor: "pointer" }}>
-          <i class="bx bx-pencil"></i>
+          <i className="bx bx-pencil"></i>
         </td>
         <td style={{ cursor: "pointer" }}>
-          <i class="bx bx-trash-alt"></i>
+          <i className="bx bx-trash-alt"></i>
         </td>
       </tr>
     );
   }, [brands, users]);
+
   return (
     <div>
       <h2 className="page-header">Products</h2>
@@ -88,13 +92,19 @@ const Products = () => {
         <div className="col-12">
           <div className="card_custom">
             <div className="card__body">
-              <Table
+              {(brands.length == 0)?(
+                <div className="text-center">
+                  <Loading/>
+                </div>
+              ):(
+                <Table
                 limit="10"
                 headData={customerTableHead}
                 bodyData={products}
                 renderBody={(item, index) => renderBody(item, index)}
                 data={brands}
               />
+              )}  
             </div>
           </div>
         </div>

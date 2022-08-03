@@ -112,28 +112,6 @@ export default function AppProvider({ children }) {
     }
   );
 
-  // const loginAdmin = (data) => {
-  //   let logined = true;
-  //   const jsonProducts = JSON.stringify(logined);
-  //   localStorage.setItem("authentication", jsonProducts);
-  //   localStorage.setItem("authenticationad", jsonProducts);
-  //   localStorage.setItem("info", JSON.stringify(data));
-  //   setInfo(data);
-  //   setAdmin(true);
-  //   setAuth(true);
-  //   return logined;
-  // }
-
-  // const loginStaff = (data) => {
-  //   let logined = true;
-  //   const jsonProducts = JSON.stringify(logined);
-  //   localStorage.setItem("authenticationstaff", jsonProducts);
-  //   localStorage.setItem("info", JSON.stringify(data));
-  //   setInfo(data);
-  //   setAuth(true);
-  //   return logined;
-  // }
-
   const login = (data) => {
     let logined = true;
     const jsonProducts = JSON.stringify(logined);
@@ -174,6 +152,18 @@ export default function AppProvider({ children }) {
       return [];
     }
   });
+  const [wishlist, setWishlist] = useState(() => {
+    const check = localStorage.getItem("wishlist");
+    if (check !== "" || check !== []) {
+      console.log(check);
+      const JobsLocalStorage = JSON.parse(check);
+      console.log(JobsLocalStorage);
+      return JobsLocalStorage ?? [];
+    } else {
+      localStorage.removeItem("wishlist");
+      return [];
+    }
+  });
   //function
   const addProductCart = (props) => {
     // const index = data.findIndex((m) => m.image === props.image);
@@ -206,6 +196,33 @@ export default function AppProvider({ children }) {
       });
     }
   };
+
+  const addProductWishlist = (props) => {
+    const getProduct = wishlist.findIndex(
+      (m) => m.image === props.image
+    );
+    if (getProduct !== -1) {
+      setWishlist([...wishlist]);
+      const jsonProducts = JSON.stringify(data);
+      localStorage.setItem("wishlist", jsonProducts);
+    } else {
+      setWishlist((prev) => {
+        const newProducts = [
+          ...prev,
+          {
+            id: props.id,
+            name: props.name,
+            price: props.price,
+            image: props.image,
+          },
+        ];
+        const jsonProducts = JSON.stringify(newProducts);
+        localStorage.setItem("wishlist", jsonProducts);
+        return newProducts;
+      });
+    }
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -215,6 +232,9 @@ export default function AppProvider({ children }) {
         data,
         setData,
         addProductCart,
+        addProductWishlist,
+        wishlist,
+        setWishlist,
         images_detail,
         discount,
         fakeComments,
@@ -222,9 +242,12 @@ export default function AppProvider({ children }) {
         admin,
         auth,
         login,
+<<<<<<< HEAD
         voucher,
         // loginAdmin,
         // loginStaff,
+=======
+>>>>>>> 4b650b2698af570434246c168a919b0e13a16dcb
         info,
         logout
       }}

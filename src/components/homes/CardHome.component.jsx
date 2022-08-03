@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../../context/AppProvider";
 import { url } from "../../utils/request";
 const CardHome = ({ product, path }) => {
-  const { addProductCart, discount } = React.useContext(AppContext);
+  const { addProductCart, discount, addProductWishlist } = React.useContext(AppContext);
   const [image, setImage] = useState(
     path.find((m) => m.product_id === product.id).image_color
   );
@@ -34,6 +34,13 @@ const CardHome = ({ product, path }) => {
       });
     }
   };
+  const handleAddToWishlist = (props) => {
+    addProductWishlist({
+      ...props.product,
+      image: image,
+      price: props.product.price
+    })
+  }
   return (
     <>
       <div className="col-6 col-md-4 col-lg-3 col-xl-5col">
@@ -55,12 +62,12 @@ const CardHome = ({ product, path }) => {
             </a>
 
             <div className="product-action-vertical">
-              <a
-                href="#"
+              <button
+                onClick={handleAddToWishlist}
                 className="btn-product-icon btn-wishlist btn-expandable"
               >
                 <span>add to wishlist</span>
-              </a>
+              </button>
             </div>
           </figure>
 

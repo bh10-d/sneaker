@@ -19,7 +19,7 @@ const Status = ({ status }) => {
 };
 
 const Card = (props) => {
-  const { addProductCart, discount } = React.useContext(AppContext);
+  const { addProductCart, discount, addProductWishlist } = React.useContext(AppContext);
   const [image, setImage] = useState(
     props.path.find((m) => m.product_id == props.id).image_color
   );
@@ -52,6 +52,15 @@ const Card = (props) => {
       });
     }
   };
+  const handleAddToWishlist = () => {
+    const notify = () => toast(<p>Add to wishlist successfully</p>)
+    notify()
+    addProductWishlist({
+      ...props.product,
+      image: image,
+      price: props.product.price
+    })
+  }
   const notify = () => toast(<p>Add to cart successfully</p>);
   return (
     <>
@@ -66,12 +75,12 @@ const Card = (props) => {
             </Link>
 
             <div className="product-action-vertical">
-              <a
-                href="#"
+              <button
                 className="btn-product-icon btn-wishlist btn-expandable"
+                onClick={handleAddToWishlist}
               >
                 <span>add to wishlist</span>
-              </a>
+              </button>
               <a
                 href="popup/quickView.html"
                 className="btn-product-icon btn-quickview"
