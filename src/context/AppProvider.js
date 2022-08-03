@@ -157,8 +157,10 @@ export default function AppProvider({ children }) {
 
   const [data, setData] = useState(() => {
     const check = localStorage.getItem("sneakershop");
-    if (check !== "") {
-      const JobsLocalStorage = JSON.parse(localStorage.getItem("sneakershop"));
+    if (check !== "" || check !== []) {
+      console.log(check);
+      const JobsLocalStorage = JSON.parse(check);
+      console.log(JobsLocalStorage);
       return JobsLocalStorage ?? [];
     } else {
       localStorage.removeItem("sneakershop");
