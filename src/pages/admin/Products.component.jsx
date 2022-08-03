@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import Table from "../../components/admin/table/Table";
 import List from "../../components/admin/list_img/List";
@@ -11,6 +11,7 @@ const Products = () => {
   const [products, setProduct] = useState([]);
   const [images_color, setImageColors] = useState([]);
   const [brands, setBrands] = useState([])
+  const [users, setUsers] = useState([])
   // list product
   useEffect(() => {
     const fetchProductApi = async () => {
@@ -34,7 +35,14 @@ const Products = () => {
     };
     fetchBrandApi();
   }, []);
-  const customerTableHead = useRef([
+  useEffect(() => {
+    const fetchBrandApi = async () => {
+      const result = await get("user/data");
+      setUsers(result);
+    };
+    fetchBrandApi();
+  }, []);
+  const customerTableHead = [
     "",
     "name",
     "image",
@@ -48,16 +56,16 @@ const Products = () => {
     "Total order",
     "",
     "",
-  ]);
-  const renderBody = (item, index) => {
-    console.log(brands);
+  ];
+  const renderBody = useCallback((item, index, data) => {
+    const name = users.find(f => f.id == item.staff_id)
     return (
       <tr key={index}>
         <td>{index + 1}</td>
         <td>{item.name}</td>
         <List id={item.id} bodyData={images_color} />
         <td>{brands.find(f => f.id === item.brand_id).name}</td>
-        <td>{item.staff_id}</td>
+        <td>{name == undefined ? "" : name.name}</td>
         <td>{item.created_at}</td>
         <td>{item.updated_at}</td>
         <td>{item.purchase_price}</td>
@@ -72,7 +80,7 @@ const Products = () => {
         </td>
       </tr>
     );
-  };
+  }, [brands, users]);
   return (
     <div>
       <h2 className="page-header">Products</h2>
@@ -82,9 +90,10 @@ const Products = () => {
             <div className="card__body">
               <Table
                 limit="10"
-                headData={customerTableHead.current}
+                headData={customerTableHead}
                 bodyData={products}
                 renderBody={(item, index) => renderBody(item, index)}
+                data={brands}
               />
             </div>
           </div>

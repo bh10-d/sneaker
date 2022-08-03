@@ -90,7 +90,7 @@ const Location = () => {
           </div>
         </div>
       </div>
-      <City />
+      <City/>
       <District />
     </div>
   );

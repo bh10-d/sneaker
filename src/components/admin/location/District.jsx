@@ -49,7 +49,7 @@ const District = () => {
     };
     addProductApi();
   };
-  const renderBody = useCallback((item, index) => {
+  const renderBody = useCallback((item, index, cities) => {
     return (
       <tr key={index}>
         <td>{index + 1}</td>
@@ -153,6 +153,7 @@ const District = () => {
                 headData={customerTableHead}
                 bodyData={districts}
                 renderBody={renderBody}
+                data={cities}
               />
             </div>
           </div>
