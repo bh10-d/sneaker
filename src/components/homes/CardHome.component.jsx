@@ -1,28 +1,57 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import {AppContext} from '../../context/AppProvider';
-
+import React, { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
+import { AppContext } from "../../context/AppProvider";
+import { url } from "../../utils/request";
 const CardHome = ({ product, path }) => {
-  const { addProductCart, fakeDataApi, fakeImageApi } = React.useContext(AppContext);
+  const { addProductCart, discount } = React.useContext(AppContext);
   const [image, setImage] = useState(
-    path.find((m) => m.id === product.id).path
+    path.find((m) => m.product_id === product.id).image_color
   );
 
   const handleClick = (e) => {
-    const path = e.target.src.split(/\//)
-    setImage(path[path.length-1]);
+    const path = e.target.src.split(/\//);
+    setImage(path[path.length - 1]);
   };
-
-    // console.log(image)
+  const checkSale = useMemo(() => {
+    const test = discount.find(
+      (f) => f.product_id === product.id && f.status == 1
+    );
+    return test;
+  }, []);
+  const handelAddToCart = () => {
+    if (checkSale != null) {
+      addProductCart({
+        ...product,
+        size: "",
+        image: image,
+        price: product.price - (product.price * checkSale.percent) / 100
+      });
+    } else {
+      addProductCart({
+        ...product,
+        size: "",
+        image: image,
+      });
+    }
+  };
   return (
     <>
       <div className="col-6 col-md-4 col-lg-3 col-xl-5col">
         <div className="product product-3 text-center">
           <figure className="product-media">
-            <span className="product-label label-primary">Sale</span>
-            <span className="product-label label-sale">55% off</span>
+            {checkSale === undefined ? (
+              ""
+            ) : (
+              <>
+                <span className="product-label label-primary">Sale</span>
+                <span className="product-label label-sale">
+                  {checkSale.percent}% off
+                </span>
+              </>
+            )}
+
             <a href="product.html">
-              <img src={`/images/image_products/${image}`} alt="Product image" className="product-image" />
+              <img src={url + image} alt="" className="product-image" />
             </a>
 
             <div className="product-action-vertical">
@@ -43,8 +72,20 @@ const CardHome = ({ product, path }) => {
               <Link to={`/detail/${image}/${product.id}`}>{product.name}</Link>
             </h3>
             <div className="product-price">
-              <span className="new-price">Now $125.99</span>
-              <span className="old-price">${product.price}</span>
+              {checkSale === undefined ? (
+                <>
+                  <span className="new-price">Now ${product.price}</span>
+                </>
+              ) : (
+                <>
+                  <span className="new-price">
+                    Now $
+                    {+product.price -
+                      (+product.price * checkSale.percent) / 100}
+                  </span>
+                  <span className="old-price">${product.price}</span>
+                </>
+              )}
             </div>
           </div>
 
@@ -57,23 +98,31 @@ const CardHome = ({ product, path }) => {
             </div>
             <div className="product-nav product-nav-dots">
               {path.map((image, index) => {
-                if(image.id === product.id) {
-                    return (
-                        <span key={index} onClick={handleClick}>
-                        <img
-                          style={{ width: "100%", height: "100%" }}
-                          src={`/images/image_products/${image.path}`}
-                          alt=""
-                        />
-                      </span>
-                    )
-                }else{
-                    return ''
+                if (image.product_id === product.id) {
+                  return (
+                    <span key={index} onClick={handleClick}>
+                      <img
+                        style={{ width: "100%", height: "100%" }}
+                        src={url + image.image_color}
+                        alt=""
+                      />
+                    </span>
+                  );
+                } else {
+                  return "";
                 }
-            })}
+              })}
             </div>
             <div className="product-action">
-              <span onClick={()=>{addProductCart(product,image)}} style={{cursor: 'pointer'}} className="btn-product btn-cart" title="Add to cart">
+              <span
+                // () => {
+                //   addProductCart(product, image);
+                // }
+                onClick={handelAddToCart}
+                style={{ cursor: "pointer" }}
+                className="btn-product btn-cart"
+                title="Add to cart"
+              >
                 <span>add to cart</span>
               </span>
               <a

@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '../../pages/home/Home.component';
 import Product from '../../pages/product/Product.component';
 import Detail from '../../pages/detail/Detail.component';
-import Info from '../../pages/info/Info.component';
+// import Info from '../../pages/info/Info.component';
 import Cart from '../../pages/cart/Cart.component';
 import Checkout from '../../pages/checkout/Checkout.component';
 import FAQ from '../../pages/faq/faq.component';
@@ -25,7 +25,7 @@ const CustomRoutes = () => {
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="product" element={<Product />} />
                 <Route exact path="detail/:image/:id" element={<Detail />} />
-                <Route exact path="user" element={<Info />} />
+                {/* <Route exact path="user" element={<Info />} /> */}
                 <Route exact path="cart" element={<Cart />} />
                 <Route exact path="checkout" element={<Checkout />} />
                 <Route exact path="contact" element={<Contact />} />

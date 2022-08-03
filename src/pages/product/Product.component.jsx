@@ -4,7 +4,7 @@ import SideBar from '../../components/products/SideBar.component';
 import Card from '../../components/products/Card.component';
 
 const Product = () => {
-    const {fakeDataApi, fakeImageApi} = React.useContext(AppContext);
+    const {products, images_color, admin} = React.useContext(AppContext);
     return (
         <>
             <main className="main">
@@ -25,7 +25,7 @@ const Product = () => {
                                 <div className="toolbox">
                                     <div className="toolbox-left">
                                         <div className="toolbox-info">
-                                            Showing <span>{fakeDataApi.length} of 56</span> Products
+                                            Showing <span>{products.length} of 56</span> Products
                                         </div>
                                     </div>
 
@@ -88,8 +88,8 @@ const Product = () => {
 
                                 <div className="products mb-3">
                                     <div className="row justify-content-center">
-                                        {fakeDataApi.map((m)=>(
-                                            <Card key={m.id} id={m.id} name={m.name} type={m.type} price={m.price} path={fakeImageApi} review={m.reviews} status={m.status}/>
+                                        {products.map((m)=>(
+                                            <Card key={m.id} id={m.id} name={m.name} type={m.type} price={m.price} path={images_color} review={m.reviews} status={m.status} product={m}/>
                                         ))}
                                     </div>
                                 </div>

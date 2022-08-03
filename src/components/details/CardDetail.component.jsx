@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { AppContext } from "../../context/AppProvider";
-
+import { url } from "../../utils/request";
 const CardDetail = ({ idProduct, imageFirst }) => {
-  const { fakeImageDetail } = React.useContext(AppContext);
+  const { images_detail } = React.useContext(AppContext);
   const [image, setImage] = useState(imageFirst); //'/images/products/single/extended/3.jpg'
     
   let getProduct = (imageFirst) => {
-    let newArr = fakeImageDetail.filter((f) => f.image_color === imageFirst);
+    let newArr = images_detail.filter((f) => f.image_color === imageFirst);
     return newArr;
   };
 
@@ -27,7 +27,7 @@ const CardDetail = ({ idProduct, imageFirst }) => {
             <img
               id="product-zoom"
               src={`/images/image_products/${image}`}
-              alt="product image"
+              alt=""
             />
             {/* <a
               href="#"
@@ -47,21 +47,6 @@ const CardDetail = ({ idProduct, imageFirst }) => {
                 />
               </span>
             ))}
-            {/* <span className="product-gallery-item" onClick={handleClick}>
-                            <img src="images/products/single/extended/1-big.jpg" alt="product side" />
-                        </span>
-
-                        <span className="product-gallery-item" onClick={handleClick}>
-                            <img src="images/products/single/extended/2-big.jpg" alt="product cross" />
-                        </span>
-
-                        <span className="product-gallery-item active" onClick={handleClick}>
-                            <img src="images/products/single/extended/3-big.jpg" alt="product with model" />
-                        </span>
-
-                        <span className="product-gallery-item" onClick={handleClick}>
-                            <img src="images/products/single/extended/4-big.jpg" alt="product back" />
-                        </span> */}
           </div>
         </div>
       </div>

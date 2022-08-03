@@ -1,71 +1,18 @@
-import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper';
-import Advertise from '../../components/homes/Advertise.component';
-import TabDetail from '../../components/homes/TabDetail.component';
-import BannerObject from '../../components/homes/BannerObject.component';
-import 'swiper/css';
+import { useState, useEffect, useContext, useRef } from "react";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper";
+import Advertise from "../../components/homes/Advertise.component";
+import TabDetail from "../../components/homes/TabDetail.component";
+import BannerObject from "../../components/homes/BannerObject.component";
+import "swiper/css";
 import "swiper/css/pagination";
-
-
+import { AppContext } from "../../context/AppProvider";
 const tabs = ["New", "Top selling", "Sale"];
 const Home = () => {
-  const test_product = [
-    {
-      id: 1,
-      brand: "Adidas",
-      name: "Forum Low CL",
-      type: 1,
-      percent: 20,
-      price: "250",
-      reviews: 2,
-
-    },
-    {
-      id: 2,
-      brand: "Adidas",
-      name: "SuperStar",
-      type: 1,
-      percent: 25,
-      price: "300",
-      review: 3
-    }
-  ]
-  const test_image = [
-    {
-      id: 1,
-      path: "Giay_Forum_Low_CL_trang_HQ6874_01_standard-removebg-preview.png"
-    },
-    {
-      id: 1,
-      path: "Giay_Forum_Low_CL_trang_HQ6875_01_standard-removebg-preview.png"
-    },
-    {
-      id: 2,
-      path: "Giay_Superstar_trang_EG4958_01_standard-removebg-preview.png"
-    },
-    {
-      id: 2,
-      path: "Giay_Superstar_trang_EG4960_01_standard-removebg-preview.png"
-    },
-    {
-      id: 2,
-      path: "Giay_Superstar_trang_GZ3742_01_standard-removebg-preview.png"
-    }
-  ]
   const [type, setType] = useState("New");
-  const [products, setProducts] = useState(test_product);
-  const [images, setImages] = useState(test_image);
-  useEffect(() => {
-    if (type === "New") {
-      // fetch(`https://jsonplaceholder.typicode.com/....`)
-      // .then((res) => res.json())
-      // .then((image) => {
-      //   setImages(image);
-      // });
-    }
-  }, [type]);
+  // const [products, setProducts] = useState(test_product);
+
   return (
     <>
       <main className="main">
@@ -73,12 +20,12 @@ const Home = () => {
           <Swiper
             spaceBetween={30}
             pagination={{
-              clickable: true
+              clickable: true,
             }}
             loop={true}
             autoplay={{
               delay: 3500,
-              disableOnInteraction: false
+              disableOnInteraction: false,
             }}
             modules={[Autoplay, Pagination]}
             className="mySwiper"
@@ -100,8 +47,12 @@ const Home = () => {
                 </Link>
               </div>
             </SwiperSlide>
-            <SwiperSlide><img src={`/images/demos/demo-10/slider/slide-2.jpg`} alt="" /></SwiperSlide>
-            <SwiperSlide><img src={`/images/demos/demo-10/slider/slide-3.jpg`} alt="" /></SwiperSlide>
+            <SwiperSlide>
+              <img src={`/images/demos/demo-10/slider/slide-2.jpg`} alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={`/images/demos/demo-10/slider/slide-3.jpg`} alt="" />
+            </SwiperSlide>
           </Swiper>
         </div>
 
@@ -235,13 +186,13 @@ const Home = () => {
         <div className="icon-boxes-container icon-boxes-separator bg-transparent">
           <div className="container">
             <div className="row">
-              <Advertise/>
+              <Advertise />
             </div>
           </div>
         </div>
         <div className="container">
           <div className="row justify-content-center">
-            <BannerObject/>
+            <BannerObject />
           </div>
         </div>
 
@@ -251,14 +202,14 @@ const Home = () => {
           <div className="heading heading-center mb-3">
             <h2 className="title-lg mb-2">My products</h2>
 
-
-
             <ul className="nav nav-pills justify-content-center" role="tablist">
               {tabs.map((tab, index) => (
                 <li
                   key={index}
                   className="nav-item"
-                  onClick={() => { setType(tab) }}
+                  onClick={() => {
+                    setType(tab);
+                  }}
                 >
                   <span
                     style={{ cursor: "pointer" }}
@@ -277,17 +228,11 @@ const Home = () => {
                 </li>
               ))}
             </ul>
-
-
-
-
-
           </div>
 
           <div className="tab-content">
-            <TabDetail tab={type} data={products} images={images} />
+            <TabDetail tab={type}  />
           </div>
-
 
           {/* xem them */}
           <div className="more-container text-center mt-5">

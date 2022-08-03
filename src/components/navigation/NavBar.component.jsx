@@ -1,6 +1,7 @@
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Cart from '../cart/Cart.component';
-
+import Avatar from '../auth/Avatar.component';
 
 
 const list = [
@@ -34,12 +35,12 @@ const list = [
         class: 'sf-with-ul',
         link: '/contact'
     },
-    {
-        id: 6,
-        content: 'Login',
-        class: 'sf-with-ul',
-        link: '/login'
-    },
+    // {
+    //     id: 6,
+    //     content: 'Login',
+    //     class: 'sf-with-ul',
+    //     link: '/login'
+    // },
 ]
 
 const ChildNav = ({ props }) => {
@@ -57,7 +58,7 @@ const ChildNav = ({ props }) => {
 }
 
 const NavBar = () => {
-    let location = useLocation();
+    
     return (
         <>
             <div className="header-right">
@@ -77,6 +78,7 @@ const NavBar = () => {
                     </form>
                 </div>
                 <Cart />
+                <Avatar/>
             </div>
         </>
     )

@@ -4,7 +4,7 @@ import {AppContext} from '../../context/AppProvider';
 import Select from './Select.component';
 
 const Element = (props) => {
-    const {fakeSize, setData} = React.useContext(AppContext);
+    const {sizes, setData} = React.useContext(AppContext);
     const [load, setLoad] = useState(props.data);
 
     const handleChange = (currSize, size, image) => {
@@ -46,7 +46,7 @@ const Element = (props) => {
                         </span>
                         <div>
                             <span>Size: </span>
-                            <Select name={product.name} image={product.image} quantity={product.quantity} price={product.price} size={product.size} childSize={fakeSize} handleChange={handleChange}/>
+                            <Select name={product.name} image={product.image} quantity={product.quantity} price={product.price} size={product.size} childSize={sizes} handleChange={handleChange}/>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@ const Element = (props) => {
                             <img src={`/images/image_products/${product.image}`} alt="product" />
                         </Link>
                     </figure>
-                    <span onClick={props.delete} className="btn-remove" title="Remove Product"><i id={product.image} data-size={product.size} data-index={i} className="icon-close"></i></span>
+                    <span style={{ cursor: "pointer" }} onClick={props.delete} className="btn-remove" title="Remove Product"><i id={product.image} data-size={product.size} data-index={i} className="icon-close"></i></span>
                 </div>
             ))}
         </>
