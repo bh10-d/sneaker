@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 const SideBar = () => {
     const [showcate, setShowcate] = useState(true);
     const [showsize, setShowsize] = useState(true);
     const [showbrand, setShowbrand] = useState(true);
+
+    function log(value) {
+        console.log(value); //eslint-disable-line
+      }
 
     return (
         <>
@@ -236,26 +242,44 @@ const SideBar = () => {
                         </div>
                     </div>
 
-                    {/* <div className="widget widget-collapsible">
-                                        <h3 className="widget-title">
-                                            <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
-                                                Price
-                                            </a>
-                                        </h3>
 
-                                        <div className="collapse show" id="widget-5">
-                                            <div className="widget-body">
-                                                <div className="filter-price">
-                                                    <div className="filter-price-text">
-                                                        Price Range:
-                                                        <span id="filter-price-range"></span>
-                                                    </div>
 
-                                                    <div id="price-slider"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
+                    <div className="widget widget-collapsible">
+                        <h3 className="widget-title">
+                            <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
+                                Price
+                            </a>
+                        </h3>
+
+                        <div className="collapse show" id="widget-5">
+                            <div className="widget-body">
+                                <div className="filter-price">
+                                    <div className="filter-price-text">
+                                        <p>Price Range:</p>
+                                        <span id="filter-price-range"></span>
+                                        <Slider 
+                                            range
+                                            step={20}
+                                            // count={1}
+                                            defaultValue={[20, 40]}
+                                            onChange={log}
+                                            // pushable
+                                            // trackStyle={[{ backgroundColor: 'red' }, { backgroundColor: 'green' }]}
+                                            // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
+                                            // railStyle={{ backgroundColor: 'black' }}
+                                        />
+                                        {/* <Range /> */}
+                                    </div>
+
+                                    <div id="price-slider"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
             </aside>
         </>

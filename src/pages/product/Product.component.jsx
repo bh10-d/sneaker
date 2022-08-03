@@ -4,7 +4,7 @@ import SideBar from '../../components/products/SideBar.component';
 import Card from '../../components/products/Card.component';
 
 const Product = () => {
-    const {products, images_color} = React.useContext(AppContext);
+    const {products, images_color, admin} = React.useContext(AppContext);
     return (
         <>
             <main className="main">

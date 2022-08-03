@@ -70,6 +70,91 @@ export default function AppProvider({ children }) {
     loading(false);
   }, []);
   // state
+  const [info, setInfo] = useState(
+    () => {
+      const check = localStorage.getItem("info");
+      if (check !== "") {
+        const JobsLocalStorage = JSON.parse(localStorage.getItem("info"));
+        return JobsLocalStorage ?? false;
+      } else {
+        localStorage.removeItem("info");
+        return false;
+      }
+    }
+  );
+  const [admin, setAdmin] = useState(() => {
+    const check = localStorage.getItem("authenticationad");
+    if (check !== "") {
+      const JobsLocalStorage = JSON.parse(localStorage.getItem("authenticationad"));
+      return JobsLocalStorage ?? false;
+    } else {
+      localStorage.removeItem("authenticationad");
+      return false;
+    }
+  });
+  const [auth, setAuth] = useState(
+    () => {
+      const check = localStorage.getItem("authentication");
+      if (check !== "") {
+        const JobsLocalStorage = JSON.parse(localStorage.getItem("authentication"));
+        return JobsLocalStorage ?? false;
+      } else {
+        localStorage.removeItem("authentication");
+        return false;
+      }
+    }
+  );
+
+  // const loginAdmin = (data) => {
+  //   let logined = true;
+  //   const jsonProducts = JSON.stringify(logined);
+  //   localStorage.setItem("authentication", jsonProducts);
+  //   localStorage.setItem("authenticationad", jsonProducts);
+  //   localStorage.setItem("info", JSON.stringify(data));
+  //   setInfo(data);
+  //   setAdmin(true);
+  //   setAuth(true);
+  //   return logined;
+  // }
+
+  // const loginStaff = (data) => {
+  //   let logined = true;
+  //   const jsonProducts = JSON.stringify(logined);
+  //   localStorage.setItem("authenticationstaff", jsonProducts);
+  //   localStorage.setItem("info", JSON.stringify(data));
+  //   setInfo(data);
+  //   setAuth(true);
+  //   return logined;
+  // }
+
+  const login = (data) => {
+    let logined = true;
+    const jsonProducts = JSON.stringify(logined);
+    localStorage.setItem("authentication", jsonProducts);
+    localStorage.setItem("info", JSON.stringify(data));
+
+    if (data.type === 2) {
+      localStorage.setItem("authenticationad", jsonProducts);
+      setAdmin(true);
+    }
+    if (data.type === 1) {
+      localStorage.setItem("authenticationstaff", jsonProducts);
+    }
+    setInfo(data);
+    setAuth(true);
+    return logined;
+  }
+
+  const logout = () => {
+    localStorage.removeItem("authentication");
+    localStorage.removeItem("authenticationad");
+    localStorage.removeItem("info");
+    setAdmin(false);
+    setAuth(false);
+    setInfo('');
+    return false;
+  }
+
   const [data, setData] = useState(() => {
     const check = localStorage.getItem("sneakershop");
     if (check !== "" || check !== []) {
@@ -126,7 +211,14 @@ export default function AppProvider({ children }) {
         images_detail,
         discount,
         fakeComments,
-        loading
+        loading,
+        admin,
+        auth,
+        login,
+        // loginAdmin,
+        // loginStaff,
+        info,
+        logout
       }}
     >
       {load === true ? <Hypnosis /> : children}

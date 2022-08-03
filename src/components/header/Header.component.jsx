@@ -18,7 +18,7 @@ const Header = () => {
     return (
         <>
             <header className="header header-8">
-                <div className="header-top">
+                {/* <div className="header-top">
                     <div className="container">
                         <div className="header-left">
                             <div className="header-dropdown">
@@ -57,7 +57,7 @@ const Header = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className={`header-middle sticky-header ${(fixed)?"fixed":""}`}>
                     <div className="container">

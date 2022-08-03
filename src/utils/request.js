@@ -12,4 +12,8 @@ export const post = async (path, value) => {
     const response = await request.post(path, value)
     return response
 }
+export const put = async (path, value) => {
+    const response = await request.put(path, value)
+    return response
+}
 export default request

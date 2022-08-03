@@ -2,6 +2,8 @@ import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../context/AppProvider";
 import { url } from "../../utils/request";
+import { toast } from 'react-toastify';
+import Toast from '../../components/toast/Toast.component';
 const Status = ({ status }) => {
   if (status === "new") {
     return <span className="product-label label-new">New</span>;
@@ -25,7 +27,7 @@ const Card = (props) => {
   const handleClick = (e) => {
     const path = e.target.src.split(/\//)
     console.log(path);
-    setImage(path[path.length-1]);
+    setImage(path[path.length - 1]);
   };
   const checkSale = useMemo(() => {
     const test = discount.find(
@@ -34,6 +36,7 @@ const Card = (props) => {
     return test;
   }, []);
   const handelAddToCart = () => {
+    notify()
     if (checkSale != null) {
       addProductCart({
         ...props.product,
@@ -49,9 +52,12 @@ const Card = (props) => {
       });
     }
   };
+  console.log(props);
+  const notify = () => toast(<p>Add to cart successfully</p>);
   return (
     <>
-      <div className={(props.className === undefined)?"col-6 col-md-4 col-lg-4":props.className} key={props.id}>
+    <Toast/>
+      <div className={(props.className === undefined) ? "col-6 col-md-4 col-lg-4" : props.className} key={props.id}>
         <div className="product product-7 text-center">
           <figure className="product-media">
             <Status status={props.status} />
@@ -85,7 +91,7 @@ const Card = (props) => {
 
             <div className="product-action">
               <span
-              style={{cursor:"pointer"}}
+                style={{ cursor: "pointer" }}
                 className="btn-product btn-cart"
                 onClick={handelAddToCart}
               >
@@ -126,7 +132,7 @@ const Card = (props) => {
 
             <div className="product-nav product-nav-thumbs">
               {props.path !== undefined ? (
-                
+
                 props.path.map((m, i) => {
                   if (m.product_id == props.id) {
                     return (
