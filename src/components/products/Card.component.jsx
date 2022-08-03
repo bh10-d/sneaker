@@ -52,7 +52,6 @@ const Card = (props) => {
       });
     }
   };
-  console.log(props);
   const notify = () => toast(<p>Add to cart successfully</p>);
   return (
     <>

@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useMemo, useContext, useEffect } from "react";
 import { get, url } from "../../utils/request";
 import { AppContext } from "../../context/AppProvider";
 import Select from "../../components/cart/Select.component";
+import Swal from "sweetalert2";
 const Cart = () => {
-  const { sizes } = useContext(AppContext);
-
+  const { sizes, auth } = useContext(AppContext);
+  const navigate = useNavigate()
   const [data, setData] = useState(() => {
     const check = localStorage.getItem("sneakershop");
     if (check !== "") {
@@ -52,8 +53,32 @@ const Cart = () => {
   useEffect(() => {
     setLoad(data);
   }, [data]);
-  console.log(data);
-  console.log(sizes);
+
+
+  const handelCheckout = () => {
+    const JobsLocalStorage = JSON.parse(localStorage.getItem("sneakershop"))
+    if(auth === false) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'You are not logged in',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+      return navigate('/auth')
+    }
+    
+    else if(JobsLocalStorage == 0){
+      Swal.fire({
+        title: 'Error!',
+        text: 'Cart is empty',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+    }
+    else {
+      navigate('/checkout')
+    }
+  }
   return (
     <>
       <main className="main">
@@ -211,11 +236,6 @@ const Cart = () => {
                           <td>Subtotal:</td>
                           <td>$160.00</td>
                         </tr>
-                        <tr className="summary-shipping">
-                          <td>Shipping:</td>
-                          <td>&nbsp;</td>
-                        </tr>
-
                         <tr className="summary-shipping-row">
                           <td>
                             <div className="custom-control custom-radio">
@@ -291,12 +311,13 @@ const Cart = () => {
                       </tbody>
                     </table>
 
-                    <Link
+                    <button
+                      onClick={handelCheckout}
                       to="/checkout"
                       className="btn btn-outline-primary-2 btn-order btn-block"
                     >
                       PROCEED TO CHECKOUT
-                    </Link>
+                    </button>
                   </div>
 
                   <Link
