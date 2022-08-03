@@ -8,7 +8,7 @@ import Products from '../../pages/admin/Products.component';
 import AddProduct from '../../pages/admin/AddProduct.component';
 import AddImage from '../../pages/admin/AddImage.component';
 import AddSize from '../../pages/admin/AddSize.component';
-
+import Location from '../../pages/admin/Location.component';
 // import './layout.css';
 // import '../../assets/boxicons-2.0.7/css/boxicons.min.css';
 // import '../../assets/css/grid.css';
@@ -27,6 +27,7 @@ const CustomRoutes = () => {
                 <Route path="add_product" element={<AddProduct />} />
                 <Route path="add_image" element={<AddImage />} />
                 <Route path="add_size" element={<AddSize />} />
+                <Route path="add_location" element={<Location />} />
             </Routes>
 
         </>

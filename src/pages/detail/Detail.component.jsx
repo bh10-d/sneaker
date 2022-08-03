@@ -33,7 +33,6 @@ const Detail = () => {
     size: "",
     price: "",
   });
-  console.log(infoProduct);
   const [active, setActive] = useState(infoProduct.imageColor);
   const [type, setType] = useState("Description");
   // const [loading, setLoading] = useState(true)
@@ -70,7 +69,7 @@ const Detail = () => {
       ).quantity;
     }
   }, [infoProduct.size]);
-  console.log(checkQuantity);
+
   const checkSale = useMemo(() => {
     const check = discount.find((f) => f.product_id === +id && f.status == 1);
     if (check != undefined) {

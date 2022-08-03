@@ -32,7 +32,6 @@ const Cart = () => {
           return acc + (cur.price*cur.quantity);
         }, 0);
       }, [data]);
-
     return (
         <>
             <div className="dropdown cart-dropdown">

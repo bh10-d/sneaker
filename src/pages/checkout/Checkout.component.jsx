@@ -30,7 +30,7 @@ const Checkout = () => {
 
                             <form action="#">
                                 <div class="row">
-                                    <div class="col-lg-9">
+                                    <div class="col-lg-7">
                                         <h2 class="checkout-title">Billing Details</h2>
                                         <div class="row">
                                             <div class="col-sm-6">
@@ -95,11 +95,11 @@ const Checkout = () => {
                                             <textarea class="form-control" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
                                         </div>
                                     </div>
-                                    <aside class="col-lg-3">
+                                    <aside class="col-lg-5">
                                         <div class="summary">
                                             <h3 class="summary-title">Your Order</h3>
 
-                                            <table class="table table-summary">
+                                            <table class="table table-summary" style={{ display:"block" }}>
                                                 <thead>
                                                     <tr>
                                                         <th>Product</th>

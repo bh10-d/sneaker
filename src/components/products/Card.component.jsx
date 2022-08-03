@@ -49,7 +49,6 @@ const Card = (props) => {
       });
     }
   };
-  console.log(props);
   return (
     <>
       <div className={(props.className === undefined)?"col-6 col-md-4 col-lg-4":props.className} key={props.id}>
