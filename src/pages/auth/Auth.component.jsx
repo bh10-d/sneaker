@@ -75,11 +75,11 @@ const Auth = () => {
 		}
 	}
 
-	// if (auth) {
-	// 	setTimeout(() => {
-	// 		return navigate("/")
-	// 	}, 2000)
-	// }
+	if (auth) {
+		// setTimeout(() => {
+			return navigate("/")
+		// }, 1000)
+	}
 
 
 	const Login = () => {

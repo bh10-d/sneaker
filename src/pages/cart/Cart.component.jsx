@@ -236,7 +236,7 @@ const Cart = () => {
                     <div className="cart-discount">
                         <div className="input-group">
                           <input
-                            value={voucher.code}
+                            value={voucherCode.code}
                             onChange={(e) =>
                               setVoucherCode({
                                 ...voucherCode,

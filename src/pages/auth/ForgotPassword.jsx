@@ -14,7 +14,7 @@ const ForgotPassword = () => {
     const handleOnclick = (d) => {
         setVisible(false);
         setLoading(true);
-        post('http://localhost:8080/user/forgot_password', d)
+        post('http://localhost:8080/user/auth/forgot_password', d)
             .then(data => {
                 if (data.data.status == 1) {
                     setStatus(1);

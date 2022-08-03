@@ -18,8 +18,8 @@ export const put = async (path, value) => {
 }
 
 export const del = async (path, value) => {
-    console.log(`${path}/${value}`)
-    const response = await request.delete(`${path}/${value}`)
+    console.log(`${path}${value}`)
+    const response = await request.delete(`${path}${value}`)
     return response
 }
 export default request

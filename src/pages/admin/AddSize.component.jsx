@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { get, post } from "../../service/apiServices";
+import { get, post, del } from "../../service/apiServices";
 import { url } from "../../utils/request";
 import { Button } from "@mui/material";
 import Table from "../../components/admin/table/Table";
@@ -13,6 +13,13 @@ const AddSize = () => {
   const [sizes, setSizes] = useState([])
   const [load, setLoad] = useState("");
   const customerTableHead = useRef(["", "Image Product", "Size", "Quantity", "Sell"]);
+  const [chooseProduct, setChooseProduct] = useState({
+    image_color: "",
+    quantity: 0,
+    sell: 0,
+    size_id: 0
+  });
+  const [quantity, setQuantity] = useState(0);
   // list product
   useEffect(() => {
     const fetchProductApi = async () => {
@@ -20,8 +27,8 @@ const AddSize = () => {
       setProduct(result);
     };
     fetchProductApi();
-  }, []);
-  console.log(product);
+  }, [load]);
+  // console.log(product);
   // list image product
   useEffect(() => {
     const fetchImageColorApi = async () => {
@@ -29,7 +36,7 @@ const AddSize = () => {
       setImageColors(result);
     };
     fetchImageColorApi();
-  }, []);
+  }, [load]);
   // list size
   useEffect(() => {
     const fetchSizeApi = async () => {
@@ -38,10 +45,13 @@ const AddSize = () => {
     };
     fetchSizeApi();
   }, [load]);
-  console.log(sizes);
+  // console.log(sizes);
   const renderBody = useCallback((item, index, product) => {
     return (
-      <tr key={index}>
+      <tr key={index} onClick={() => {
+        handleChooseProduct(item)
+        setQuantity(item.quantity);
+      }}>
         <td>{index + 1}</td>
         <td style={{ display: "flex" }}>
           <span
@@ -63,6 +73,7 @@ const AddSize = () => {
         <td>{item.size_id}</td>
         <td>{item.quantity}</td>
         <td>{item.sell}</td>
+        <td  onClick={()=>{handleDeleteSize(item.size_id, item.image_color)}}><i className="fa-solid fa-trash-can"></i></td>
       </tr>
     );
   }, []);
@@ -76,11 +87,40 @@ const AddSize = () => {
     const addSizeAPI = async () => {
       const result = await post("product/size/save", size);
       setLoad((prev) => [...prev, size]);
-      console.log(result);
+      // console.log(result);
     };
     addSizeAPI();
   }
-  console.log(size);
+
+  const handleChooseProduct = (product) => {
+    setChooseProduct(product);
+    // console.log(product);
+  }
+
+  const handleChooseSubmit = () => {
+    post('http://localhost:8080/product/size/updatequantity', {
+      image_color: chooseProduct.image_color,
+      size_id: chooseProduct.size_id,
+      quantity: quantity
+    })
+      .then(data => {
+        setLoad((prev) => [...prev, size]);
+        setChooseProduct({
+          image_color: "",
+          quantity: 0,
+          sell: 0,
+          size_id: 0
+        })
+        setQuantity(0)
+      })
+  }
+
+  const handleDeleteSize = (id, color) => {
+    del(`http://localhost:8080/product/size/delete?image_color=${color}&size_id=`,id)
+    console.log(id);
+    console.log(color);
+  }
+
   return (
     <>
       <div>
@@ -174,28 +214,125 @@ const AddSize = () => {
                     </Grid>
                   </Grid>
                   <Grid container spacing={2} sx={{ marginTop: "10px" }}>
-                  <Grid item xs={6}>
-                    <Button variant="outlined" onClick={handelAddSize}>
-                      Add Size
-                    </Button>
+                    <Grid item xs={6}>
+                      <Button variant="outlined" onClick={handelAddSize}>
+                        Add Size
+                      </Button>
+                    </Grid>
                   </Grid>
-                </Grid>
                 </Box>
               </div>
             </div>
           </div>
         </div>
-        <div className="card_custom">
-            <div className="card__body">
-              <Table
-                limit="10"
-                headData={customerTableHead.current}
-                bodyData={sizes}
-                renderBody={renderBody}
-                data={product}
-              />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h2 className="page-header">Update Size Product</h2>
+        <div className="row">
+          <div className="col-12">
+            <div className="card_custom">
+              <div className="card__body">
+                <Box sx={{ flexGrow: 1 }}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={4}>
+                      <div
+                        style={{
+                          width: "100px",
+                          height: "100px",
+                          marginLeft: "100px",
+                          marginTop: '-20px'
+                        }}
+                      >
+                        {(chooseProduct.image_color == "") ? "" : (
+                          <img
+                            src={url + chooseProduct.image_color}
+                            alt="product_image_color"
+                          />
+                        )}
+                      </div>
+                    </Grid>
+                    <Grid item xs={4}>
+                      <TextField
+                        value={chooseProduct.size_id}
+                        style={{ width: "100%" }}
+                        sx={{ input: { color: "black", background: "#fff" } }}
+                        id="filled-basic"
+                        label="Size Name"
+                        variant="outlined"
+                      />
+                    </Grid>
+                    <Grid item xs={4}>
+                      <TextField
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                        style={{ width: "100%" }}
+                        sx={{ input: { color: "black", background: "#fff" } }}
+                        id="filled-basic"
+                        label="Quantity"
+                        variant="outlined"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} sx={{ marginTop: "10px" }}>
+                    <Grid item xs={6}>
+                      <Button variant="outlined" onClick={handleChooseSubmit}>
+                        Update Size
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </div>
             </div>
           </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div className="card_custom">
+          <div className="card__body">
+            <Table
+              limit="10"
+              headData={customerTableHead.current}
+              bodyData={sizes}
+              renderBody={renderBody}
+              data={product}
+            />
+          </div>
+        </div>
+
+
       </div>
     </>
   );

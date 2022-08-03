@@ -50,7 +50,7 @@ const AddBrand = () => {
     setLoad(true);
   }
   const handleDeleteBrand = (id) => {
-    del('http://localhost:8080/brand/delete',id)
+    del('http://localhost:8080/brand/delete/',id)
     console.log("delete")
     setLoad(true);
   }

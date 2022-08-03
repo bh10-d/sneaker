@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/AppProvider';
+import { url } from '../../utils/request';
 const Avatar = () => {
     const { auth, logout, admin, info } = React.useContext(AppContext);
     return (
@@ -8,7 +9,7 @@ const Avatar = () => {
             <div className="dropdown cart-dropdown">
                 <div className="dropdown-toggle" style={{ width: '40px', height: '40px' }}>
                     <Link to="/user">
-                        <img style={{ borderRadius: '50%' }} src="/images/team/about-2/buiduchieu.jpg" alt="" />
+                        <img style={{ borderRadius: '50%' }} src={(info.profile_image == '')?"/images/team/about-2/buiduchieu.jpg":url+info.profile_image} alt="" />
                     </Link>
                 </div>
                 <div className="dropdown-menu dropdown-menu-right">

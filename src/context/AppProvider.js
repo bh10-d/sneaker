@@ -143,9 +143,9 @@ export default function AppProvider({ children }) {
   const [data, setData] = useState(() => {
     const check = localStorage.getItem("sneakershop");
     if (check !== "" || check !== []) {
-      console.log(check);
+      // console.log(check);
       const JobsLocalStorage = JSON.parse(check);
-      console.log(JobsLocalStorage);
+      // console.log(JobsLocalStorage);
       return JobsLocalStorage ?? [];
     } else {
       localStorage.removeItem("sneakershop");
@@ -155,9 +155,9 @@ export default function AppProvider({ children }) {
   const [wishlist, setWishlist] = useState(() => {
     const check = localStorage.getItem("wishlist");
     if (check !== "" || check !== []) {
-      console.log(check);
+      // console.log(check);
       const JobsLocalStorage = JSON.parse(check);
-      console.log(JobsLocalStorage);
+      // console.log(JobsLocalStorage);
       return JobsLocalStorage ?? [];
     } else {
       localStorage.removeItem("wishlist");
@@ -242,14 +242,9 @@ export default function AppProvider({ children }) {
         admin,
         auth,
         login,
-<<<<<<< HEAD
-        voucher,
-        // loginAdmin,
-        // loginStaff,
-=======
->>>>>>> 4b650b2698af570434246c168a919b0e13a16dcb
         info,
-        logout
+        logout,
+        voucher
       }}
     >
       {load === true ? <Hypnosis /> : children}

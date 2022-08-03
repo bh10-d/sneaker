@@ -16,13 +16,13 @@ const ChangePass = () => {
             setVisible(false);
             setLoading(true);
             setVisible(false);
-            post('http://localhost:8080/user/forgot_password', d)
+            post('http://localhost:8080/user/auth/forgot_password', d)
                 .then(data => {
                     setLoading(false);
-                    console.log(data)
+                    // console.log(data)
                 })
         }
-        console.log(d);
+        // console.log(d);
     }
 
     return (

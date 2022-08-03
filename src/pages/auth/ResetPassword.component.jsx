@@ -16,9 +16,7 @@ const ResetPassword = () => {
         if (d.password !== d.re_password) {
             setCheck(true);
         } else {
-            post('http://localhost:8080/user/reset_password', {
-                ...d, email: email, token: token
-            }).then(data => {
+            post(`http://localhost:8080/user/auth/reset_password/${email}/${token}`, d).then(data => {
                 setVisible(false);
                 console.log(data)
             })
